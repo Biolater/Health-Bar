@@ -16,7 +16,7 @@ import Logo from "@/assets/logo.svg";
 import Image from "next/image";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "../ui/button";
-import defaultProfileImg from "@/assets/defaultProfileImg.png"
+import defaultProfileImg from "@/assets/defaultProfileImg.png";
 interface AUTH_BUTTON {
   label: string;
   href: string;
@@ -132,11 +132,11 @@ const Navbar = () => {
               <button onClick={handleAvatarClick}>
                 <Avatar className="block text-foreground cursor-pointer">
                   <AvatarImage
-                    src={user?.photoURL || defaultProfileImg.src}
-                    alt={user?.displayName || "Profile avatar"}
+                    src={defaultProfileImg.src}
+                    alt={"Profile avatar"}
                   />
                   <AvatarFallback>
-                    {user?.displayName?.charAt(0) || ""}
+                    { ""}
                   </AvatarFallback>
                 </Avatar>
               </button>
