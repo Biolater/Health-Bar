@@ -22,11 +22,11 @@ const Profile: React.FC<{ params: { username: string } }> = ({ params }) => {
     fetchUserDetails();
   }, []);
   const userProfileOrMyProfile =
-    validateUsername(user?.displayName || "") === params.username ? (
+    validateUsername("Murad") === params.username ? (
       <MyProfile
         username={params.username}
         bio={additionalUserDetails.bio}
-        imageSrc={user?.photoURL || defaultImage.src}
+        imageSrc={defaultImage.src}
       />
     ) : (
       <UserProfile />
