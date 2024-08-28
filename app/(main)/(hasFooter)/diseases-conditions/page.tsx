@@ -20,29 +20,24 @@ const DiseasesConditions = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // useEffect(() => {
-  //   const fetchDiseasesConditions = async () => {
-  //     try {
-  //       const diseasesRef = collection(db, "diseases");
-  //       const docSnap = await getDocs(diseasesRef);
-  //       const diseasesConditions: DiseasesConditions = {};
-  //       if (docSnap) {
-  //         docSnap.forEach((doc) => {
-  //           const data = doc.data();
-  //           const docId = doc.id;
-  //           diseasesConditions[docId] = data.conditions;
-  //         });
-  //       }
-  //       setDiseases(diseasesConditions);
-  //     } catch (error) {
-  //       console.error("Error fetching diseases:", error);
-  //       setError("An error occurred while fetching the diseases."); // Set error message
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetchDiseasesConditions();
-  // }, []);
+  useEffect(() => {
+    const fetchDiseasesConditions = async () => {
+      try {
+        const response = await fetch ("/diseases-conditions/api");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data: DiseasesConditions = await response.json();
+        setDiseases(data);
+      } catch (error) {
+        console.error("Error fetching diseases:", error);
+        setError("An error occurred while fetching the diseases.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchDiseasesConditions();
+  }, []);
   // useEffect(() => {
   //     const fetchDiseasesConditions = async () => {
   //       try {

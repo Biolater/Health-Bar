@@ -13,9 +13,7 @@ const schema = a.schema({
       username: a.string().required(),
       email: a.email().required(),
     })
-    .authorization((allow) => [
-      allow.publicApiKey().to(["read", "create"]),
-    ]),
+    .authorization((allow) => [allow.publicApiKey()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;

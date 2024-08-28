@@ -1,3 +1,4 @@
+import diseases from "@/diseases.json";
 // import puppeteer from "puppeteer";
 // const allLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
@@ -67,7 +68,6 @@ export async function GET(request: Request) {
   //         };
   //         diseaseArr.push(diseaseObj);
 
-
   //       })
   //     );
   //     diseaseNames[letter] = diseaseArr;
@@ -78,5 +78,5 @@ export async function GET(request: Request) {
   //   await browser.close();
   // };
   // await training();
-  return new Response("Hello World");
+  return Response.json(diseases);
 }

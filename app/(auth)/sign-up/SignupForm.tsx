@@ -60,7 +60,7 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
         authMode: "apiKey",
       });
       if (errors) {
-        throw new Error("Error occured!");
+        throw new Error(errors[0].message);
       }
       if (users) {
         console.log(users);
@@ -70,7 +70,7 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
     }
   };
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState("");
   const form = useForm<z.infer<typeof signUpFormSchema>>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
@@ -92,18 +92,26 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
         username: email,
         password,
       });
-      const { errors, data: newUser } = await client.models.User.create({
-        userId: userId || crypto.randomUUID(),
-        username,
-        email,        
-      })
-      if(errors){
-        throw new Error(errors[0].message)
+      if (userId) {
+        const { errors } = await client.models.User.create(
+          {
+            userId,
+            username,
+            email,
+          },
+          {
+            authMode: "apiKey",
+          }
+        );
+        if (errors) {
+          throw new Error(errors[0].message);
+        }
       }
       router.push("/confirm-account");
       toast({
         title: "Confirm Account",
-        description: "Please confirm your account with the code we've sent your email.",
+        description:
+          "Please confirm your account with the code we've sent your email.",
       });
     } catch (error) {
       if (error instanceof Error) {
@@ -125,15 +133,15 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
   };
   const onSubmit = async (values: z.infer<typeof signUpFormSchema>) => {
     await handleSignUp(values.email, values.password, values.username);
-    setEmail(values.email)
-    setUserSignedUp(true)
+    setEmail(values.email);
+    setUserSignedUp(true);
   };
   const [userSignedUp, setUserSignedUp] = useState(false);
   useEffect(() => {
-    // fetchUsers();
-    if(userSignedUp){
-      localStorage.setItem("emailForConfirmation", email)
-    } 
+    fetchUsers();
+    if (userSignedUp) {
+      localStorage.setItem("emailForConfirmation", email);
+    }
   }, [userSignedUp]);
   return (
     <Form {...form}>

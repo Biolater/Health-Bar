@@ -83,7 +83,7 @@ const UserProfileMenu: React.FC<Props> = ({ handleEscClick }) => {
     {
       text: "Profile",
       icon: <CircleUserRound />,
-      link: `/`,
+      link: user ? `/${validateUsername(user?.username)}` : '/',
     },
     {
       text: "Notifications",

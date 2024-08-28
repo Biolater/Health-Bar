@@ -1,0 +1,4221 @@
+{
+  "A": [
+    {
+      "name": "A fib",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Atrial fibrillation",
+        "url": "https://www.mayoclinic.org/diseases-conditions/atrial-fibrillation/symptoms-causes/syc-20350624"
+      }
+    },
+    {
+      "name": "Abdominal aortic aneurysm",
+      "url": "https://www.mayoclinic.org/diseases-conditions/abdominal-aortic-aneurysm/symptoms-causes/syc-20350688",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Abnormally excessive sweating",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hyperhidrosis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hyperhidrosis/symptoms-causes/syc-20367152"
+      }
+    },
+    {
+      "name": "Abscess, Bartholin's",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bartholin's cyst",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bartholin-cyst/symptoms-causes/syc-20369976"
+      }
+    },
+    {
+      "name": "Absence seizure",
+      "url": "https://www.mayoclinic.org/diseases-conditions/petit-mal-seizure/symptoms-causes/syc-20359683",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Acanthosis nigricans",
+      "url": "https://www.mayoclinic.org/diseases-conditions/acanthosis-nigricans/symptoms-causes/syc-20368983",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Achalasia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/achalasia/symptoms-causes/syc-20352850",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Achilles tendinitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/achilles-tendinitis/symptoms-causes/syc-20369020",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Achilles tendon rupture",
+      "url": "https://www.mayoclinic.org/diseases-conditions/achilles-tendon-rupture/symptoms-causes/syc-20353234",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Acid reflux",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Gastroesophageal reflux disease (GERD)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/gerd/symptoms-causes/syc-20361940"
+      }
+    },
+    {
+      "name": "Acid reflux, infant",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Infant reflux",
+        "url": "https://www.mayoclinic.org/diseases-conditions/infant-acid-reflux/symptoms-causes/syc-20351408"
+      }
+    },
+    {
+      "name": "ACL injury",
+      "url": "https://www.mayoclinic.org/diseases-conditions/acl-injury/symptoms-causes/syc-20350738",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Acne",
+      "url": "https://www.mayoclinic.org/diseases-conditions/acne/symptoms-causes/syc-20368047",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Acne inversa",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hidradenitis suppurativa",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hidradenitis-suppurativa/symptoms-causes/syc-20352306"
+      }
+    },
+    {
+      "name": "Acoustic neuroma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/acoustic-neuroma/symptoms-causes/syc-20356127",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Acquired immunodeficiency syndrome",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See HIV/AIDS",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hiv-aids/symptoms-causes/syc-20373524"
+      }
+    },
+    {
+      "name": "Acromegaly",
+      "url": "https://www.mayoclinic.org/diseases-conditions/acromegaly/symptoms-causes/syc-20351222",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Actinic keratosis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/actinic-keratosis/symptoms-causes/syc-20354969",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Acute coronary syndrome",
+      "url": "https://www.mayoclinic.org/diseases-conditions/acute-coronary-syndrome/symptoms-causes/syc-20352136",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Acute flaccid myelitis (AFM)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/acute-flaccid-myelitis/symptoms-causes/syc-20493046",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Acute granulocytic leukemia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Acute myelogenous leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/acute-myelogenous-leukemia/symptoms-causes/syc-20369109"
+      }
+    },
+    {
+      "name": "Acute inflammatory demyelinating polyneuropathy",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Guillain-Barre syndrome",
+        "url": "https://www.mayoclinic.org/diseases-conditions/guillain-barre-syndrome/symptoms-causes/syc-20362793"
+      }
+    },
+    {
+      "name": "Acute kidney injury",
+      "url": "https://www.mayoclinic.org/diseases-conditions/kidney-failure/symptoms-causes/syc-20369048",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Acute liver failure",
+      "url": "https://www.mayoclinic.org/diseases-conditions/acute-liver-failure/symptoms-causes/syc-20352863",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Acute lymphoblastic leukemia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Acute lymphocytic leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/acute-lymphocytic-leukemia/symptoms-causes/syc-20369077"
+      }
+    },
+    {
+      "name": "Acute lymphocytic leukemia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/acute-lymphocytic-leukemia/symptoms-causes/syc-20369077",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Acute lymphoid leukemia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Acute lymphocytic leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/acute-lymphocytic-leukemia/symptoms-causes/syc-20369077"
+      }
+    },
+    {
+      "name": "Acute myeloblastic leukemia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Acute myelogenous leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/acute-myelogenous-leukemia/symptoms-causes/syc-20369109"
+      }
+    },
+    {
+      "name": "Acute myelogenous leukemia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/acute-myelogenous-leukemia/symptoms-causes/syc-20369109",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Acute myeloid leukemia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Acute myelogenous leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/acute-myelogenous-leukemia/symptoms-causes/syc-20369109"
+      }
+    }
+  ],
+  "B": [
+    {
+      "name": "Baby acne",
+      "url": "https://www.mayoclinic.org/diseases-conditions/baby-acne/symptoms-causes/syc-20369880",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Back pain",
+      "url": "https://www.mayoclinic.org/diseases-conditions/back-pain/symptoms-causes/syc-20369906",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Bacterial vaginosis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/bacterial-vaginosis/symptoms-causes/syc-20352279",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Bad breath",
+      "url": "https://www.mayoclinic.org/diseases-conditions/bad-breath/symptoms-causes/syc-20350922",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Bags under eyes",
+      "url": "https://www.mayoclinic.org/diseases-conditions/bags-under-eyes/symptoms-causes/syc-20369927",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Baker cyst",
+      "url": "https://www.mayoclinic.org/diseases-conditions/bakers-cyst/symptoms-causes/syc-20369950",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Balance problems",
+      "url": "https://www.mayoclinic.org/diseases-conditions/balance-problems/symptoms-causes/syc-20350474",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Baldness",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hair loss",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hair-loss/symptoms-causes/syc-20372926"
+      }
+    },
+    {
+      "name": "Barber's itch",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Folliculitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/folliculitis/symptoms-causes/syc-20361634"
+      }
+    },
+    {
+      "name": "Barlow's syndrome",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Mitral valve prolapse",
+        "url": "https://www.mayoclinic.org/diseases-conditions/mitral-valve-prolapse/symptoms-causes/syc-20355446"
+      }
+    },
+    {
+      "name": "Barotitis media",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Airplane ear",
+        "url": "https://www.mayoclinic.org/diseases-conditions/airplane-ear/symptoms-causes/syc-20351701"
+      }
+    },
+    {
+      "name": "Barotrauma",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Airplane ear",
+        "url": "https://www.mayoclinic.org/diseases-conditions/airplane-ear/symptoms-causes/syc-20351701"
+      }
+    },
+    {
+      "name": "Barrett's esophagus",
+      "url": "https://www.mayoclinic.org/diseases-conditions/barretts-esophagus/symptoms-causes/syc-20352841",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Bartholin's cyst",
+      "url": "https://www.mayoclinic.org/diseases-conditions/bartholin-cyst/symptoms-causes/syc-20369976",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Basal cell carcinoma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/basal-cell-carcinoma/symptoms-causes/syc-20354187",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Basal joint arthritis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Thumb arthritis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/thumb-arthritis/symptoms-causes/syc-20378339"
+      }
+    },
+    {
+      "name": "BDD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Body dysmorphic disorder",
+        "url": "https://www.mayoclinic.org/diseases-conditions/body-dysmorphic-disorder/symptoms-causes/syc-20353938"
+      }
+    },
+    {
+      "name": "Bedbugs",
+      "url": "https://www.mayoclinic.org/diseases-conditions/bedbugs/symptoms-causes/syc-20370001",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Bedsores (pressure ulcers)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/bed-sores/symptoms-causes/syc-20355893",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Bed-wetting",
+      "url": "https://www.mayoclinic.org/diseases-conditions/bed-wetting/symptoms-causes/syc-20366685",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Bee sting",
+      "url": "https://www.mayoclinic.org/diseases-conditions/bee-stings/symptoms-causes/syc-20353869",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Behcet's disease",
+      "url": "https://www.mayoclinic.org/diseases-conditions/behcets-disease/symptoms-causes/syc-20351326",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Bell's palsy",
+      "url": "https://www.mayoclinic.org/diseases-conditions/bells-palsy/symptoms-causes/syc-20370028",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Benign adrenal tumors",
+      "url": "https://www.mayoclinic.org/diseases-conditions/benign-adrenal-tumors/symptoms-causes/syc-20356190",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Benign migratory glossitis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Geographic tongue",
+        "url": "https://www.mayoclinic.org/diseases-conditions/geographic-tongue/symptoms-causes/syc-20354396"
+      }
+    },
+    {
+      "name": "Benign paroxysmal positional vertigo",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Benign paroxysmal positional vertigo (BPPV)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/vertigo/symptoms-causes/syc-20370055"
+      }
+    },
+    {
+      "name": "Benign paroxysmal positional vertigo (BPPV)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/vertigo/symptoms-causes/syc-20370055",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Benign peripheral nerve tumor",
+      "url": "https://www.mayoclinic.org/diseases-conditions/peripheral-nerve-tumors-benign/symptoms-causes/syc-20368680",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Benign prostatic hyperplasia (BPH)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/benign-prostatic-hyperplasia/symptoms-causes/syc-20370087",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Berger's disease",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See IgA nephropathy (Berger disease)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/iga-nephropathy/symptoms-causes/syc-20352268"
+      }
+    }
+  ],
+  "C": [
+    {
+      "name": "C. difficile colitis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Pseudomembranous colitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/pseudomembranous-colitis/symptoms-causes/syc-20351434"
+      }
+    },
+    {
+      "name": "C. difficile infection",
+      "url": "https://www.mayoclinic.org/diseases-conditions/c-difficile/symptoms-causes/syc-20351691",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Calciphylaxis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/calciphylaxis/symptoms-causes/syc-20370559",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Calluses and corns",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Corns and calluses",
+        "url": "https://www.mayoclinic.org/diseases-conditions/corns-and-calluses/symptoms-causes/syc-20355946"
+      }
+    },
+    {
+      "name": "Cancer",
+      "url": "https://www.mayoclinic.org/diseases-conditions/cancer/symptoms-causes/syc-20370588",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Cancer, acute lymphocytic leukemia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Acute lymphocytic leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/acute-lymphocytic-leukemia/symptoms-causes/syc-20369077"
+      }
+    },
+    {
+      "name": "Cancer, anal",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Anal cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/anal-cancer/symptoms-causes/syc-20354140"
+      }
+    },
+    {
+      "name": "Cancer, basal cell",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Basal cell carcinoma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/basal-cell-carcinoma/symptoms-causes/syc-20354187"
+      }
+    },
+    {
+      "name": "Cancer, bladder",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bladder cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bladder-cancer/symptoms-causes/syc-20356104"
+      }
+    },
+    {
+      "name": "Cancer, bone",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bone cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bone-cancer/symptoms-causes/syc-20350217"
+      }
+    },
+    {
+      "name": "Cancer, breast",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Breast cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/breast-cancer/symptoms-causes/syc-20352470"
+      }
+    },
+    {
+      "name": "Cancer, carcinoid tumors",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Carcinoid tumors",
+        "url": "https://www.mayoclinic.org/diseases-conditions/carcinoid-tumors/symptoms-causes/syc-20351039"
+      }
+    },
+    {
+      "name": "Cancer, cervical",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Cervical cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/cervical-cancer/symptoms-causes/syc-20352501"
+      }
+    },
+    {
+      "name": "Cancer, chronic lymphocytic leukemia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Chronic lymphocytic leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/chronic-lymphocytic-leukemia/symptoms-causes/syc-20352428"
+      }
+    },
+    {
+      "name": "Cancer, chronic myelogenous leukemia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Chronic myelogenous leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/chronic-myelogenous-leukemia/symptoms-causes/syc-20352417"
+      }
+    },
+    {
+      "name": "Cancer, colon",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Colon cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/colon-cancer/symptoms-causes/syc-20353669"
+      }
+    },
+    {
+      "name": "Cancer, endometrial",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Endometrial cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/endometrial-cancer/symptoms-causes/syc-20352461"
+      }
+    },
+    {
+      "name": "Cancer, esophageal",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Esophageal cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/esophageal-cancer/symptoms-causes/syc-20356084"
+      }
+    },
+    {
+      "name": "Cancer, eye melanoma",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Eye melanoma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/eye-melanoma/symptoms-causes/syc-20372371"
+      }
+    },
+    {
+      "name": "Cancer, gallbladder",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Gallbladder cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/gallbladder-cancer/symptoms-causes/syc-20353370"
+      }
+    },
+    {
+      "name": "Cancer, gastric",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Stomach cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/stomach-cancer/symptoms-causes/syc-20352438"
+      }
+    },
+    {
+      "name": "Cancer, hairy cell leukemia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hairy cell leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hairy-cell-leukemia/symptoms-causes/syc-20372956"
+      }
+    },
+    {
+      "name": "Cancer, Hodgkin's disease",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hodgkin lymphoma (Hodgkin disease)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hodgkins-lymphoma/symptoms-causes/syc-20352646"
+      }
+    },
+    {
+      "name": "Cancer, Hurthle cell",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hurthle cell cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hurthle-cell-cancer/symptoms-causes/syc-20373572"
+      }
+    },
+    {
+      "name": "Cancer, inflammatory breast",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Inflammatory breast cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/inflammatory-breast-cancer/symptoms-causes/syc-20355413"
+      }
+    },
+    {
+      "name": "Cancer, kidney",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Kidney cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/kidney-cancer/symptoms-causes/syc-20352664"
+      }
+    },
+    {
+      "name": "Cancer, leukemia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/leukemia/symptoms-causes/syc-20374373"
+      }
+    },
+    {
+      "name": "Cancer, lip",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Mouth cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/mouth-cancer/symptoms-causes/syc-20350997"
+      }
+    },
+    {
+      "name": "Cancer, liver",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Liver cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/liver-cancer/symptoms-causes/syc-20353659"
+      }
+    },
+    {
+      "name": "Cancer, lung",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Lung cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/lung-cancer/symptoms-causes/syc-20374620"
+      }
+    }
+  ],
+  "D": [
+    {
+      "name": "Dandruff",
+      "url": "https://www.mayoclinic.org/diseases-conditions/dandruff/symptoms-causes/syc-20353850",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Daytime sleepiness",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Narcolepsy",
+        "url": "https://www.mayoclinic.org/diseases-conditions/narcolepsy/symptoms-causes/syc-20375497"
+      }
+    },
+    {
+      "name": "DCIS",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Ductal carcinoma in situ (DCIS)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/dcis/symptoms-causes/syc-20371889"
+      }
+    },
+    {
+      "name": "DDH",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hip dysplasia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hip-dysplasia/symptoms-causes/syc-20350209"
+      }
+    },
+    {
+      "name": "De Quervain tenosynovitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/de-quervain-tenosynovitis/symptoms-causes/syc-20371332",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Decreased tear production",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Dry eyes",
+        "url": "https://www.mayoclinic.org/diseases-conditions/dry-eyes/symptoms-causes/syc-20371863"
+      }
+    },
+    {
+      "name": "Deep vein thrombosis (DVT)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/deep-vein-thrombosis/symptoms-causes/syc-20352557",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Deficient color vision",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Color blindness",
+        "url": "https://www.mayoclinic.org/diseases-conditions/poor-color-vision/symptoms-causes/syc-20354988"
+      }
+    },
+    {
+      "name": "Degenerative arthritis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Osteoarthritis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/osteoarthritis/symptoms-causes/syc-20351925"
+      }
+    },
+    {
+      "name": "Dehydration",
+      "url": "https://www.mayoclinic.org/diseases-conditions/dehydration/symptoms-causes/syc-20354086",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Delayed ejaculation",
+      "url": "https://www.mayoclinic.org/diseases-conditions/delayed-ejaculation/symptoms-causes/syc-20371358",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Delayed gastric emptying",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Gastroparesis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/gastroparesis/symptoms-causes/syc-20355787"
+      }
+    },
+    {
+      "name": "Delayed sleep phase",
+      "url": "https://www.mayoclinic.org/diseases-conditions/delayed-sleep-phase/symptoms-causes/syc-20353340",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Delayed sleep phase syndrome",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Delayed sleep phase",
+        "url": "https://www.mayoclinic.org/diseases-conditions/delayed-sleep-phase/symptoms-causes/syc-20353340"
+      }
+    },
+    {
+      "name": "Delayed sleep-wake phase sleep disorder",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Delayed sleep phase",
+        "url": "https://www.mayoclinic.org/diseases-conditions/delayed-sleep-phase/symptoms-causes/syc-20353340"
+      }
+    },
+    {
+      "name": "Delirium",
+      "url": "https://www.mayoclinic.org/diseases-conditions/delirium/symptoms-causes/syc-20371386",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Dementia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/dementia/symptoms-causes/syc-20352013",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Dementia, frontotemporal",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Frontotemporal dementia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/frontotemporal-dementia/symptoms-causes/syc-20354737"
+      }
+    },
+    {
+      "name": "Dementia, Lewy body",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Lewy body dementia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/lewy-body-dementia/symptoms-causes/syc-20352025"
+      }
+    },
+    {
+      "name": "Dementia, vascular",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Vascular dementia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/vascular-dementia/symptoms-causes/syc-20378793"
+      }
+    },
+    {
+      "name": "Dengue fever",
+      "url": "https://www.mayoclinic.org/diseases-conditions/dengue-fever/symptoms-causes/syc-20353078",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Dengue hemorrhagic fever",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Dengue fever",
+        "url": "https://www.mayoclinic.org/diseases-conditions/dengue-fever/symptoms-causes/syc-20353078"
+      }
+    },
+    {
+      "name": "Dependence, nicotine",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Nicotine dependence",
+        "url": "https://www.mayoclinic.org/diseases-conditions/nicotine-dependence/symptoms-causes/syc-20351584"
+      }
+    },
+    {
+      "name": "Depersonalization-derealization disorder",
+      "url": "https://www.mayoclinic.org/diseases-conditions/depersonalization-derealization-disorder/symptoms-causes/syc-20352911",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Depression (major depressive disorder)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/depression/symptoms-causes/syc-20356007",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Depression, postpartum",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Postpartum depression",
+        "url": "https://www.mayoclinic.org/diseases-conditions/postpartum-depression/symptoms-causes/syc-20376617"
+      }
+    },
+    {
+      "name": "Depression, teen",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Teen depression",
+        "url": "https://www.mayoclinic.org/diseases-conditions/teen-depression/symptoms-causes/syc-20350985"
+      }
+    },
+    {
+      "name": "Dermatitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/dermatitis-eczema/symptoms-causes/syc-20352380",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Dermatitis, atopic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Atopic dermatitis (eczema)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/atopic-dermatitis-eczema/symptoms-causes/syc-20353273"
+      }
+    },
+    {
+      "name": "Dermatitis, cercarial",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Swimmer's itch",
+        "url": "https://www.mayoclinic.org/diseases-conditions/swimmers-itch/symptoms-causes/syc-20355043"
+      }
+    }
+  ],
+  "E": [
+    {
+      "name": "E. coli",
+      "url": "https://www.mayoclinic.org/diseases-conditions/e-coli/symptoms-causes/syc-20372058",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Ear infection (middle ear)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ear-infections/symptoms-causes/syc-20351616",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Ear infection, outer ear",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Swimmer's ear",
+        "url": "https://www.mayoclinic.org/diseases-conditions/swimmers-ear/symptoms-causes/syc-20351682"
+      }
+    },
+    {
+      "name": "Eardrum, ruptured",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Ruptured eardrum (perforated eardrum)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/ruptured-eardrum/symptoms-causes/syc-20351879"
+      }
+    },
+    {
+      "name": "Early puberty",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Precocious puberty",
+        "url": "https://www.mayoclinic.org/diseases-conditions/precocious-puberty/symptoms-causes/syc-20351811"
+      }
+    },
+    {
+      "name": "Earwax blockage",
+      "url": "https://www.mayoclinic.org/diseases-conditions/earwax-blockage/symptoms-causes/syc-20353004",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Eating disorders",
+      "url": "https://www.mayoclinic.org/diseases-conditions/eating-disorders/symptoms-causes/syc-20353603",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Eating disorders, anorexia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Anorexia nervosa",
+        "url": "https://www.mayoclinic.org/diseases-conditions/anorexia-nervosa/symptoms-causes/syc-20353591"
+      }
+    },
+    {
+      "name": "Eating disorders, binge eating",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Binge-eating disorder",
+        "url": "https://www.mayoclinic.org/diseases-conditions/binge-eating-disorder/symptoms-causes/syc-20353627"
+      }
+    },
+    {
+      "name": "Eating disorders, bulimia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bulimia nervosa",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bulimia/symptoms-causes/syc-20353615"
+      }
+    },
+    {
+      "name": "Ebstein anomaly",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ebsteins-anomaly/symptoms-causes/syc-20352127",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Ectopic heartbeat",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Premature ventricular contractions (PVCs)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/premature-ventricular-contractions/symptoms-causes/syc-20376757"
+      }
+    },
+    {
+      "name": "Ectopic pregnancy",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ectopic-pregnancy/symptoms-causes/syc-20372088",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Ectropion",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ectropion/symptoms-causes/syc-20351164",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Eczema",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Atopic dermatitis (eczema)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/atopic-dermatitis-eczema/symptoms-causes/syc-20353273"
+      }
+    },
+    {
+      "name": "Eczema, dyshidrotic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Dyshidrosis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/dyshidrosis/symptoms-causes/syc-20352342"
+      }
+    },
+    {
+      "name": "ED",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Erectile dysfunction",
+        "url": "https://www.mayoclinic.org/diseases-conditions/erectile-dysfunction/symptoms-causes/syc-20355776"
+      }
+    },
+    {
+      "name": "Edema",
+      "url": "https://www.mayoclinic.org/diseases-conditions/edema/symptoms-causes/syc-20366493",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Edema, pulmonary",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Pulmonary edema",
+        "url": "https://www.mayoclinic.org/diseases-conditions/pulmonary-edema/symptoms-causes/syc-20377009"
+      }
+    },
+    {
+      "name": "Egg allergy",
+      "url": "https://www.mayoclinic.org/diseases-conditions/egg-allergy/symptoms-causes/syc-20372115",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Ehlers-Danlos syndrome",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ehlers-danlos-syndrome/symptoms-causes/syc-20362125",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Ehrlichiosis and anaplasmosis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ehrlichiosis/symptoms-causes/syc-20372142",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Eisenmenger syndrome",
+      "url": "https://www.mayoclinic.org/diseases-conditions/eisenmenger-syndrome/symptoms-causes/syc-20350580",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Elevated blood pressure",
+      "url": "https://www.mayoclinic.org/diseases-conditions/prehypertension/symptoms-causes/syc-20376703",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Embolism, pulmonary",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Pulmonary embolism",
+        "url": "https://www.mayoclinic.org/diseases-conditions/pulmonary-embolism/symptoms-causes/syc-20354647"
+      }
+    },
+    {
+      "name": "Embryonal tumors",
+      "url": "https://www.mayoclinic.org/diseases-conditions/embryonal-tumor/cdc-20367985",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Emphysema",
+      "url": "https://www.mayoclinic.org/diseases-conditions/emphysema/symptoms-causes/syc-20355555",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Encephalitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/encephalitis/symptoms-causes/syc-20356136",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Encopresis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/encopresis/symptoms-causes/syc-20354494",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "End stage kidney failure",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See End-stage renal disease",
+        "url": "https://www.mayoclinic.org/diseases-conditions/end-stage-renal-disease/symptoms-causes/syc-20354532"
+      }
+    }
+  ],
+  "F": [
+    {
+      "name": "Facial hair, excess in women",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hirsutism",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hirsutism/symptoms-causes/syc-20354935"
+      }
+    },
+    {
+      "name": "Facial palsy",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bell's palsy",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bells-palsy/symptoms-causes/syc-20370028"
+      }
+    },
+    {
+      "name": "Factitious disorder",
+      "url": "https://www.mayoclinic.org/diseases-conditions/factitious-disorder/symptoms-causes/syc-20356028",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Factor V Leiden",
+      "url": "https://www.mayoclinic.org/diseases-conditions/factor-v-leiden/symptoms-causes/syc-20372423",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Fallen arches",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Flatfeet",
+        "url": "https://www.mayoclinic.org/diseases-conditions/flatfeet/symptoms-causes/syc-20372604"
+      }
+    },
+    {
+      "name": "Fallot, tetralogy of",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Tetralogy of Fallot",
+        "url": "https://www.mayoclinic.org/diseases-conditions/tetralogy-of-fallot/symptoms-causes/syc-20353477"
+      }
+    },
+    {
+      "name": "Familial adenomatous polyposis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/familial-adenomatous-polyposis/symptoms-causes/syc-20372443",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Familial hypercholesterolemia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/familial-hypercholesterolemia/symptoms-causes/syc-20353755",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Familial Mediterranean fever",
+      "url": "https://www.mayoclinic.org/diseases-conditions/familial-mediterranean-fever/symptoms-causes/syc-20372470",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Familial paroxysmal peritonitis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Familial Mediterranean fever",
+        "url": "https://www.mayoclinic.org/diseases-conditions/familial-mediterranean-fever/symptoms-causes/syc-20372470"
+      }
+    },
+    {
+      "name": "FAP",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Familial adenomatous polyposis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/familial-adenomatous-polyposis/symptoms-causes/syc-20372443"
+      }
+    },
+    {
+      "name": "Farsightedness",
+      "url": "https://www.mayoclinic.org/diseases-conditions/farsightedness/symptoms-causes/syc-20372495",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Febrile seizure",
+      "url": "https://www.mayoclinic.org/diseases-conditions/febrile-seizure/symptoms-causes/syc-20372522",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Fecal incontinence",
+      "url": "https://www.mayoclinic.org/diseases-conditions/fecal-incontinence/symptoms-causes/syc-20351397",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Female infertility",
+      "url": "https://www.mayoclinic.org/diseases-conditions/female-infertility/symptoms-causes/syc-20354308",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Female sexual dysfunction",
+      "url": "https://www.mayoclinic.org/diseases-conditions/female-sexual-dysfunction/symptoms-causes/syc-20372549",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Fetal alcohol syndrome",
+      "url": "https://www.mayoclinic.org/diseases-conditions/fetal-alcohol-syndrome/symptoms-causes/syc-20352901",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Fetal macrosomia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/fetal-macrosomia/symptoms-causes/syc-20372579",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Fever",
+      "url": "https://www.mayoclinic.org/diseases-conditions/fever/symptoms-causes/syc-20352759",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Fever blister",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Cold sore",
+        "url": "https://www.mayoclinic.org/diseases-conditions/cold-sore/symptoms-causes/syc-20371017"
+      }
+    },
+    {
+      "name": "Fever, valley",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Valley fever",
+        "url": "https://www.mayoclinic.org/diseases-conditions/valley-fever/symptoms-causes/syc-20378761"
+      }
+    },
+    {
+      "name": "Fevers, viral hemorrhagic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Viral hemorrhagic fevers",
+        "url": "https://www.mayoclinic.org/diseases-conditions/viral-hemorrhagic-fevers/symptoms-causes/syc-20351260"
+      }
+    },
+    {
+      "name": "FH",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Familial hypercholesterolemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/familial-hypercholesterolemia/symptoms-causes/syc-20353755"
+      }
+    },
+    {
+      "name": "Fibroadenoma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/fibroadenoma/symptoms-causes/syc-20352752",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Fibrocystic breasts",
+      "url": "https://www.mayoclinic.org/diseases-conditions/fibrocystic-breasts/symptoms-causes/syc-20350438",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Fibroids, uterine",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Uterine fibroids",
+        "url": "https://www.mayoclinic.org/diseases-conditions/uterine-fibroids/symptoms-causes/syc-20354288"
+      }
+    },
+    {
+      "name": "Fibromuscular dysplasia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/fibromuscular-dysplasia/symptoms-causes/syc-20352144",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Fibromyalgia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/fibromyalgia/symptoms-causes/syc-20354780",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Fibrosis, cystic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Cystic fibrosis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/cystic-fibrosis/symptoms-causes/syc-20353700"
+      }
+    },
+    {
+      "name": "Fibrosis, interstitial pulmonary",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Interstitial lung disease",
+        "url": "https://www.mayoclinic.org/diseases-conditions/interstitial-lung-disease/symptoms-causes/syc-20353108"
+      }
+    }
+  ],
+  "G": [
+    {
+      "name": "GAD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Generalized anxiety disorder",
+        "url": "https://www.mayoclinic.org/diseases-conditions/generalized-anxiety-disorder/symptoms-causes/syc-20360803"
+      }
+    },
+    {
+      "name": "Galactorrhea",
+      "url": "https://www.mayoclinic.org/diseases-conditions/galactorrhea/symptoms-causes/syc-20350431",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Gallbladder cancer",
+      "url": "https://www.mayoclinic.org/diseases-conditions/gallbladder-cancer/symptoms-causes/syc-20353370",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Gallbladder inflamation",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Cholecystitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/cholecystitis/symptoms-causes/syc-20364867"
+      }
+    },
+    {
+      "name": "Gallstones",
+      "url": "https://www.mayoclinic.org/diseases-conditions/gallstones/symptoms-causes/syc-20354214",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Gambling, compulsive",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Compulsive gambling",
+        "url": "https://www.mayoclinic.org/diseases-conditions/compulsive-gambling/symptoms-causes/syc-20355178"
+      }
+    },
+    {
+      "name": "Ganglion cyst",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ganglion-cyst/symptoms-causes/syc-20351156",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Gangrene",
+      "url": "https://www.mayoclinic.org/diseases-conditions/gangrene/symptoms-causes/syc-20352567",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Gas and gas pains",
+      "url": "https://www.mayoclinic.org/diseases-conditions/gas-and-gas-pains/symptoms-causes/syc-20372709",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Gastric cancer",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Stomach cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/stomach-cancer/symptoms-causes/syc-20352438"
+      }
+    },
+    {
+      "name": "Gastric emptying, delayed",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Gastroparesis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/gastroparesis/symptoms-causes/syc-20355787"
+      }
+    },
+    {
+      "name": "Gastric emptying, rapid",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Dumping syndrome",
+        "url": "https://www.mayoclinic.org/diseases-conditions/dumping-syndrome/symptoms-causes/syc-20371915"
+      }
+    },
+    {
+      "name": "Gastritis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/gastritis/symptoms-causes/syc-20355807",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Gastroenteritis, viral",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Viral gastroenteritis (stomach flu)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/viral-gastroenteritis/symptoms-causes/syc-20378847"
+      }
+    },
+    {
+      "name": "Gastroesophageal reflux disease (GERD)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/gerd/symptoms-causes/syc-20361940",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Gastrointestinal bleeding",
+      "url": "https://www.mayoclinic.org/diseases-conditions/gastrointestinal-bleeding/symptoms-causes/syc-20372729",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Gastrointestinal stromal tumor (GIST)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/gastrointestinal-stromal-tumors/cdc-20387715",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Gastroparesis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/gastroparesis/symptoms-causes/syc-20355787",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Gaucher disease",
+      "url": "https://www.mayoclinic.org/diseases-conditions/gauchers-disease/symptoms-causes/syc-20355546",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "GBM",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Glioblastoma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/glioblastoma/symptoms-causes/syc-20569077"
+      }
+    },
+    {
+      "name": "Gender dysphoria",
+      "url": "https://www.mayoclinic.org/diseases-conditions/gender-dysphoria/symptoms-causes/syc-20475255",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Gender identity disorder",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Gender dysphoria",
+        "url": "https://www.mayoclinic.org/diseases-conditions/gender-dysphoria/symptoms-causes/syc-20475255"
+      }
+    },
+    {
+      "name": "Generalized anxiety disorder",
+      "url": "https://www.mayoclinic.org/diseases-conditions/generalized-anxiety-disorder/symptoms-causes/syc-20360803",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Genital herpes",
+      "url": "https://www.mayoclinic.org/diseases-conditions/genital-herpes/symptoms-causes/syc-20356161",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Genital warts",
+      "url": "https://www.mayoclinic.org/diseases-conditions/genital-warts/symptoms-causes/syc-20355234",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Geographic tongue",
+      "url": "https://www.mayoclinic.org/diseases-conditions/geographic-tongue/symptoms-causes/syc-20354396",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "GERD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Gastroesophageal reflux disease (GERD)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/gerd/symptoms-causes/syc-20361940"
+      }
+    },
+    {
+      "name": "Germ cell tumors",
+      "url": "https://www.mayoclinic.org/diseases-conditions/germ-cell-tumors/symptoms-causes/syc-20352493",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "German measles",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Rubella",
+        "url": "https://www.mayoclinic.org/diseases-conditions/rubella/symptoms-causes/syc-20377310"
+      }
+    },
+    {
+      "name": "Gestational diabetes",
+      "url": "https://www.mayoclinic.org/diseases-conditions/gestational-diabetes/symptoms-causes/syc-20355339",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    }
+  ],
+  "H": [
+    {
+      "name": "H. pylori infection",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Helicobacter pylori (H. pylori) infection",
+        "url": "https://www.mayoclinic.org/diseases-conditions/h-pylori/symptoms-causes/syc-20356171"
+      }
+    },
+    {
+      "name": "H1N1 flu",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See H1N1 flu (swine flu)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/swine-flu/symptoms-causes/syc-20378103"
+      }
+    },
+    {
+      "name": "H1N1 flu (swine flu)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/swine-flu/symptoms-causes/syc-20378103",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "H1N1v flu",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See H1N1 flu (swine flu)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/swine-flu/symptoms-causes/syc-20378103"
+      }
+    },
+    {
+      "name": "H3N2v flu",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See H1N1 flu (swine flu)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/swine-flu/symptoms-causes/syc-20378103"
+      }
+    },
+    {
+      "name": "Hair loss",
+      "url": "https://www.mayoclinic.org/diseases-conditions/hair-loss/symptoms-causes/syc-20372926",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Hair-pulling disorder",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Trichotillomania (hair-pulling disorder)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/trichotillomania/symptoms-causes/syc-20355188"
+      }
+    },
+    {
+      "name": "Hairy cell leukemia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/hairy-cell-leukemia/symptoms-causes/syc-20372956",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Hairy tongue",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Black hairy tongue",
+        "url": "https://www.mayoclinic.org/diseases-conditions/black-hairy-tongue/symptoms-causes/syc-20356077"
+      }
+    },
+    {
+      "name": "Halitosis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bad breath",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bad-breath/symptoms-causes/syc-20350922"
+      }
+    },
+    {
+      "name": "Hammertoe and mallet toe",
+      "url": "https://www.mayoclinic.org/diseases-conditions/hammertoe-and-mallet-toe/symptoms-causes/syc-20350839",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Hamstring injury",
+      "url": "https://www.mayoclinic.org/diseases-conditions/hamstring-injury/symptoms-causes/syc-20372985",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Hand fracture",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Broken hand",
+        "url": "https://www.mayoclinic.org/diseases-conditions/broken-hand/symptoms-causes/syc-20450240"
+      }
+    },
+    {
+      "name": "Hand-foot-and-mouth disease",
+      "url": "https://www.mayoclinic.org/diseases-conditions/hand-foot-and-mouth-disease/symptoms-causes/syc-20353035",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Hangovers",
+      "url": "https://www.mayoclinic.org/diseases-conditions/hangovers/symptoms-causes/syc-20373012",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Hantavirus pulmonary syndrome",
+      "url": "https://www.mayoclinic.org/diseases-conditions/hantavirus-pulmonary-syndrome/symptoms-causes/syc-20351838",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Hardening of the arteries",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Arteriosclerosis / atherosclerosis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/arteriosclerosis-atherosclerosis/symptoms-causes/syc-20350569"
+      }
+    },
+    {
+      "name": "Hashimoto's disease",
+      "url": "https://www.mayoclinic.org/diseases-conditions/hashimotos-disease/symptoms-causes/syc-20351855",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "HAV infection",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hepatitis A",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hepatitis-a/symptoms-causes/syc-20367007"
+      }
+    },
+    {
+      "name": "Hay fever",
+      "url": "https://www.mayoclinic.org/diseases-conditions/hay-fever/symptoms-causes/syc-20373039",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "HBV infection",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hepatitis B",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hepatitis-b/symptoms-causes/syc-20366802"
+      }
+    },
+    {
+      "name": "HCC",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hepatocellular carcinoma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hepatocellular-carcinoma/cdc-20354552"
+      }
+    },
+    {
+      "name": "HCV infection",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hepatitis C",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hepatitis-c/symptoms-causes/syc-20354278"
+      }
+    },
+    {
+      "name": "Head and neck cancers",
+      "url": "https://www.mayoclinic.org/diseases-conditions/head-and-neck-cancers/symptoms-causes/syc-20354171",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Head lice",
+      "url": "https://www.mayoclinic.org/diseases-conditions/head-lice/symptoms-causes/syc-20356180",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Head trauma, coma",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Coma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/coma/symptoms-causes/syc-20371099"
+      }
+    },
+    {
+      "name": "Headache, chronic daily",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Chronic daily headaches",
+        "url": "https://www.mayoclinic.org/diseases-conditions/chronic-daily-headaches/symptoms-causes/syc-20370891"
+      }
+    },
+    {
+      "name": "Headache, cluster",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Cluster headache",
+        "url": "https://www.mayoclinic.org/diseases-conditions/cluster-headache/symptoms-causes/syc-20352080"
+      }
+    },
+    {
+      "name": "Headache, exercise",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Exercise headaches",
+        "url": "https://www.mayoclinic.org/diseases-conditions/exercise-headaches/symptoms-causes/syc-20372276"
+      }
+    },
+    {
+      "name": "Headache, migraine",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Migraine",
+        "url": "https://www.mayoclinic.org/diseases-conditions/migraine-headache/symptoms-causes/syc-20360201"
+      }
+    }
+  ],
+  "I": [
+    {
+      "name": "IBD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Inflammatory bowel disease (IBD)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/inflammatory-bowel-disease/symptoms-causes/syc-20353315"
+      }
+    },
+    {
+      "name": "IBS",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Irritable bowel syndrome",
+        "url": "https://www.mayoclinic.org/diseases-conditions/irritable-bowel-syndrome/symptoms-causes/syc-20360016"
+      }
+    },
+    {
+      "name": "Idiopathic hypersomnia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/hypersomnia/symptoms-causes/syc-20362332",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Idiopathic intracranial hypertension",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Pseudotumor cerebri (idiopathic intracranial hypertension)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/pseudotumor-cerebri/symptoms-causes/syc-20354031"
+      }
+    },
+    {
+      "name": "Idiopathic myelofibrosis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Myelofibrosis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/myelofibrosis/symptoms-causes/syc-20355057"
+      }
+    },
+    {
+      "name": "Idiopathic thrombocytopenic purpura",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Immune thrombocytopenia (ITP)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/idiopathic-thrombocytopenic-purpura/symptoms-causes/syc-20352325"
+      }
+    },
+    {
+      "name": "Idiopathic toe walking",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Toe walking in children",
+        "url": "https://www.mayoclinic.org/diseases-conditions/toe-walking/symptoms-causes/syc-20378410"
+      }
+    },
+    {
+      "name": "IgA nephropathy (Berger disease)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/iga-nephropathy/symptoms-causes/syc-20352268",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "IgA vasculitis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Henoch-Schonlein purpura",
+        "url": "https://www.mayoclinic.org/diseases-conditions/henoch-schonlein-purpura/symptoms-causes/syc-20354040"
+      }
+    },
+    {
+      "name": "IIH",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Pseudotumor cerebri (idiopathic intracranial hypertension)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/pseudotumor-cerebri/symptoms-causes/syc-20354031"
+      }
+    },
+    {
+      "name": "Illness anxiety disorder",
+      "url": "https://www.mayoclinic.org/diseases-conditions/illness-anxiety-disorder/symptoms-causes/syc-20373782",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Immune thrombocytopenia (ITP)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/idiopathic-thrombocytopenic-purpura/symptoms-causes/syc-20352325",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Immune thrombocytopenic purpura",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Immune thrombocytopenia (ITP)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/idiopathic-thrombocytopenic-purpura/symptoms-causes/syc-20352325"
+      }
+    },
+    {
+      "name": "Impacted wisdom teeth",
+      "url": "https://www.mayoclinic.org/diseases-conditions/wisdom-teeth/symptoms-causes/syc-20373808",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Impaired glucose tolerance",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Prediabetes",
+        "url": "https://www.mayoclinic.org/diseases-conditions/prediabetes/symptoms-causes/syc-20355278"
+      }
+    },
+    {
+      "name": "Impetigo",
+      "url": "https://www.mayoclinic.org/diseases-conditions/impetigo/symptoms-causes/syc-20352352",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Impotence",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Erectile dysfunction",
+        "url": "https://www.mayoclinic.org/diseases-conditions/erectile-dysfunction/symptoms-causes/syc-20355776"
+      }
+    },
+    {
+      "name": "Inborn error of metabolism",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Inherited metabolic disorders",
+        "url": "https://www.mayoclinic.org/diseases-conditions/inherited-metabolic-disorders/symptoms-causes/syc-20352590"
+      }
+    },
+    {
+      "name": "Incompetent cervix",
+      "url": "https://www.mayoclinic.org/diseases-conditions/incompetent-cervix/symptoms-causes/syc-20373836",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Incontinence, bowel",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Fecal incontinence",
+        "url": "https://www.mayoclinic.org/diseases-conditions/fecal-incontinence/symptoms-causes/syc-20351397"
+      }
+    },
+    {
+      "name": "Incontinence, fecal",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Fecal incontinence",
+        "url": "https://www.mayoclinic.org/diseases-conditions/fecal-incontinence/symptoms-causes/syc-20351397"
+      }
+    },
+    {
+      "name": "Incontinence, nighttime",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bed-wetting",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bed-wetting/symptoms-causes/syc-20366685"
+      }
+    },
+    {
+      "name": "Incontinence, urinary",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Urinary incontinence",
+        "url": "https://www.mayoclinic.org/diseases-conditions/urinary-incontinence/symptoms-causes/syc-20352808"
+      }
+    },
+    {
+      "name": "Indigestion",
+      "url": "https://www.mayoclinic.org/diseases-conditions/indigestion/symptoms-causes/syc-20352211",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Infant jaundice",
+      "url": "https://www.mayoclinic.org/diseases-conditions/infant-jaundice/symptoms-causes/syc-20373865",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Infant reflux",
+      "url": "https://www.mayoclinic.org/diseases-conditions/infant-acid-reflux/symptoms-causes/syc-20351408",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Infantile hemangioma",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hemangioma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hemangioma/symptoms-causes/syc-20352334"
+      }
+    },
+    {
+      "name": "Infectious arthritis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Septic arthritis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bone-and-joint-infections/symptoms-causes/syc-20350755"
+      }
+    },
+    {
+      "name": "Infectious diseases",
+      "url": "https://www.mayoclinic.org/diseases-conditions/infectious-diseases/symptoms-causes/syc-20351173",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Infertility",
+      "url": "https://www.mayoclinic.org/diseases-conditions/infertility/symptoms-causes/syc-20354317",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    }
+  ],
+  "J": [
+    {
+      "name": "Jaw tumors and cysts",
+      "url": "https://www.mayoclinic.org/diseases-conditions/jaw-tumors-cysts/symptoms-causes/syc-20350973",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Jellyfish stings",
+      "url": "https://www.mayoclinic.org/diseases-conditions/jellyfish-stings/symptoms-causes/syc-20353284",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Jet lag disorder",
+      "url": "https://www.mayoclinic.org/diseases-conditions/jet-lag/symptoms-causes/syc-20374027",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Jock itch",
+      "url": "https://www.mayoclinic.org/diseases-conditions/jock-itch/symptoms-causes/syc-20353807",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Jumper's knee",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Patellar tendinitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/patellar-tendinitis/symptoms-causes/syc-20376113"
+      }
+    },
+    {
+      "name": "Juvenile idiopathic arthritis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/juvenile-idiopathic-arthritis/symptoms-causes/syc-20374082",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Juvenile rheumatoid arthritis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Juvenile idiopathic arthritis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/juvenile-idiopathic-arthritis/symptoms-causes/syc-20374082"
+      }
+    },
+    {
+      "name": "Juvenile schizophrenia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Childhood schizophrenia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/childhood-schizophrenia/symptoms-causes/syc-20354483"
+      }
+    }
+  ],
+  "K": [
+    {
+      "name": "Kaposi sarcoma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/kaposis-sarcoma/cdc-20387726",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Kawasaki disease",
+      "url": "https://www.mayoclinic.org/diseases-conditions/kawasaki-disease/symptoms-causes/syc-20354598",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Keloid scar",
+      "url": "https://www.mayoclinic.org/diseases-conditions/keloid-scar/symptoms-causes/syc-20520901",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Keratitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/keratitis/symptoms-causes/syc-20374110",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Keratoconjunctivitis sicca",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Dry eyes",
+        "url": "https://www.mayoclinic.org/diseases-conditions/dry-eyes/symptoms-causes/syc-20371863"
+      }
+    },
+    {
+      "name": "Keratoconus",
+      "url": "https://www.mayoclinic.org/diseases-conditions/keratoconus/symptoms-causes/syc-20351352",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Keratosis pilaris",
+      "url": "https://www.mayoclinic.org/diseases-conditions/keratosis-pilaris/symptoms-causes/syc-20351149",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Keratosis, actinic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Actinic keratosis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/actinic-keratosis/symptoms-causes/syc-20354969"
+      }
+    },
+    {
+      "name": "Keratosis, seborrheic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Seborrheic keratosis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/seborrheic-keratosis/symptoms-causes/syc-20353878"
+      }
+    },
+    {
+      "name": "Ketoacidosis, diabetic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Diabetic ketoacidosis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/diabetic-ketoacidosis/symptoms-causes/syc-20371551"
+      }
+    },
+    {
+      "name": "Kidney cancer",
+      "url": "https://www.mayoclinic.org/diseases-conditions/kidney-cancer/symptoms-causes/syc-20352664",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Kidney cysts",
+      "url": "https://www.mayoclinic.org/diseases-conditions/kidney-cysts/symptoms-causes/syc-20374134",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Kidney disease, chronic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Chronic kidney disease",
+        "url": "https://www.mayoclinic.org/diseases-conditions/chronic-kidney-disease/symptoms-causes/syc-20354521"
+      }
+    },
+    {
+      "name": "Kidney failure, acute",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Acute kidney injury",
+        "url": "https://www.mayoclinic.org/diseases-conditions/kidney-failure/symptoms-causes/syc-20369048"
+      }
+    },
+    {
+      "name": "Kidney failure, chronic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Chronic kidney disease",
+        "url": "https://www.mayoclinic.org/diseases-conditions/chronic-kidney-disease/symptoms-causes/syc-20354521"
+      }
+    },
+    {
+      "name": "Kidney infection",
+      "url": "https://www.mayoclinic.org/diseases-conditions/kidney-infection/symptoms-causes/syc-20353387",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Kidney stones",
+      "url": "https://www.mayoclinic.org/diseases-conditions/kidney-stones/symptoms-causes/syc-20355755",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Kissing disease",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Mononucleosis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/mononucleosis/symptoms-causes/syc-20350328"
+      }
+    },
+    {
+      "name": "Klatskin tumor",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hilar cholangiocarcinoma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hilar-cholangiocarcinoma/cdc-20354548"
+      }
+    },
+    {
+      "name": "Kleptomania",
+      "url": "https://www.mayoclinic.org/diseases-conditions/kleptomania/symptoms-causes/syc-20364732",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Klinefelter syndrome",
+      "url": "https://www.mayoclinic.org/diseases-conditions/klinefelter-syndrome/symptoms-causes/syc-20353949",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Klippel-Trenaunay syndrome",
+      "url": "https://www.mayoclinic.org/diseases-conditions/klippel-trenaunay/symptoms-causes/syc-20374152",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Knee bursitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/knee-bursitis/symptoms-causes/syc-20355501",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Knee pain",
+      "url": "https://www.mayoclinic.org/diseases-conditions/knee-pain/symptoms-causes/syc-20350849",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "KP",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Keratosis pilaris",
+        "url": "https://www.mayoclinic.org/diseases-conditions/keratosis-pilaris/symptoms-causes/syc-20351149"
+      }
+    },
+    {
+      "name": "Kyphosis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/kyphosis/symptoms-causes/syc-20374205",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    }
+  ],
+  "L": [
+    {
+      "name": "Lactase deficiency",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Lactose intolerance",
+        "url": "https://www.mayoclinic.org/diseases-conditions/lactose-intolerance/symptoms-causes/syc-20374232"
+      }
+    },
+    {
+      "name": "Lactation mastitis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Mastitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/mastitis/symptoms-causes/syc-20374829"
+      }
+    },
+    {
+      "name": "Lactose intolerance",
+      "url": "https://www.mayoclinic.org/diseases-conditions/lactose-intolerance/symptoms-causes/syc-20374232",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Laryngitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/laryngitis/symptoms-causes/syc-20374262",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Lassa fever",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Viral hemorrhagic fevers",
+        "url": "https://www.mayoclinic.org/diseases-conditions/viral-hemorrhagic-fevers/symptoms-causes/syc-20351260"
+      }
+    },
+    {
+      "name": "Lateral elbow tendinopathy",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Tennis elbow",
+        "url": "https://www.mayoclinic.org/diseases-conditions/tennis-elbow/symptoms-causes/syc-20351987"
+      }
+    },
+    {
+      "name": "Lateral epicondylitis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Tennis elbow",
+        "url": "https://www.mayoclinic.org/diseases-conditions/tennis-elbow/symptoms-causes/syc-20351987"
+      }
+    },
+    {
+      "name": "Lateral epicondylosis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Tennis elbow",
+        "url": "https://www.mayoclinic.org/diseases-conditions/tennis-elbow/symptoms-causes/syc-20351987"
+      }
+    },
+    {
+      "name": "Latex allergy",
+      "url": "https://www.mayoclinic.org/diseases-conditions/latex-allergy/symptoms-causes/syc-20374287",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Lazy eye (amblyopia)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/lazy-eye/symptoms-causes/syc-20352391",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "LCIS",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Lobular carcinoma in situ (LCIS)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/lobular-carcinoma-in-situ/symptoms-causes/syc-20374529"
+      }
+    },
+    {
+      "name": "Lead poisoning",
+      "url": "https://www.mayoclinic.org/diseases-conditions/lead-poisoning/symptoms-causes/syc-20354717",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Left ventricular hypertrophy",
+      "url": "https://www.mayoclinic.org/diseases-conditions/left-ventricular-hypertrophy/symptoms-causes/syc-20374314",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Leg fracture",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Broken leg",
+        "url": "https://www.mayoclinic.org/diseases-conditions/broken-leg/symptoms-causes/syc-20370412"
+      }
+    },
+    {
+      "name": "Legg-Calve-Perthes disease",
+      "url": "https://www.mayoclinic.org/diseases-conditions/legg-calve-perthes-disease/symptoms-causes/syc-20374343",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Legionellosis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Legionnaires' disease",
+        "url": "https://www.mayoclinic.org/diseases-conditions/legionnaires-disease/symptoms-causes/syc-20351747"
+      }
+    },
+    {
+      "name": "Legionnaires' disease",
+      "url": "https://www.mayoclinic.org/diseases-conditions/legionnaires-disease/symptoms-causes/syc-20351747",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Leiomyosarcoma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/leiomyosarcoma/cdc-20387733",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Lentigines, solar",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Age spots (liver spots)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/age-spots/symptoms-causes/syc-20355859"
+      }
+    },
+    {
+      "name": "Leukemia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/leukemia/symptoms-causes/syc-20374373",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Leukemia, acute lymphocytic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Acute lymphocytic leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/acute-lymphocytic-leukemia/symptoms-causes/syc-20369077"
+      }
+    },
+    {
+      "name": "Leukemia, acute myelogenous",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Acute myelogenous leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/acute-myelogenous-leukemia/symptoms-causes/syc-20369109"
+      }
+    },
+    {
+      "name": "Leukemia, chronic lymphocytic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Chronic lymphocytic leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/chronic-lymphocytic-leukemia/symptoms-causes/syc-20352428"
+      }
+    },
+    {
+      "name": "Leukemia, chronic myelogenous",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Chronic myelogenous leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/chronic-myelogenous-leukemia/symptoms-causes/syc-20352417"
+      }
+    },
+    {
+      "name": "Leukemia, general",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/leukemia/symptoms-causes/syc-20374373"
+      }
+    },
+    {
+      "name": "Leukemia, hairy cell",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hairy cell leukemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hairy-cell-leukemia/symptoms-causes/syc-20372956"
+      }
+    },
+    {
+      "name": "Leukoplakia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/leukoplakia/symptoms-causes/syc-20354405",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Lewy body dementia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/lewy-body-dementia/symptoms-causes/syc-20352025",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Lice",
+      "url": "https://www.mayoclinic.org/diseases-conditions/lice/symptoms-causes/syc-20374399",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Lice, body",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Body lice",
+        "url": "https://www.mayoclinic.org/diseases-conditions/body-lice/symptoms-causes/syc-20350310"
+      }
+    }
+  ],
+  "M": [
+    {
+      "name": "Macular degeneration, dry",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Dry macular degeneration",
+        "url": "https://www.mayoclinic.org/diseases-conditions/dry-macular-degeneration/symptoms-causes/syc-20350375"
+      }
+    },
+    {
+      "name": "Macular degeneration, wet",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Wet macular degeneration",
+        "url": "https://www.mayoclinic.org/diseases-conditions/wet-macular-degeneration/symptoms-causes/syc-20351107"
+      }
+    },
+    {
+      "name": "Mad cow disease",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Creutzfeldt-Jakob disease",
+        "url": "https://www.mayoclinic.org/diseases-conditions/creutzfeldt-jakob-disease/symptoms-causes/syc-20371226"
+      }
+    },
+    {
+      "name": "Major depressive disorder",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Depression (major depressive disorder)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/depression/symptoms-causes/syc-20356007"
+      }
+    },
+    {
+      "name": "Malaria",
+      "url": "https://www.mayoclinic.org/diseases-conditions/malaria/symptoms-causes/syc-20351184",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Male breast cancer",
+      "url": "https://www.mayoclinic.org/diseases-conditions/male-breast-cancer/symptoms-causes/syc-20374740",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Male hypogonadism",
+      "url": "https://www.mayoclinic.org/diseases-conditions/male-hypogonadism/symptoms-causes/syc-20354881",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Male infertility",
+      "url": "https://www.mayoclinic.org/diseases-conditions/male-infertility/symptoms-causes/syc-20374773",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Malignant fibrous histiocytoma",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Undifferentiated pleomorphic sarcoma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/undifferentiated-pleomorphic-sarcoma/symptoms-causes/syc-20389554"
+      }
+    },
+    {
+      "name": "Malignant hyperthermia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/malignant-hyperthermia/symptoms-causes/syc-20353750",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Malignant mesothelioma",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Mesothelioma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/mesothelioma/symptoms-causes/syc-20375022"
+      }
+    },
+    {
+      "name": "Malignant peripheral nerve sheath tumors",
+      "url": "https://www.mayoclinic.org/diseases-conditions/malignant-peripheral-nerve-sheath-tumors/symptoms-causes/syc-20362603",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Mallet toe and hammertoe",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hammertoe and mallet toe",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hammertoe-and-mallet-toe/symptoms-causes/syc-20350839"
+      }
+    },
+    {
+      "name": "MALS",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Median arcuate ligament syndrome (MALS)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/median-arcuate-ligament-syndrome-mals/symptoms-causes/syc-20505001"
+      }
+    },
+    {
+      "name": "Mammary duct ectasia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/mammary-duct-ectasia/symptoms-causes/syc-20374801",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Manic-depressive illness",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bipolar disorder",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bipolar-disorder/symptoms-causes/syc-20355955"
+      }
+    },
+    {
+      "name": "Marfan syndrome",
+      "url": "https://www.mayoclinic.org/diseases-conditions/marfan-syndrome/symptoms-causes/syc-20350782",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "MASLD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Nonalcoholic fatty liver disease",
+        "url": "https://www.mayoclinic.org/diseases-conditions/nonalcoholic-fatty-liver-disease/symptoms-causes/syc-20354567"
+      }
+    },
+    {
+      "name": "Mastalgia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Breast pain",
+        "url": "https://www.mayoclinic.org/diseases-conditions/breast-pain/symptoms-causes/syc-20350423"
+      }
+    },
+    {
+      "name": "Mastitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/mastitis/symptoms-causes/syc-20374829",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "MCAD deficiency",
+      "url": "https://www.mayoclinic.org/diseases-conditions/mcad-deficiency/symptoms-causes/syc-20353745",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "MD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Muscular dystrophy",
+        "url": "https://www.mayoclinic.org/diseases-conditions/muscular-dystrophy/symptoms-causes/syc-20375388"
+      }
+    },
+    {
+      "name": "ME/CFS",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/chronic-fatigue-syndrome/symptoms-causes/syc-20360490"
+      }
+    },
+    {
+      "name": "Measles",
+      "url": "https://www.mayoclinic.org/diseases-conditions/measles/symptoms-causes/syc-20374857",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Measles, German",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Rubella",
+        "url": "https://www.mayoclinic.org/diseases-conditions/rubella/symptoms-causes/syc-20377310"
+      }
+    },
+    {
+      "name": "Medial epicondylitis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Golfer's elbow",
+        "url": "https://www.mayoclinic.org/diseases-conditions/golfers-elbow/symptoms-causes/syc-20372868"
+      }
+    },
+    {
+      "name": "Medial tibial stress syndrome",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Shin splints",
+        "url": "https://www.mayoclinic.org/diseases-conditions/shin-splints/symptoms-causes/syc-20354105"
+      }
+    },
+    {
+      "name": "Median arcuate ligament syndrome (MALS)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/median-arcuate-ligament-syndrome-mals/symptoms-causes/syc-20505001",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Medication overuse headaches",
+      "url": "https://www.mayoclinic.org/diseases-conditions/medication-overuse-headache/symptoms-causes/syc-20377083",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Mediterranean anemia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Thalassemia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/thalassemia/symptoms-causes/syc-20354995"
+      }
+    }
+  ],
+  "N": [
+    {
+      "name": "NAFLD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Nonalcoholic fatty liver disease",
+        "url": "https://www.mayoclinic.org/diseases-conditions/nonalcoholic-fatty-liver-disease/symptoms-causes/syc-20354567"
+      }
+    },
+    {
+      "name": "Nail fungus",
+      "url": "https://www.mayoclinic.org/diseases-conditions/nail-fungus/symptoms-causes/syc-20353294",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Narcissistic personality disorder",
+      "url": "https://www.mayoclinic.org/diseases-conditions/narcissistic-personality-disorder/symptoms-causes/syc-20366662",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Narcolepsy",
+      "url": "https://www.mayoclinic.org/diseases-conditions/narcolepsy/symptoms-causes/syc-20375497",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Nasal and paranasal tumors",
+      "url": "https://www.mayoclinic.org/diseases-conditions/nasal-paranasal-tumors/symptoms-causes/syc-20354136",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Nasal polyps",
+      "url": "https://www.mayoclinic.org/diseases-conditions/nasal-polyps/symptoms-causes/syc-20351888",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Nasopharyngeal carcinoma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/nasopharyngeal-carcinoma/symptoms-causes/syc-20375529",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Nearsightedness",
+      "url": "https://www.mayoclinic.org/diseases-conditions/nearsightedness/symptoms-causes/syc-20375556",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Neck pain",
+      "url": "https://www.mayoclinic.org/diseases-conditions/neck-pain/symptoms-causes/syc-20375581",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Nephroblastoma",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Wilms tumor",
+        "url": "https://www.mayoclinic.org/diseases-conditions/wilms-tumor/symptoms-causes/syc-20352655"
+      }
+    },
+    {
+      "name": "Nephrogenic systemic fibrosis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/nephrogenic-systemic-fibrosis/symptoms-causes/syc-20352299",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Nephrotic syndrome",
+      "url": "https://www.mayoclinic.org/diseases-conditions/nephrotic-syndrome/symptoms-causes/syc-20375608",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Neuralgia, postherpetic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Postherpetic neuralgia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/postherpetic-neuralgia/symptoms-causes/syc-20376588"
+      }
+    },
+    {
+      "name": "Neuralgia, trigeminal",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Trigeminal neuralgia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/trigeminal-neuralgia/symptoms-causes/syc-20353344"
+      }
+    },
+    {
+      "name": "Neurilemmoma",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Schwannoma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/schwannoma/cdc-20352974"
+      }
+    },
+    {
+      "name": "Neurinomatosis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Schwannomatosis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/schwannomatosis/symptoms-causes/syc-20567542"
+      }
+    },
+    {
+      "name": "Neuroblastoma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/neuroblastoma/symptoms-causes/syc-20351017",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Neurocardiogenic syncope",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Vasovagal syncope",
+        "url": "https://www.mayoclinic.org/diseases-conditions/vasovagal-syncope/symptoms-causes/syc-20350527"
+      }
+    },
+    {
+      "name": "Neurodermatitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/neurodermatitis/symptoms-causes/syc-20375634",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Neuroendocrine carcinoma of the skin",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Merkel cell carcinoma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/merkel-cell-carcinoma/symptoms-causes/syc-20351030"
+      }
+    },
+    {
+      "name": "Neuroendocrine tumors",
+      "url": "https://www.mayoclinic.org/diseases-conditions/neuroendocrine-tumors/symptoms-causes/syc-20354132",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Neurofibroma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/neurofibroma/cdc-20352978",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Neurofibromatosis type 1",
+      "url": "https://www.mayoclinic.org/diseases-conditions/neurofibromatosis-type-1/symptoms-causes/syc-20350490",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Neurofibrosarcoma",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Malignant peripheral nerve sheath tumors",
+        "url": "https://www.mayoclinic.org/diseases-conditions/malignant-peripheral-nerve-sheath-tumors/symptoms-causes/syc-20362603"
+      }
+    },
+    {
+      "name": "Neuroma, acoustic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Acoustic neuroma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/acoustic-neuroma/symptoms-causes/syc-20356127"
+      }
+    },
+    {
+      "name": "Neuroma, Morton's",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Morton's neuroma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/mortons-neuroma/symptoms-causes/syc-20351935"
+      }
+    },
+    {
+      "name": "Neuroma, plantar",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Morton's neuroma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/mortons-neuroma/symptoms-causes/syc-20351935"
+      }
+    },
+    {
+      "name": "Neuromyelitis optica",
+      "url": "https://www.mayoclinic.org/diseases-conditions/neuromyelitis-optica/symptoms-causes/syc-20375652",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Neuromyelitis optica spectrum disorder",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Neuromyelitis optica",
+        "url": "https://www.mayoclinic.org/diseases-conditions/neuromyelitis-optica/symptoms-causes/syc-20375652"
+      }
+    },
+    {
+      "name": "Neuropathy, autonomic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Autonomic neuropathy",
+        "url": "https://www.mayoclinic.org/diseases-conditions/autonomic-neuropathy/symptoms-causes/syc-20369829"
+      }
+    }
+  ],
+  "O": [
+    {
+      "name": "OAB",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Overactive bladder",
+        "url": "https://www.mayoclinic.org/diseases-conditions/overactive-bladder/symptoms-causes/syc-20355715"
+      }
+    },
+    {
+      "name": "Obesity",
+      "url": "https://www.mayoclinic.org/diseases-conditions/obesity/symptoms-causes/syc-20375742",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Obesity, childhood",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Childhood obesity",
+        "url": "https://www.mayoclinic.org/diseases-conditions/childhood-obesity/symptoms-causes/syc-20354827"
+      }
+    },
+    {
+      "name": "Obsessive-compulsive disorder (OCD)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/obsessive-compulsive-disorder/symptoms-causes/syc-20354432",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Obstetric cholestasis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Cholestasis of pregnancy",
+        "url": "https://www.mayoclinic.org/diseases-conditions/cholestasis-of-pregnancy/symptoms-causes/syc-20363257"
+      }
+    },
+    {
+      "name": "Obstructive sleep apnea",
+      "url": "https://www.mayoclinic.org/diseases-conditions/obstructive-sleep-apnea/symptoms-causes/syc-20352090",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Obstructive sleep apnea in children",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Pediatric obstructive sleep apnea",
+        "url": "https://www.mayoclinic.org/diseases-conditions/pediatric-sleep-apnea/symptoms-causes/syc-20376196"
+      }
+    },
+    {
+      "name": "Occupational asthma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/occupational-asthma/symptoms-causes/syc-20375772",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "OCD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Obsessive-compulsive disorder (OCD)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/obsessive-compulsive-disorder/symptoms-causes/syc-20354432"
+      }
+    },
+    {
+      "name": "Ocular albinism",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Albinism",
+        "url": "https://www.mayoclinic.org/diseases-conditions/albinism/symptoms-causes/syc-20369184"
+      }
+    },
+    {
+      "name": "Ocular rosacea",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ocular-rosacea/symptoms-causes/syc-20375798",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Oculocutaneous albinism",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Albinism",
+        "url": "https://www.mayoclinic.org/diseases-conditions/albinism/symptoms-causes/syc-20369184"
+      }
+    },
+    {
+      "name": "Oculosympathetic palsy",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Horner syndrome",
+        "url": "https://www.mayoclinic.org/diseases-conditions/horner-syndrome/symptoms-causes/syc-20373547"
+      }
+    },
+    {
+      "name": "ODD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Oppositional defiant disorder (ODD)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/oppositional-defiant-disorder/symptoms-causes/syc-20375831"
+      }
+    },
+    {
+      "name": "Odontogenic tumors and cysts",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Jaw tumors and cysts",
+        "url": "https://www.mayoclinic.org/diseases-conditions/jaw-tumors-cysts/symptoms-causes/syc-20350973"
+      }
+    },
+    {
+      "name": "OHSS",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Ovarian hyperstimulation syndrome",
+        "url": "https://www.mayoclinic.org/diseases-conditions/ovarian-hyperstimulation-syndrome-ohss/symptoms-causes/syc-20354697"
+      }
+    },
+    {
+      "name": "Olfactory neuroblastoma",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Esthesioneuroblastoma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/esthesioneuroblastoma/symptoms-causes/syc-20351075"
+      }
+    },
+    {
+      "name": "Oligodendroglioma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/oligodendroglioma/cdc-20350152",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Onychomycosis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Nail fungus",
+        "url": "https://www.mayoclinic.org/diseases-conditions/nail-fungus/symptoms-causes/syc-20353294"
+      }
+    },
+    {
+      "name": "Oppositional defiant disorder (ODD)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/oppositional-defiant-disorder/symptoms-causes/syc-20375831",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Optic neuritis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/optic-neuritis/symptoms-causes/syc-20354953",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Oral cancer",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Mouth cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/mouth-cancer/symptoms-causes/syc-20350997"
+      }
+    },
+    {
+      "name": "Oral candidiasis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Oral thrush",
+        "url": "https://www.mayoclinic.org/diseases-conditions/oral-thrush/symptoms-causes/syc-20353533"
+      }
+    },
+    {
+      "name": "Oral lichen planus",
+      "url": "https://www.mayoclinic.org/diseases-conditions/oral-lichen-planus/symptoms-causes/syc-20350869",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Oral thrush",
+      "url": "https://www.mayoclinic.org/diseases-conditions/oral-thrush/symptoms-causes/syc-20353533",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Orchitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/orchitis/symptoms-causes/syc-20375860",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Orthostatic hypotension (postural hypotension)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/orthostatic-hypotension/symptoms-causes/syc-20352548",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Osteoarthritis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/osteoarthritis/symptoms-causes/syc-20351925",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Osteoarthritis, cervical",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Cervical spondylosis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/cervical-spondylosis/symptoms-causes/syc-20370787"
+      }
+    },
+    {
+      "name": "Osteochondritis dissecans",
+      "url": "https://www.mayoclinic.org/diseases-conditions/osteochondritis-dissecans/symptoms-causes/syc-20375887",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    }
+  ],
+  "P": [
+    {
+      "name": "PAD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Peripheral artery disease (PAD)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/peripheral-artery-disease/symptoms-causes/syc-20350557"
+      }
+    },
+    {
+      "name": "PAES",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Popliteal artery entrapment",
+        "url": "https://www.mayoclinic.org/diseases-conditions/popliteal-artery-entrapment/symptoms-causes/syc-20465211"
+      }
+    },
+    {
+      "name": "Paget's disease of bone",
+      "url": "https://www.mayoclinic.org/diseases-conditions/pagets-disease-of-bone/symptoms-causes/syc-20350811",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Paget's disease of the breast",
+      "url": "https://www.mayoclinic.org/diseases-conditions/pagets-disease-of-the-breast/symptoms-causes/syc-20351079",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Pain, back",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Back pain",
+        "url": "https://www.mayoclinic.org/diseases-conditions/back-pain/symptoms-causes/syc-20369906"
+      }
+    },
+    {
+      "name": "Pain, chest",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Chest pain",
+        "url": "https://www.mayoclinic.org/diseases-conditions/chest-pain/symptoms-causes/syc-20370838"
+      }
+    },
+    {
+      "name": "Pain, wrist",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Wrist pain",
+        "url": "https://www.mayoclinic.org/diseases-conditions/wrist-pain/symptoms-causes/syc-20366213"
+      }
+    },
+    {
+      "name": "Painful bladder syndrome",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Interstitial cystitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/interstitial-cystitis/symptoms-causes/syc-20354357"
+      }
+    },
+    {
+      "name": "Painful intercourse (dyspareunia)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/painful-intercourse/symptoms-causes/syc-20375967",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Painful periods",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Menstrual cramps",
+        "url": "https://www.mayoclinic.org/diseases-conditions/menstrual-cramps/symptoms-causes/syc-20374938"
+      }
+    },
+    {
+      "name": "Palsy, Bell's",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bell's palsy",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bells-palsy/symptoms-causes/syc-20370028"
+      }
+    },
+    {
+      "name": "Palsy, cerebral",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Cerebral palsy",
+        "url": "https://www.mayoclinic.org/diseases-conditions/cerebral-palsy/symptoms-causes/syc-20353999"
+      }
+    },
+    {
+      "name": "Palsy, facial",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bell's palsy",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bells-palsy/symptoms-causes/syc-20370028"
+      }
+    },
+    {
+      "name": "Pancreas inflammation",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Pancreatitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/pancreatitis/symptoms-causes/syc-20360227"
+      }
+    },
+    {
+      "name": "Pancreatic cancer",
+      "url": "https://www.mayoclinic.org/diseases-conditions/pancreatic-cancer/symptoms-causes/syc-20355421",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Pancreatic cysts",
+      "url": "https://www.mayoclinic.org/diseases-conditions/pancreatic-cysts/symptoms-causes/syc-20375993",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Pancreatic neuroendocrine tumors",
+      "url": "https://www.mayoclinic.org/diseases-conditions/pancreatic-neuroendocrine-tumors/symptoms-causes/syc-20352489",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Pancreatitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/pancreatitis/symptoms-causes/syc-20360227",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Panic attacks and panic disorder",
+      "url": "https://www.mayoclinic.org/diseases-conditions/panic-attacks/symptoms-causes/syc-20376021",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "PAPVR",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Partial anomalous pulmonary venous return",
+        "url": "https://www.mayoclinic.org/diseases-conditions/partial-anomalous-pulmonary-venous-return/cdc-20385691"
+      }
+    },
+    {
+      "name": "Paraganglioma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/paraganglioma/cdc-20352970",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Paraneoplastic neurological disorder",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Paraneoplastic syndromes of the nervous system",
+        "url": "https://www.mayoclinic.org/diseases-conditions/paraneoplastic-syndromes/symptoms-causes/syc-20355687"
+      }
+    },
+    {
+      "name": "Paraneoplastic neurological syndrome",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Paraneoplastic syndromes of the nervous system",
+        "url": "https://www.mayoclinic.org/diseases-conditions/paraneoplastic-syndromes/symptoms-causes/syc-20355687"
+      }
+    },
+    {
+      "name": "Paraneoplastic syndromes of the nervous system",
+      "url": "https://www.mayoclinic.org/diseases-conditions/paraneoplastic-syndromes/symptoms-causes/syc-20355687",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Parkinson's disease",
+      "url": "https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/symptoms-causes/syc-20376055",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Parotid tumors",
+      "url": "https://www.mayoclinic.org/diseases-conditions/parotid-tumor/cdc-20388269",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Partial anomalous pulmonary venous connection",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Partial anomalous pulmonary venous return",
+        "url": "https://www.mayoclinic.org/diseases-conditions/partial-anomalous-pulmonary-venous-return/cdc-20385691"
+      }
+    },
+    {
+      "name": "Partial anomalous pulmonary venous return",
+      "url": "https://www.mayoclinic.org/diseases-conditions/partial-anomalous-pulmonary-venous-return/cdc-20385691",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Parvovirus infection",
+      "url": "https://www.mayoclinic.org/diseases-conditions/parvovirus-infection/symptoms-causes/syc-20376085",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Patellar tendinitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/patellar-tendinitis/symptoms-causes/syc-20376113",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    }
+  ],
+  "Q": [],
+  "R": [
+    {
+      "name": "RA",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Rheumatoid arthritis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/rheumatoid-arthritis/symptoms-causes/syc-20353648"
+      }
+    },
+    {
+      "name": "Rabies",
+      "url": "https://www.mayoclinic.org/diseases-conditions/rabies/symptoms-causes/syc-20351821",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Radiation enteritis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/radiation-enteritis/symptoms-causes/syc-20355409",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Radiation sickness",
+      "url": "https://www.mayoclinic.org/diseases-conditions/radiation-sickness/symptoms-causes/syc-20377058",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Ramsay Hunt syndrome",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ramsay-hunt-syndrome/symptoms-causes/syc-20351783",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Rapid gastric emptying",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Dumping syndrome",
+        "url": "https://www.mayoclinic.org/diseases-conditions/dumping-syndrome/symptoms-causes/syc-20371915"
+      }
+    },
+    {
+      "name": "Rapid heartbeat",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Tachycardia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/tachycardia/symptoms-causes/syc-20355127"
+      }
+    },
+    {
+      "name": "Rash, poison ivy",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Poison ivy rash",
+        "url": "https://www.mayoclinic.org/diseases-conditions/poison-ivy/symptoms-causes/syc-20376485"
+      }
+    },
+    {
+      "name": "Raynaud's disease",
+      "url": "https://www.mayoclinic.org/diseases-conditions/raynauds-disease/symptoms-causes/syc-20363571",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Reactive arthritis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/reactive-arthritis/symptoms-causes/syc-20354838",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Reactive attachment disorder",
+      "url": "https://www.mayoclinic.org/diseases-conditions/reactive-attachment-disorder/symptoms-causes/syc-20352939",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Reading disability, specific",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Dyslexia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/dyslexia/symptoms-causes/syc-20353552"
+      }
+    },
+    {
+      "name": "Rebound headache",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Medication overuse headaches",
+        "url": "https://www.mayoclinic.org/diseases-conditions/medication-overuse-headache/symptoms-causes/syc-20377083"
+      }
+    },
+    {
+      "name": "Rectal cancer",
+      "url": "https://www.mayoclinic.org/diseases-conditions/rectal-cancer/symptoms-causes/syc-20352884",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Rectal inflammation",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Proctitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/proctitis/symptoms-causes/syc-20376933"
+      }
+    },
+    {
+      "name": "Rectal itching",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Anal itching",
+        "url": "https://www.mayoclinic.org/diseases-conditions/anal-itching/symptoms-causes/syc-20369345"
+      }
+    },
+    {
+      "name": "Rectal prolapse",
+      "url": "https://www.mayoclinic.org/diseases-conditions/rectal-prolapse/symptoms-causes/syc-20352837",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Rectal ulcer",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Solitary rectal ulcer syndrome",
+        "url": "https://www.mayoclinic.org/diseases-conditions/rectal-ulcer/symptoms-causes/syc-20377749"
+      }
+    },
+    {
+      "name": "Rectovaginal fistula",
+      "url": "https://www.mayoclinic.org/diseases-conditions/rectovaginal-fistula/symptoms-causes/syc-20377108",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Recurrent breast cancer",
+      "url": "https://www.mayoclinic.org/diseases-conditions/recurrent-breast-cancer/symptoms-causes/syc-20377135",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Recurrent oral ulcers",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Canker sore",
+        "url": "https://www.mayoclinic.org/diseases-conditions/canker-sore/symptoms-causes/syc-20370615"
+      }
+    },
+    {
+      "name": "Red eye",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Subconjunctival hemorrhage (broken blood vessel in eye)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/subconjunctival-hemorrhage/symptoms-causes/syc-20353826"
+      }
+    },
+    {
+      "name": "Reflux, bile",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bile reflux",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bile-reflux/symptoms-causes/syc-20370115"
+      }
+    },
+    {
+      "name": "Reflux, vesicoureteral",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Vesicoureteral reflux",
+        "url": "https://www.mayoclinic.org/diseases-conditions/vesicoureteral-reflux/symptoms-causes/syc-20378819"
+      }
+    },
+    {
+      "name": "Regurgitation, aortic valve",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Aortic valve regurgitation",
+        "url": "https://www.mayoclinic.org/diseases-conditions/aortic-valve-regurgitation/symptoms-causes/syc-20353129"
+      }
+    },
+    {
+      "name": "Regurgitation, mitral valve",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Mitral valve regurgitation",
+        "url": "https://www.mayoclinic.org/diseases-conditions/mitral-valve-regurgitation/symptoms-causes/syc-20350178"
+      }
+    },
+    {
+      "name": "Reiter's syndrome",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Reactive arthritis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/reactive-arthritis/symptoms-causes/syc-20354838"
+      }
+    },
+    {
+      "name": "REM sleep behavior disorder",
+      "url": "https://www.mayoclinic.org/diseases-conditions/rem-sleep-behavior-disorder/symptoms-causes/syc-20352920",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Renal artery stenosis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/renal-artery-stenosis/symptoms-causes/syc-20352777",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Renal cancer",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Kidney cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/kidney-cancer/symptoms-causes/syc-20352664"
+      }
+    }
+  ],
+  "S": [
+    {
+      "name": "Sacral dimple",
+      "url": "https://www.mayoclinic.org/diseases-conditions/sacral-dimple/symptoms-causes/syc-20377353",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Sacroiliitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/sacroiliitis/symptoms-causes/syc-20350747",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "SAD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Seasonal affective disorder (SAD)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/seasonal-affective-disorder/symptoms-causes/syc-20364651"
+      }
+    },
+    {
+      "name": "Salivary gland tumors",
+      "url": "https://www.mayoclinic.org/diseases-conditions/salivary-gland-cancer/symptoms-causes/syc-20354151",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Salmonella infection",
+      "url": "https://www.mayoclinic.org/diseases-conditions/salmonella/symptoms-causes/syc-20355329",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Salmonellosis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Salmonella infection",
+        "url": "https://www.mayoclinic.org/diseases-conditions/salmonella/symptoms-causes/syc-20355329"
+      }
+    },
+    {
+      "name": "Sarcoidosis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/sarcoidosis/symptoms-causes/syc-20350358",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Sarcoma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/sarcoma/symptoms-causes/syc-20351048",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Sarcoma, bone cancer",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bone cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bone-cancer/symptoms-causes/syc-20350217"
+      }
+    },
+    {
+      "name": "Sarcoma, soft tissue",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Soft tissue sarcoma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/soft-tissue-sarcoma/symptoms-causes/syc-20377725"
+      }
+    },
+    {
+      "name": "SBBO",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Small intestinal bacterial overgrowth (SIBO)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/small-intestinal-bacterial-overgrowth/symptoms-causes/syc-20370168"
+      }
+    },
+    {
+      "name": "Scabies",
+      "url": "https://www.mayoclinic.org/diseases-conditions/scabies/symptoms-causes/syc-20377378",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "SCAD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Spontaneous coronary artery dissection (SCAD)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/spontaneous-coronary-artery-dissection/symptoms-causes/syc-20353711"
+      }
+    },
+    {
+      "name": "Scalded mouth syndrome",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Burning mouth syndrome",
+        "url": "https://www.mayoclinic.org/diseases-conditions/burning-mouth-syndrome/symptoms-causes/syc-20350911"
+      }
+    },
+    {
+      "name": "Scarlatina",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Scarlet fever",
+        "url": "https://www.mayoclinic.org/diseases-conditions/scarlet-fever/symptoms-causes/syc-20377406"
+      }
+    },
+    {
+      "name": "Scarlet fever",
+      "url": "https://www.mayoclinic.org/diseases-conditions/scarlet-fever/symptoms-causes/syc-20377406",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Schizoaffective disorder",
+      "url": "https://www.mayoclinic.org/diseases-conditions/schizoaffective-disorder/symptoms-causes/syc-20354504",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Schizoid personality disorder",
+      "url": "https://www.mayoclinic.org/diseases-conditions/schizoid-personality-disorder/symptoms-causes/syc-20354414",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Schizophrenia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/schizophrenia/symptoms-causes/syc-20354443",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Schizophrenia, adolescent",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Childhood schizophrenia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/childhood-schizophrenia/symptoms-causes/syc-20354483"
+      }
+    },
+    {
+      "name": "Schizophrenia, childhood",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Childhood schizophrenia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/childhood-schizophrenia/symptoms-causes/syc-20354483"
+      }
+    },
+    {
+      "name": "Schizophrenia, juvenile",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Childhood schizophrenia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/childhood-schizophrenia/symptoms-causes/syc-20354483"
+      }
+    },
+    {
+      "name": "Schizotypal personality disorder",
+      "url": "https://www.mayoclinic.org/diseases-conditions/schizotypal-personality-disorder/symptoms-causes/syc-20353919",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Schwannoma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/schwannoma/cdc-20352974",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Schwannomatosis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/schwannomatosis/symptoms-causes/syc-20567542",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "SCI",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Spinal cord injury",
+        "url": "https://www.mayoclinic.org/diseases-conditions/spinal-cord-injury/symptoms-causes/syc-20377890"
+      }
+    },
+    {
+      "name": "Sciatica",
+      "url": "https://www.mayoclinic.org/diseases-conditions/sciatica/symptoms-causes/syc-20377435",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Scleroderma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/scleroderma/symptoms-causes/syc-20351952",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Sclerosing cholangitis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Primary sclerosing cholangitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/primary-sclerosing-cholangitis/symptoms-causes/syc-20355797"
+      }
+    },
+    {
+      "name": "Sclerosing mesenteritis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/sclerosing-mesenteritis/symptoms-causes/syc-20355087",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    }
+  ],
+  "T": [
+    {
+      "name": "Tachycardia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/tachycardia/symptoms-causes/syc-20355127",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Takayasu's arteritis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/takayasus-arteritis/symptoms-causes/syc-20351335",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Takotsubo cardiomyopathy",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Broken heart syndrome",
+        "url": "https://www.mayoclinic.org/diseases-conditions/broken-heart-syndrome/symptoms-causes/syc-20354617"
+      }
+    },
+    {
+      "name": "Tapeworm infection",
+      "url": "https://www.mayoclinic.org/diseases-conditions/tapeworm/symptoms-causes/syc-20378174",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "TAPVR",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Total anomalous pulmonary venous return (TAPVR)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/total-anomalous-pulmonary-venous-return/cdc-20385613"
+      }
+    },
+    {
+      "name": "Tay-Sachs disease",
+      "url": "https://www.mayoclinic.org/diseases-conditions/tay-sachs-disease/symptoms-causes/syc-20378190",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "TB",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Tuberculosis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/tuberculosis/symptoms-causes/syc-20351250"
+      }
+    },
+    {
+      "name": "TBI",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Traumatic brain injury",
+        "url": "https://www.mayoclinic.org/diseases-conditions/traumatic-brain-injury/symptoms-causes/syc-20378557"
+      }
+    },
+    {
+      "name": "Tears, decreased production",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Dry eyes",
+        "url": "https://www.mayoclinic.org/diseases-conditions/dry-eyes/symptoms-causes/syc-20371863"
+      }
+    },
+    {
+      "name": "Teen depression",
+      "url": "https://www.mayoclinic.org/diseases-conditions/teen-depression/symptoms-causes/syc-20350985",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Teeth grinding",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bruxism (teeth grinding)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bruxism/symptoms-causes/syc-20356095"
+      }
+    },
+    {
+      "name": "Temporal arteritis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Giant cell arteritis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/giant-cell-arteritis/symptoms-causes/syc-20372758"
+      }
+    },
+    {
+      "name": "Temporal lobe seizure",
+      "url": "https://www.mayoclinic.org/diseases-conditions/temporal-lobe-seizure/symptoms-causes/syc-20378214",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Temporomandibular disorders",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See TMJ disorders",
+        "url": "https://www.mayoclinic.org/diseases-conditions/tmj/symptoms-causes/syc-20350941"
+      }
+    },
+    {
+      "name": "Temporomandibular joint disorders",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See TMJ disorders",
+        "url": "https://www.mayoclinic.org/diseases-conditions/tmj/symptoms-causes/syc-20350941"
+      }
+    },
+    {
+      "name": "TEN",
+      "url": "https://www.mayoclinic.org/diseases-conditions/toxic-epidermal-necrolysis/symptoms-causes/syc-20491903",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Tendinitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/tendinitis/symptoms-causes/syc-20378243",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Tendinitis, Achilles",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Achilles tendinitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/achilles-tendinitis/symptoms-causes/syc-20369020"
+      }
+    },
+    {
+      "name": "Tendinitis, patellar",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Patellar tendinitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/patellar-tendinitis/symptoms-causes/syc-20376113"
+      }
+    },
+    {
+      "name": "Tennis elbow",
+      "url": "https://www.mayoclinic.org/diseases-conditions/tennis-elbow/symptoms-causes/syc-20351987",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Tenosynovitis, de Quervain's",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See De Quervain tenosynovitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/de-quervain-tenosynovitis/symptoms-causes/syc-20371332"
+      }
+    },
+    {
+      "name": "Tension headache",
+      "url": "https://www.mayoclinic.org/diseases-conditions/tension-headache/symptoms-causes/syc-20353977",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Testicle, retractile",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Retractile testicle",
+        "url": "https://www.mayoclinic.org/diseases-conditions/retractile-testicle/symptoms-causes/syc-20377197"
+      }
+    },
+    {
+      "name": "Testicle, undescended",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Undescended testicle",
+        "url": "https://www.mayoclinic.org/diseases-conditions/undescended-testicle/symptoms-causes/syc-20351995"
+      }
+    },
+    {
+      "name": "Testicular cancer",
+      "url": "https://www.mayoclinic.org/diseases-conditions/testicular-cancer-care/symptoms-causes/syc-20352986",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Testicular torsion",
+      "url": "https://www.mayoclinic.org/diseases-conditions/testicular-torsion/symptoms-causes/syc-20378270",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Testosterone deficiency",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Male hypogonadism",
+        "url": "https://www.mayoclinic.org/diseases-conditions/male-hypogonadism/symptoms-causes/syc-20354881"
+      }
+    },
+    {
+      "name": "Tetanus",
+      "url": "https://www.mayoclinic.org/diseases-conditions/tetanus/symptoms-causes/syc-20351625",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Tetralogy of Fallot",
+      "url": "https://www.mayoclinic.org/diseases-conditions/tetralogy-of-fallot/symptoms-causes/syc-20353477",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "TGA",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Transient global amnesia",
+        "url": "https://www.mayoclinic.org/diseases-conditions/transient-global-amnesia/symptoms-causes/syc-20378531"
+      }
+    }
+  ],
+  "U": [
+    {
+      "name": "Ulcer, aphthous",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Canker sore",
+        "url": "https://www.mayoclinic.org/diseases-conditions/canker-sore/symptoms-causes/syc-20370615"
+      }
+    },
+    {
+      "name": "Ulcer, peptic",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Peptic ulcer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/peptic-ulcer/symptoms-causes/syc-20354223"
+      }
+    },
+    {
+      "name": "Ulcer, rectal",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Solitary rectal ulcer syndrome",
+        "url": "https://www.mayoclinic.org/diseases-conditions/rectal-ulcer/symptoms-causes/syc-20377749"
+      }
+    },
+    {
+      "name": "Ulcerative colitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ulcerative-colitis/symptoms-causes/syc-20353326",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Ulnar wrist pain",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ulnar-wrist-pain/symptoms-causes/syc-20355510",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Ulnar-sided wrist pain",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Ulnar wrist pain",
+        "url": "https://www.mayoclinic.org/diseases-conditions/ulnar-wrist-pain/symptoms-causes/syc-20355510"
+      }
+    },
+    {
+      "name": "Umbilical hernia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/umbilical-hernia/symptoms-causes/syc-20378685",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Uncontrollable laughter and crying",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Pseudobulbar affect",
+        "url": "https://www.mayoclinic.org/diseases-conditions/pseudobulbar-affect/symptoms-causes/syc-20353737"
+      }
+    },
+    {
+      "name": "Underactive thyroid",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hypothyroidism (underactive thyroid)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hypothyroidism/symptoms-causes/syc-20350284"
+      }
+    },
+    {
+      "name": "Under-eye puffiness",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Bags under eyes",
+        "url": "https://www.mayoclinic.org/diseases-conditions/bags-under-eyes/symptoms-causes/syc-20369927"
+      }
+    },
+    {
+      "name": "Undescended testicle",
+      "url": "https://www.mayoclinic.org/diseases-conditions/undescended-testicle/symptoms-causes/syc-20351995",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Undifferentiated pleomorphic sarcoma",
+      "url": "https://www.mayoclinic.org/diseases-conditions/undifferentiated-pleomorphic-sarcoma/symptoms-causes/syc-20389554",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Upset stomach",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Indigestion",
+        "url": "https://www.mayoclinic.org/diseases-conditions/indigestion/symptoms-causes/syc-20352211"
+      }
+    },
+    {
+      "name": "Ureteral cancer",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ureteral-cancer/symptoms-causes/syc-20360721",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Ureteral obstruction",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ureteral-obstruction/symptoms-causes/syc-20354676",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Urethral stricture",
+      "url": "https://www.mayoclinic.org/diseases-conditions/urethral-stricture/symptoms-causes/syc-20362330",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Urinary incontinence",
+      "url": "https://www.mayoclinic.org/diseases-conditions/urinary-incontinence/symptoms-causes/syc-20352808",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Urinary tract infection (UTI)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/urinary-tract-infection/symptoms-causes/syc-20353447",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Urine color",
+      "url": "https://www.mayoclinic.org/diseases-conditions/urine-color/symptoms-causes/syc-20367333",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Urine, blood in",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Blood in urine (hematuria)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/blood-in-urine/symptoms-causes/syc-20353432"
+      }
+    },
+    {
+      "name": "Urticaria",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Hives and angioedema",
+        "url": "https://www.mayoclinic.org/diseases-conditions/hives-and-angioedema/symptoms-causes/syc-20354908"
+      }
+    },
+    {
+      "name": "Urticaria",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Chronic hives",
+        "url": "https://www.mayoclinic.org/diseases-conditions/chronic-hives/symptoms-causes/syc-20352719"
+      }
+    },
+    {
+      "name": "Uterine cancer",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Endometrial cancer",
+        "url": "https://www.mayoclinic.org/diseases-conditions/endometrial-cancer/symptoms-causes/syc-20352461"
+      }
+    },
+    {
+      "name": "Uterine fibroids",
+      "url": "https://www.mayoclinic.org/diseases-conditions/uterine-fibroids/symptoms-causes/syc-20354288",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Uterine leiomyoma",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Uterine fibroids",
+        "url": "https://www.mayoclinic.org/diseases-conditions/uterine-fibroids/symptoms-causes/syc-20354288"
+      }
+    },
+    {
+      "name": "Uterine myoma",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Uterine fibroids",
+        "url": "https://www.mayoclinic.org/diseases-conditions/uterine-fibroids/symptoms-causes/syc-20354288"
+      }
+    },
+    {
+      "name": "Uterine polyps",
+      "url": "https://www.mayoclinic.org/diseases-conditions/uterine-polyps/symptoms-causes/syc-20378709",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Uterine prolapse",
+      "url": "https://www.mayoclinic.org/diseases-conditions/uterine-prolapse/symptoms-causes/syc-20353458",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Uterus didelphys",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Double uterus",
+        "url": "https://www.mayoclinic.org/diseases-conditions/double-uterus/symptoms-causes/syc-20352261"
+      }
+    },
+    {
+      "name": "UTI",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Urinary tract infection (UTI)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/urinary-tract-infection/symptoms-causes/syc-20353447"
+      }
+    }
+  ],
+  "V": [
+    {
+      "name": "Vaginal agenesis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/vaginal-agenesis/symptoms-causes/syc-20355737",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Vaginal atrophy",
+      "url": "https://www.mayoclinic.org/diseases-conditions/vaginal-atrophy/symptoms-causes/syc-20352288",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Vaginal cancer",
+      "url": "https://www.mayoclinic.org/diseases-conditions/vaginal-cancer/symptoms-causes/syc-20352447",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Vaginal candidiasis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Yeast infection (vaginal)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/yeast-infection/symptoms-causes/syc-20378999"
+      }
+    },
+    {
+      "name": "Vaginal fistula",
+      "url": "https://www.mayoclinic.org/diseases-conditions/vaginal-fistulas/symptoms-causes/syc-20355762",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Vaginal prolapse, posterior",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Posterior vaginal prolapse (rectocele)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/rectocele/symptoms-causes/syc-20353414"
+      }
+    },
+    {
+      "name": "Vaginitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/vaginitis/symptoms-causes/syc-20354707",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Valley fever",
+      "url": "https://www.mayoclinic.org/diseases-conditions/valley-fever/symptoms-causes/syc-20378761",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Valvular heart disease",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Heart valve disease",
+        "url": "https://www.mayoclinic.org/diseases-conditions/heart-valve-disease/symptoms-causes/syc-20353727"
+      }
+    },
+    {
+      "name": "Variant CJD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Creutzfeldt-Jakob disease",
+        "url": "https://www.mayoclinic.org/diseases-conditions/creutzfeldt-jakob-disease/symptoms-causes/syc-20371226"
+      }
+    },
+    {
+      "name": "Varicella",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Chickenpox",
+        "url": "https://www.mayoclinic.org/diseases-conditions/chickenpox/symptoms-causes/syc-20351282"
+      }
+    },
+    {
+      "name": "Varices, esophageal",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Esophageal varices",
+        "url": "https://www.mayoclinic.org/diseases-conditions/esophageal-varices/symptoms-causes/syc-20351538"
+      }
+    },
+    {
+      "name": "Varicocele",
+      "url": "https://www.mayoclinic.org/diseases-conditions/varicocele/symptoms-causes/syc-20378771",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Varicose veins",
+      "url": "https://www.mayoclinic.org/diseases-conditions/varicose-veins/symptoms-causes/syc-20350643",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Variola",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Smallpox",
+        "url": "https://www.mayoclinic.org/diseases-conditions/smallpox/symptoms-causes/syc-20353027"
+      }
+    },
+    {
+      "name": "Vascular dementia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/vascular-dementia/symptoms-causes/syc-20378793",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Vascular rings",
+      "url": "https://www.mayoclinic.org/diseases-conditions/vascular-rings/cdc-20389579",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Vasculitis",
+      "url": "https://www.mayoclinic.org/diseases-conditions/vasculitis/symptoms-causes/syc-20363435",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Vasomotor rhinitis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Nonallergic rhinitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/nonallergic-rhinitis/symptoms-causes/syc-20351229"
+      }
+    },
+    {
+      "name": "Vasovagal syncope",
+      "url": "https://www.mayoclinic.org/diseases-conditions/vasovagal-syncope/symptoms-causes/syc-20350527",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "vCJD",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Creutzfeldt-Jakob disease",
+        "url": "https://www.mayoclinic.org/diseases-conditions/creutzfeldt-jakob-disease/symptoms-causes/syc-20371226"
+      }
+    },
+    {
+      "name": "Velocardiofacial syndrome",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See DiGeorge syndrome (22q11.2 deletion syndrome)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/digeorge-syndrome/symptoms-causes/syc-20353543"
+      }
+    },
+    {
+      "name": "Venereal warts",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Genital warts",
+        "url": "https://www.mayoclinic.org/diseases-conditions/genital-warts/symptoms-causes/syc-20355234"
+      }
+    },
+    {
+      "name": "Ventricular fibrillation",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ventricular-fibrillation/symptoms-causes/syc-20364523",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Ventricular premature contraction",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Premature ventricular contractions (PVCs)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/premature-ventricular-contractions/symptoms-causes/syc-20376757"
+      }
+    },
+    {
+      "name": "Ventricular septal defect (VSD)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ventricular-septal-defect/symptoms-causes/syc-20353495",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Ventricular tachycardia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/ventricular-tachycardia/symptoms-causes/syc-20355138",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Vertebral tumor",
+      "url": "https://www.mayoclinic.org/diseases-conditions/vertebral-tumor/symptoms-causes/syc-20350123",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Vesicoureteral reflux",
+      "url": "https://www.mayoclinic.org/diseases-conditions/vesicoureteral-reflux/symptoms-causes/syc-20378819",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Vestibular schwannoma",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Acoustic neuroma",
+        "url": "https://www.mayoclinic.org/diseases-conditions/acoustic-neuroma/symptoms-causes/syc-20356127"
+      }
+    }
+  ],
+  "W": [
+    {
+      "name": "Waldenstrom macroglobulinemia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/waldenstrom-macroglobulinemia/symptoms-causes/syc-20359967",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Warts, common",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Common warts",
+        "url": "https://www.mayoclinic.org/diseases-conditions/common-warts/symptoms-causes/syc-20371125"
+      }
+    },
+    {
+      "name": "Warts, genital",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Genital warts",
+        "url": "https://www.mayoclinic.org/diseases-conditions/genital-warts/symptoms-causes/syc-20355234"
+      }
+    },
+    {
+      "name": "Warts, plantar",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Plantar warts",
+        "url": "https://www.mayoclinic.org/diseases-conditions/plantar-warts/symptoms-causes/syc-20352691"
+      }
+    },
+    {
+      "name": "Warts, venereal",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Genital warts",
+        "url": "https://www.mayoclinic.org/diseases-conditions/genital-warts/symptoms-causes/syc-20355234"
+      }
+    },
+    {
+      "name": "Water on the knee",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Swollen knee",
+        "url": "https://www.mayoclinic.org/diseases-conditions/swollen-knee/symptoms-causes/syc-20378129"
+      }
+    },
+    {
+      "name": "Wegener's granulomatosis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Granulomatosis with polyangiitis",
+        "url": "https://www.mayoclinic.org/diseases-conditions/granulomatosis-with-polyangiitis/symptoms-causes/syc-20351088"
+      }
+    },
+    {
+      "name": "Wermer syndrome",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Multiple endocrine neoplasia, type 1 (MEN 1)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/men-1/symptoms-causes/syc-20353064"
+      }
+    },
+    {
+      "name": "Wermer's syndrome",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Multiple endocrine neoplasia, type 1 (MEN 1)",
+        "url": "https://www.mayoclinic.org/diseases-conditions/men-1/symptoms-causes/syc-20353064"
+      }
+    },
+    {
+      "name": "Wet macular degeneration",
+      "url": "https://www.mayoclinic.org/diseases-conditions/wet-macular-degeneration/symptoms-causes/syc-20351107",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Wheat allergy",
+      "url": "https://www.mayoclinic.org/diseases-conditions/wheat-allergy/symptoms-causes/syc-20378897",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Whiplash",
+      "url": "https://www.mayoclinic.org/diseases-conditions/whiplash/symptoms-causes/syc-20378921",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Whipple's disease",
+      "url": "https://www.mayoclinic.org/diseases-conditions/whipples-disease/symptoms-causes/syc-20378946",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "White blood cell disorders in children",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Pediatric white blood cell disorders",
+        "url": "https://www.mayoclinic.org/diseases-conditions/pediatric-white-blood-cell-disorders/symptoms-causes/syc-20352674"
+      }
+    },
+    {
+      "name": "Whiteheads",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Acne",
+        "url": "https://www.mayoclinic.org/diseases-conditions/acne/symptoms-causes/syc-20368047"
+      }
+    },
+    {
+      "name": "Whooping cough",
+      "url": "https://www.mayoclinic.org/diseases-conditions/whooping-cough/symptoms-causes/syc-20378973",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Wilms tumor",
+      "url": "https://www.mayoclinic.org/diseases-conditions/wilms-tumor/symptoms-causes/syc-20352655",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Wilson's disease",
+      "url": "https://www.mayoclinic.org/diseases-conditions/wilsons-disease/symptoms-causes/syc-20353251",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Wisdom teeth, impacted",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Impacted wisdom teeth",
+        "url": "https://www.mayoclinic.org/diseases-conditions/wisdom-teeth/symptoms-causes/syc-20373808"
+      }
+    },
+    {
+      "name": "Wolff-Parkinson-White (WPW) syndrome",
+      "url": "https://www.mayoclinic.org/diseases-conditions/wolff-parkinson-white-syndrome/symptoms-causes/syc-20354626",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Wolff-Parkinson-White accessory pathway-related tachycardia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Wolff-Parkinson-White (WPW) syndrome",
+        "url": "https://www.mayoclinic.org/diseases-conditions/wolff-parkinson-white-syndrome/symptoms-causes/syc-20354626"
+      }
+    },
+    {
+      "name": "Wrinkles",
+      "url": "https://www.mayoclinic.org/diseases-conditions/wrinkles/symptoms-causes/syc-20354927",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Wrist fracture",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Broken wrist",
+        "url": "https://www.mayoclinic.org/diseases-conditions/broken-wrist/symptoms-causes/syc-20353169"
+      }
+    },
+    {
+      "name": "Wrist pain",
+      "url": "https://www.mayoclinic.org/diseases-conditions/wrist-pain/symptoms-causes/syc-20366213",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    }
+  ],
+  "X": [
+    {
+      "name": "Xerosis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Dry skin",
+        "url": "https://www.mayoclinic.org/diseases-conditions/dry-skin/symptoms-causes/syc-20353885"
+      }
+    },
+    {
+      "name": "Xerostomia",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Dry mouth",
+        "url": "https://www.mayoclinic.org/diseases-conditions/dry-mouth/symptoms-causes/syc-20356048"
+      }
+    },
+    {
+      "name": "X-linked agammaglobulinemia",
+      "url": "https://www.mayoclinic.org/diseases-conditions/x-linked-agammaglobulinemia/symptoms-causes/syc-20361635",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "XXX syndrome",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Triple X syndrome",
+        "url": "https://www.mayoclinic.org/diseases-conditions/triple-x-syndrome/symptoms-causes/syc-20350977"
+      }
+    }
+  ],
+  "Y": [
+    {
+      "name": "Yeast infection (vaginal)",
+      "url": "https://www.mayoclinic.org/diseases-conditions/yeast-infection/symptoms-causes/syc-20378999",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Yersinia pestis",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Plague",
+        "url": "https://www.mayoclinic.org/diseases-conditions/plague/symptoms-causes/syc-20351291"
+      }
+    },
+    {
+      "name": "Yips",
+      "url": "https://www.mayoclinic.org/diseases-conditions/yips/symptoms-causes/syc-20379021",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    }
+  ],
+  "Z": [
+    {
+      "name": "Zenker's diverticulum",
+      "url": "https://www.mayoclinic.org/diseases-conditions/zenkers-diverticulum/symptoms-causes/syc-20568839",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Zollinger-Ellison syndrome",
+      "url": "https://www.mayoclinic.org/diseases-conditions/zollinger-ellison-syndrome/symptoms-causes/syc-20379042",
+      "seeMore": { "text": "N/A", "url": "N/A" }
+    },
+    {
+      "name": "Zoster",
+      "url": "N/A",
+      "seeMore": {
+        "text": "See Shingles",
+        "url": "https://www.mayoclinic.org/diseases-conditions/shingles/symptoms-causes/syc-20353054"
+      }
+    }
+  ]
+}
