@@ -8,8 +8,6 @@ import { useEffect, useState } from "react";
 import UserDetails from "@/types/userDetails";
 const Profile: React.FC<{ params: { username: string } }> = ({ params }) => {
   const { user } = useAuth();
-  const [additionalUserDetails, setAdditionalUserDetails] =
-    useState<UserDetails>({} as UserDetails);
   const fetchUserDetails = async () => {
     // const usersRef = collection(db, "users");
     // const q = query(usersRef, where("username", "==", params.username));
@@ -22,12 +20,17 @@ const Profile: React.FC<{ params: { username: string } }> = ({ params }) => {
     fetchUserDetails();
   }, []);
   const userProfileOrMyProfile =
-    validateUsername("Murad") === params.username ? (
-      <MyProfile
-        username={params.username}
-        bio={additionalUserDetails.bio}
-        imageSrc={defaultImage.src}
-      />
+    validateUsername(user?.username || "") === params.username ? (
+      <>
+        {user && (
+          <MyProfile
+            username={params.username}
+            bio={user.bio}
+            imageSrc={defaultImage.src}
+            joinDate={user.createdAt}
+          />
+        )}
+      </>
     ) : (
       <UserProfile />
     );

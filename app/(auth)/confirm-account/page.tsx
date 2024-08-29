@@ -3,11 +3,14 @@ import { confirmSignUp } from "aws-amplify/auth";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/ui/use-toast";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 const ConfirmAccount = () => {
   const router = useRouter();
   const [emailForConfirmation, setEmailForConfirmation] = useState("");
   const [confirmationCode, setConfirmationCode] = useState("");
   const [confirmationDone, setConfirmationDone] = useState(false);
+  const [confirmationLoading, setConfirmationLoading] = useState(false);
   useEffect(() => {
     const email = localStorage.getItem("emailForConfirmation") || "";
     setEmailForConfirmation(email);
@@ -19,6 +22,7 @@ const ConfirmAccount = () => {
   }, [confirmationDone]);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setConfirmationLoading(true);
     if (confirmationCode.length < 6) {
       return toast({
         title: "Error",
@@ -53,19 +57,28 @@ const ConfirmAccount = () => {
           variant: "destructive",
         });
       }
+    } finally {
+      setConfirmationLoading(false);
     }
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
+    <div className="w-full max-w-lg mx-auto p-4 h-svh flex flex-col gap-4 justify-center">
+      <div className="flex flex-col gap-1">
+        <h1 className="text-2xl font-semibold">Confirm your account</h1>
+        <p className="">We sent a code to {emailForConfirmation}</p>
+      </div>
+      <form className="w-full space-y-4" onSubmit={handleSubmit}>
+        <Input
           name="confirmationCode"
           type="number"
           onChange={(e) => setConfirmationCode(e.target.value)}
           placeholder="Enter confirmation code"
+          value={confirmationCode}
           required
         />
-        <button type="submit">Submit</button>
+        <Button disabled={confirmationLoading} className="w-full" type="submit">
+          Submit
+        </Button>
       </form>
     </div>
   );

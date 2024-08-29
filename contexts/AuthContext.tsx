@@ -10,9 +10,11 @@ import { Hub } from "aws-amplify/utils";
 Amplify.configure(outputs);
 
 interface User {
+  createdAt: string;
   email: string;
   username: string;
   userId: string;
+  bio: "No bio yet" | string;
 }
 
 interface AuthContextType {
@@ -48,6 +50,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const currentUser = await getCurrentUser();
         if (currentUser) {
           const user = await fetchUsers(currentUser.userId);
+          console.log(user);
           if (Array.isArray(user) && user.length > 0) {
             setUser(user[0]);
           }
