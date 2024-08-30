@@ -62,9 +62,6 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
       if (errors) {
         throw new Error(errors[0].message);
       }
-      if (users) {
-        console.log(users);
-      }
     } catch (error) {
       console.log(error);
     }

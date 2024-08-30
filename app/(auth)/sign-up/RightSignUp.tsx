@@ -76,7 +76,7 @@ const RightSignUp = () => {
     setContinueWithEmail(false);
   };
   return (
-    <div className="max-w-md w-full mx-auto lg:ml-6 xl:ms-[140px] px-4  flex justify-center flex-col min-h-svh overflow-y-auto">
+    <div className="max-w-md w-full mx-auto lg:ml-6 xl:ms-36 px-4  flex justify-center flex-col min-h-svh overflow-y-auto">
       <h1 className="text-2xl font-semibold text-foreground mb-8">
         Sign up to Health Bar
       </h1>

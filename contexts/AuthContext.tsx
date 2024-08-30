@@ -15,6 +15,9 @@ interface User {
   username: string;
   userId: string;
   bio: "No bio yet" | string;
+  websiteUrl: string | null;
+  location: string | null;
+  pronouns: string | null;
 }
 
 interface AuthContextType {
@@ -41,7 +44,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       throw new Error(errors[0].message);
     }
     if (users) {
-      return users.filter((user) => user.userId === userId);
+      const user = users.filter((user) => user.userId === userId);
+      console.log(user)
+      return user;
     }
   };
   useEffect(() => {
@@ -50,7 +55,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const currentUser = await getCurrentUser();
         if (currentUser) {
           const user = await fetchUsers(currentUser.userId);
-          console.log(user);
           if (Array.isArray(user) && user.length > 0) {
             setUser(user[0]);
           }

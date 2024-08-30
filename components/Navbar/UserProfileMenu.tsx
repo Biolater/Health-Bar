@@ -91,14 +91,14 @@ const UserProfileMenu: React.FC<Props> = ({ handleEscClick }) => {
       link: "/notifications",
     },
     {
-      text: "Settings",
-      icon: <Cog />,
-      link: "/settings",
-    },
-    {
       text: "Messages",
       icon: <MessageCircle />,
       link: "/messages",
+    },
+    {
+      text: "Settings",
+      icon: <Cog />,
+      link: "/settings",
     },
   ];
 

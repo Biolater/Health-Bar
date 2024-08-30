@@ -9,7 +9,7 @@ function validateUsername(username: string): string {
   function sanitizeUsername(username: string): string {
     // 1. Remove spaces
     let sanitizedUsername = username.replace(/\s+/g, "_");
-  
+
     // 2. Ensure minimum length
     if (sanitizedUsername.length < 3) {
       sanitizedUsername += "_"; // Add underscores until it's at least 3 characters long
@@ -17,13 +17,17 @@ function validateUsername(username: string): string {
     return sanitizedUsername;
   }
   const usernameRegex = /^[a-zA-Z0-9_]{3,}$/;
-  if(!usernameRegex.test(username)) {
+  if (!usernameRegex.test(username)) {
     return sanitizeUsername(username);
-  }else{
-    return username
+  } else {
+    return username;
   }
 }
 
+function formatTimestamp(time: string): string {
+  const date = new Date(time);
+  const formattedDate = date.toLocaleString().slice(0, 9);
+  return formattedDate;
+}
 
-
-export { cn, validateUsername };
+export { cn, validateUsername, formatTimestamp };

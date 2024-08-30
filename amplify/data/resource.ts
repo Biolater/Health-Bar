@@ -13,6 +13,9 @@ const schema = a.schema({
       username: a.string().required(),
       email: a.email().required(),
       bio: a.string().required(),
+      websiteUrl: a.url(),
+      location: a.string(),
+      pronouns: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
 });

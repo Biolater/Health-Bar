@@ -4,7 +4,7 @@ const MetaDataItem: React.FC<{
   title: string;
   value: string;
   icon: React.JSX.Element;
-  isLink: boolean;
+  isLink?: boolean;
   link?: string;
 }> = ({ title, value, icon, isLink, link }) => {
   return isLink ? (
