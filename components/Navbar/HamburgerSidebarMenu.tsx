@@ -22,7 +22,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";
 const HamburgerSidebarMenu: FC<{ onClose: () => void }> = ({ onClose }) => {
   const pathName = usePathname();
-  const { user, loading } = useAuth();
+  const { user, loading, isLoggedIn } = useAuth();
   const router = useRouter();
   const TOP_SIDEBAR_ITEMS = [
     {
@@ -152,7 +152,7 @@ const HamburgerSidebarMenu: FC<{ onClose: () => void }> = ({ onClose }) => {
                 />
               ))}
             </div>
-            {!loading && user && (
+            {!loading && isLoggedIn && (
               <div className="sidebar__content__body__bottom flex flex-col gap-1">
                 {BOTTOM_SIDEBAR_ITEMS.map((item) => (
                   <SidebarItem

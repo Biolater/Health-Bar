@@ -23,11 +23,13 @@ interface User {
 interface AuthContextType {
   user: User | null;
   loading: boolean;
+  isLoggedIn: boolean;
 }
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
   loading: true,
+  isLoggedIn: false,
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -35,19 +37,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const fetchUsers = async (userId: string) => {
     const { errors, data: users } = await client.models.User.list({
       authMode: "apiKey",
     });
 
-    console.log(users, errors)
+    console.log(users, errors);
 
     if (errors) {
       throw new Error(errors[0].message);
     }
     if (users) {
       const user = users.filter((user) => user.userId === userId);
-      console.log(user)
+      console.log(user);
       return user;
     }
   };
@@ -55,10 +58,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const fetchUser = async () => {
       try {
         const currentUser = await getCurrentUser();
-        console.log(currentUser)
+        console.log(currentUser);
         if (currentUser) {
+          setIsLoggedIn(true);
           const user = await fetchUsers(currentUser.userId);
-          console.log(user)
+          console.log(user);
           if (Array.isArray(user) && user.length > 0) {
             setUser(user[0]);
           }
@@ -70,11 +74,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }
     };
     fetchUser();
+    console.log(user, loading);
   }, []);
   useEffect(() => {
     const hubListenerCancelToken = Hub.listen("auth", ({ payload }) => {
       switch (payload.event) {
         case "signedIn":
+          setIsLoggedIn(true);
           const { userId } = payload.data;
           const fetchUser = async () => {
             const user = await fetchUsers(userId);
@@ -86,6 +92,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           fetchUser();
           break;
         case "signedOut":
+          setIsLoggedIn(false);
           setUser(null);
           break;
         default:
@@ -95,7 +102,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     return () => hubListenerCancelToken();
   }, []);
   return (
-    <AuthContext.Provider value={{ user, loading }}>
+    <AuthContext.Provider value={{ user, loading, isLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );

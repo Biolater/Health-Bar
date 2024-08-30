@@ -67,7 +67,7 @@ const Navbar = () => {
       href: "/community",
     },
   ];
-  const { user, loading } = useAuth();
+  const { user, loading, isLoggedIn } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [userDropdownMenuOpen, setUserDropdownMenuOpen] = useState(false);
   const handleSidebarOpen = () => {
@@ -117,7 +117,7 @@ const Navbar = () => {
           ))}
         </div>
         <div className="main-header__right flex items-center gap-2 sm:gap-3 md:gap-4">
-          {!loading && user && (
+          {!loading && isLoggedIn && (
             <>
               {/* <div className="relative group/searchbar">
                 <div className="absolute z-10 left-[5px] size-4 top-1/2 -translate-y-1/2">
@@ -143,7 +143,7 @@ const Navbar = () => {
             </>
           )}
           {!loading &&
-            !user &&
+            !isLoggedIn &&
             AUTH_BUTTONS.map((button) => (
               <Link href={button.href} key={button.label}>
                 <Button key={button.label} variant={button.variant}>

@@ -23,7 +23,7 @@ type Props = {
 const UserProfileMenu: React.FC<Props> = ({ handleEscClick }) => {
   const [isMounted, setIsMounted] = useState(false);
   const profileMenuRef = useRef<HTMLDivElement>(null);
-  const { user } = useAuth()
+  const { user, isLoggedIn } = useAuth()
   const { toast } = useToast();
   const router = useRouter();
   const handleOutsideClick = (event: MouseEvent) => {
@@ -83,7 +83,7 @@ const UserProfileMenu: React.FC<Props> = ({ handleEscClick }) => {
     {
       text: "Profile",
       icon: <CircleUserRound />,
-      link: user ? `/${validateUsername(user?.username)}` : '/',
+      link: isLoggedIn && user ? `/${validateUsername(user?.username)}` : '/',
     },
     {
       text: "Notifications",

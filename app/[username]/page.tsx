@@ -8,7 +8,7 @@ import ProfileSkeleton from "./ProfileSkeleton";
 import { useEffect, useState } from "react";
 import UserDetails from "@/types/userDetails";
 const Profile: React.FC<{ params: { username: string } }> = ({ params }) => {
-  const { user, loading } = useAuth();
+  const { user, loading, isLoggedIn } = useAuth();
   const fetchUserDetails = async () => {
     // const usersRef = collection(db, "users");
     // const q = query(usersRef, where("username", "==", params.username));
@@ -42,7 +42,7 @@ const Profile: React.FC<{ params: { username: string } }> = ({ params }) => {
 
   return (
     <>
-      {!user && loading && <ProfileSkeleton />}
+      {!isLoggedIn && loading && <ProfileSkeleton />}
       {!loading && userProfileOrMyProfile}
     </>
   );
