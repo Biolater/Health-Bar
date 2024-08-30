@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { getCurrentUser, type AuthUser } from "aws-amplify/auth";
+import { getCurrentUser } from "aws-amplify/auth";
 import outputs from "@/amplify_outputs.json";
 import { Amplify } from "aws-amplify";
 import { generateClient } from "aws-amplify/api";
@@ -40,6 +40,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       authMode: "apiKey",
     });
 
+    console.log(users, errors)
+
     if (errors) {
       throw new Error(errors[0].message);
     }
@@ -53,8 +55,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const fetchUser = async () => {
       try {
         const currentUser = await getCurrentUser();
+        console.log(currentUser)
         if (currentUser) {
           const user = await fetchUsers(currentUser.userId);
+          console.log(user)
           if (Array.isArray(user) && user.length > 0) {
             setUser(user[0]);
           }
