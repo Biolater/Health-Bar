@@ -26,7 +26,7 @@ const Profile: React.FC<{ params: { username: string } }> = ({ params }) => {
         {user && !loading && (
           <MyProfile
             username={params.username}
-            bio={user.bio}
+            bio={user?.bio || "No bio yet"}
             imageSrc={defaultImage.src}
             joinDate={user.createdAt}
             email={user.email}

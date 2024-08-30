@@ -14,7 +14,7 @@ interface User {
   email: string;
   username: string;
   userId: string;
-  bio: "No bio yet" | string;
+  bio?: "No bio yet" | string;
   websiteUrl: string | null;
   location: string | null;
   pronouns: string | null;
