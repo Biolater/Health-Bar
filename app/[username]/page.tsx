@@ -30,6 +30,9 @@ const Profile: React.FC<{ params: { username: string } }> = ({ params }) => {
             imageSrc={defaultImage.src}
             joinDate={user.createdAt}
             email={user.email}
+            location={user.location}
+            pronouns={user.pronouns}
+            websiteUrl={user.websiteUrl}
           />
         )}
       </>
