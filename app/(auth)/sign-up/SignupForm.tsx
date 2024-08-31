@@ -89,14 +89,12 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
         username: email,
         password,
       });
-      const bio = "No bio yet"
       if (userId) {
         const { errors } = await client.models.User.create(
           {
             userId,
             username,
             email,
-            bio,
           },
           {
             authMode: "apiKey",

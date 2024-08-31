@@ -12,7 +12,7 @@ const schema = a.schema({
       userId: a.id().required(),
       username: a.string().required(),
       email: a.email().required(),
-      bio: a.string().required(),
+      bio: a.string().default("No bio yet"),
       websiteUrl: a.url(),
       location: a.string(),
       pronouns: a.string(),
