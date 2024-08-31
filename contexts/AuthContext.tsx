@@ -34,7 +34,7 @@ const AuthContext = createContext<AuthContextType>({
   isLoggedIn: false,
 });
 
-export const useAuth = () => useContext(AuthContext)
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const client = generateClient<Schema>();
@@ -61,10 +61,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       try {
         const currentUser = await getCurrentUser();
         if (currentUser) {
-          setIsLoggedIn(true);
           const user = await fetchUsers(currentUser.userId);
           if (user && user.length > 0) {
             setUser(user[0]);
+            setIsLoggedIn(true);
           }
         }
       } catch (error) {
