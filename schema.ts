@@ -59,7 +59,7 @@ const userSettingsSchema = z.object({
     .max(30, "Username must be at most 30 characters long") // Optional: Set a maximum length
     .regex(/^\S+$/, "Username cannot contain spaces")
     .regex(
-      /^[a-zA-Z0-9_]+$/,
+      /^[a-zA-Z0-9._]+$/,
       "Username can only contain letters, numbers, and underscores"
     ) // Optional: Only allow alphanumeric characters and underscores
     .transform((val) => val.trim()),
