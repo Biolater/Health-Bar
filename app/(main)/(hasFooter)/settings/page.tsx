@@ -150,10 +150,10 @@ const Settings = () => {
     }
   }, [user, form]);
   return (
-    <main id="settings" className="py-4 sm:px-16 md:px-32">
-      <div className="flex flex-col gap-4">
-        <div className="px-4">
-          <Select>
+    <main id="settings" className="py-4 max-w-7xl mx-auto w-full sm:px-16 md:px-32">
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="px-4 sm:p-0 md:basis-1/4">
+          <Select onValueChange={(value) => console.log(value)}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder={SELECT_ITEMS[0].text} />
             </SelectTrigger>
@@ -169,10 +169,9 @@ const Settings = () => {
             </SelectContent>
           </Select>
         </div>
-        <div className="p-4 rounded-lg bg-primary">
+        <div className="p-4 rounded-lg bg-primary md:basis-3/4">
           <h2 className="text-white text-3xl font-bold">User</h2>
           <Form {...form}>
-
             <form
               className="gap-4 flex flex-col"
               onSubmit={form.handleSubmit(onSubmit)}
@@ -180,6 +179,7 @@ const Settings = () => {
               {userSettingInputs &&
                 userSettingInputs.map((input) => (
                   <FormField
+                    key={input.label}
                     control={form.control}
                     name={
                       input.name as keyof z.infer<typeof userSettingsSchema>
@@ -201,7 +201,7 @@ const Settings = () => {
                     )}
                   />
                 ))}
-              <Button className="w-full" variant="secondary">
+              <Button className="w-full md:w-auto self-end" variant="secondary">
                 Save Settings
               </Button>
             </form>
