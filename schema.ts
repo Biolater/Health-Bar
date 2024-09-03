@@ -51,4 +51,41 @@ const signInFormSchema = z.object({
     .transform((val) => val.trim()),
 });
 
-export { signUpFormSchema, signInFormSchema };
+const userSettingsSchema = z.object({
+  username: z
+    .string()
+    .trim() // Remove leading and trailing whitespace
+    .min(3, "Username must be at least 3 characters long")
+    .max(30, "Username must be at most 30 characters long") // Optional: Set a maximum length
+    .regex(/^\S+$/, "Username cannot contain spaces")
+    .regex(
+      /^[a-zA-Z0-9_]+$/,
+      "Username can only contain letters, numbers, and underscores"
+    ) // Optional: Only allow alphanumeric characters and underscores
+    .transform((val) => val.trim()),
+  email: z
+    .string()
+    .email("Please enter a valid email address (e.g., john.doe@example.com)")
+    .transform((val) => val.trim()),
+  bio: z
+    .string()
+    .min(3, "Bio must be at least 3 characters long")
+    .transform((val) => val.trim()),
+  location: z
+    .string()
+    .optional()
+    .transform((val) => val?.trim()),
+  websiteUrl: z
+    .string()
+    .optional()
+    .refine((val) => val === "" || z.string().url().safeParse(val).success, {
+      message: "Please enter a valid URL (e.g., https://example.com)",
+    })
+    .transform((val) => val?.trim()),
+  pronouns: z
+    .string()
+    .optional()
+    .transform((val) => val?.trim()),
+});
+
+export { signUpFormSchema, signInFormSchema, userSettingsSchema };
