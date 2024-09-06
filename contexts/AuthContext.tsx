@@ -17,6 +17,7 @@ interface User {
   websiteUrl: string | null;
   location: string | null;
   pronouns: string | null;
+  profilePicture: string | null;
   id: string;
   createdAt: string;
   updatedAt: string;
@@ -75,7 +76,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
     fetchUser();
   }, []);
-
   useEffect(() => {
     const hubListenerCancelToken = Hub.listen("auth", ({ payload }) => {
       switch (payload.event) {

@@ -4,9 +4,8 @@ import Image from "next/image";
 import React from "react";
 import MetaDataItem from "./MetaDataItem";
 import { formatTimestamp } from "@/lib/utils";
-
+import { Separator } from "@/components/ui/separator";
 const MyProfile: React.FC<{
-  imageSrc: string;
   username: string;
   bio: string;
   joinDate: string;
@@ -14,8 +13,8 @@ const MyProfile: React.FC<{
   websiteUrl: string | null;
   location: string | null;
   pronouns: string | null;
+  profilePicture: string;
 }> = ({
-  imageSrc,
   username,
   bio,
   joinDate,
@@ -23,6 +22,7 @@ const MyProfile: React.FC<{
   websiteUrl,
   location,
   pronouns,
+  profilePicture,
 }) => {
   const META_DATA = [
     {
@@ -64,14 +64,14 @@ const MyProfile: React.FC<{
         <Image
           width={55}
           height={55}
-          src={imageSrc}
+          src={profilePicture}
           quality={100}
           alt="User photo"
           className="absolute sm:size-16 left-3 -top-7 md:-top-16 md:left-1/2 md:-translate-x-1/2 rounded-full md:size-28 border-background border-4"
         />
         <EditProfileButton />
-        <div className="flex flex-col gap-2 py-4">
-          <div className="flex flex-col gap-1 px-3 md:text-center">
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col pt-4 gap-1 px-3 md:text-center">
             <h1 className="text-2xl sm:text-3xl break-all font-bold text-white">
               {username}
             </h1>
@@ -81,6 +81,11 @@ const MyProfile: React.FC<{
             {META_DATA.map((item, index) => (
               <MetaDataItem key={index} {...item} />
             ))}
+          </div>
+          <Separator />
+          <div className="w-full h-full pb-2 flex flex-col px-3 md:items-center md:justify-center">
+            <p className="text-sm text-muted">Pronouns</p>
+            <p className="text-white">{pronouns ?? "No pronouns yet"}</p>
           </div>
         </div>
       </div>

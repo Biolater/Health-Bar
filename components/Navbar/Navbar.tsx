@@ -132,11 +132,12 @@ const Navbar = () => {
               <button onClick={handleAvatarClick}>
                 <Avatar className="block text-foreground cursor-pointer">
                   <AvatarImage
-                    src={defaultProfileImg.src}
+                    src={user?.profilePicture || defaultProfileImg.src}
                     alt={"Profile avatar"}
+                    className="object-cover"
                   />
                   <AvatarFallback>
-                    { ""}
+                    {user?.username.charAt(0)}
                   </AvatarFallback>
                 </Avatar>
               </button>

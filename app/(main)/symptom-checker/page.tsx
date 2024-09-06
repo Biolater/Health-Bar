@@ -9,6 +9,7 @@ const model = genAI.getGenerativeModel({
   systemInstruction: process.env.NEXT_PUBLIC_GEMINI_SYSTEM_INSTRUCTIONS || "",
 });
 import { Card, CardDescription } from "@/components/ui/card";
+import { toast } from "@/components/ui/use-toast";
 const SUGGESTIONS = [
   "What are some healthy lifestyle tips?",
   "How can I improve my sleep?",
@@ -24,7 +25,7 @@ type ChatMessage = {
 const SymptomChecker = () => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const chatMessagesRef = useRef<HTMLDivElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null)
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [text, setText] = useState("");
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [loading, setLoading] = useState(false);
@@ -51,11 +52,11 @@ const SymptomChecker = () => {
     await run(suggestion);
   };
   const handleEnter = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if(event.key === "Enter"){
-      event.preventDefault()
-      handleSend()
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSend();
     }
-  }
+  };
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
@@ -88,7 +89,20 @@ const SymptomChecker = () => {
         return [...prevMessages];
       });
     } catch (err) {
-      console.log(err);
+      setLoading(false)
+      if(err instanceof Error){
+        toast({
+          title: "Error",
+          description: err.message,
+          variant: "destructive",
+        })
+      }else{
+        toast({
+          title: "Error",
+          description: "An unknown error occurred!",
+          variant: "destructive"
+        })
+      }
     } finally {
       setLoading(false);
     }

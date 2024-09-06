@@ -14,8 +14,8 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'lh3.googleusercontent.com',
-                pathname: '/**',
+                hostname: 'amplify-awsamplifygen2-yu-healthbarusersdrivebucke-fn1uis3g9jsr.s3.eu-central-1.amazonaws.com',
+                pathname: '/profile-pictures/**', // More precise path for your S3 bucket
             }
         ]
     }

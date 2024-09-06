@@ -5,8 +5,6 @@ import { validateUsername } from "@/lib/utils";
 import MyProfile from "./MyProfile";
 import UserProfile from "./UserProfile";
 import ProfileSkeleton from "./ProfileSkeleton";
-import { useEffect, useState } from "react";
-import UserDetails from "@/types/userDetails";
 const Profile: React.FC<{ params: { username: string } }> = ({ params }) => {
   const { user, loading, isLoggedIn } = useAuth();
   const userProfileOrMyProfile =
@@ -16,7 +14,7 @@ const Profile: React.FC<{ params: { username: string } }> = ({ params }) => {
           <MyProfile
             username={params.username}
             bio={user?.bio || "No bio yet"}
-            imageSrc={defaultImage.src}
+            profilePicture={user?.profilePicture || defaultImage.src}
             joinDate={user.createdAt}
             email={user.email}
             location={user.location}
@@ -24,7 +22,7 @@ const Profile: React.FC<{ params: { username: string } }> = ({ params }) => {
             websiteUrl={user.websiteUrl}
           />
         )}
-      </> 
+      </>
     ) : (
       <UserProfile />
     );
