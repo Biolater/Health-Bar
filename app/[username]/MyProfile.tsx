@@ -62,12 +62,12 @@ const MyProfile: React.FC<{
     <main className="pt-9 md:px-4 lg:px-16 xl:px-32 md:pt-20 pb-1">
       <div className="user-details max-w-7xl mx-auto w-full bg-primary rounded-lg relative">
         <Image
-          width={55}
-          height={55}
+          width={56}
+          height={56}
           src={profilePicture}
           quality={100}
           alt="User photo"
-          className="absolute sm:size-16 left-3 -top-7 md:-top-16 md:left-1/2 md:-translate-x-1/2 rounded-full md:size-28 border-background border-4"
+          className="absolute size-14 sm:size-16 object-cover left-3 -top-7 md:-top-16 md:left-1/2 md:-translate-x-1/2 rounded-full md:size-28 border-background border-4"
         />
         <EditProfileButton />
         <div className="flex flex-col gap-2">
