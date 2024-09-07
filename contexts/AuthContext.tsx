@@ -77,6 +77,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     fetchUser();
   }, []);
   useEffect(() => {
+    console.log(user)
+  }, [user])
+  useEffect(() => {
     const hubListenerCancelToken = Hub.listen("auth", ({ payload }) => {
       switch (payload.event) {
         case "signedIn":

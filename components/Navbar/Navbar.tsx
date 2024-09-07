@@ -1,15 +1,12 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Input } from "@/components/ui/input";
 import { HamburgerIcon } from "../Icons/index";
-import { Search } from "lucide-react";
 import HamburgerSidebarMenu from "./HamburgerSidebarMenu";
 import SidebarOverlay from "./SidebarOverlay";
 import UserProfileMenu from "./UserProfileMenu";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import NavLink from "./NavLink";
 import Logo from "@/assets/logo.svg";
@@ -118,30 +115,16 @@ const Navbar = () => {
         </div>
         <div className="main-header__right flex items-center gap-2 sm:gap-3 md:gap-4">
           {!loading && isLoggedIn && (
-            <>
-              {/* <div className="relative group/searchbar">
-                <div className="absolute z-10 left-[5px] size-4 top-1/2 -translate-y-1/2">
-                  <Search className="w-full h-full group-hover/searchbar:stroke-primary transition-all" />
-                </div>
-                <Input
-                  className="inline-flex items-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground pe-4 ps-6 py-2 relative h-8 justify-start rounded-[0.5rem] bg-muted/50 text-sm font-normal text-muted-foreground shadow-none w-44 sm:w-56 lg:w-64"
-                  placeholder="Search for diseases, symptoms, or articles"
-                  title="Search for diseases, symptoms, or articles"
-                />
-              </div> */}
-              <button onClick={handleAvatarClick}>
-                <Avatar className="block text-foreground cursor-pointer">
-                  <AvatarImage
-                    src={user?.profilePicture || defaultProfileImg.src}
-                    alt={"Profile avatar"}
-                    className="object-cover"
-                  />
-                  <AvatarFallback>
-                    {user?.username.charAt(0)}
-                  </AvatarFallback>
-                </Avatar>
-              </button>
-            </>
+            <button onClick={handleAvatarClick}>
+              <Image
+                width={56}
+                height={56}
+                src={user?.profilePicture ?? defaultProfileImg}
+                quality={100}
+                alt="User photo"
+                className="size-10 rounded-full object-cover"
+              />
+            </button>
           )}
           {!loading &&
             !isLoggedIn &&
