@@ -14,14 +14,14 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { userSettingsSchema } from "@/schema";
+import { userSettingsSchema, imageFileSchema } from "@/schema";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { generateClient } from "aws-amplify/data";
 import { type Schema } from "@/amplify/data/resource";
 import { toast } from "@/components/ui/use-toast";
 import defaultImg from "@/assets/defaultProfileImg.png";
-// import { uploadData, getUrl } from "aws-amplify/storage";
+import { uploadData, getUrl } from "aws-amplify/storage";
 import Image from "next/image";
 const ProfileSettings = () => {
   const client = generateClient<Schema>();
@@ -82,43 +82,44 @@ const ProfileSettings = () => {
     typeof USER_SETTING_INPUTS | null
   >(null);
   const [userUpdatedTrigger, setUserUpdatedTrigger] = useState(false);
-  // const [uploadedProfilePicDetails, setUploadedProfilePicDetails] =
-  //   useState<File | null>(null);
-  // const uploadProfilePicture = async (file: File, path: string) => {
-  //   try {
-  //     await uploadData({
-  //       data: file,
-  //       path: path,
-  //       options: {
-  //         onProgress: ({ transferredBytes, totalBytes }) => {
-  //           if (totalBytes) {
-  //             console.log(
-  //               `Upload progress ${Math.round(
-  //                 (transferredBytes / totalBytes) * 100
-  //               )} %`
-  //             );
-  //           }
-  //         },
-  //         contentType: file.type,
-  //         contentDisposition: "attachment",
-  //       },
-  //     });
-  //   } catch (error) {
-  //     if (error instanceof Error) {
-  //       toast({
-  //         title: "Error",
-  //         description: error.message,
-  //         variant: "destructive",
-  //       });
-  //     } else {
-  //       toast({
-  //         title: "Error",
-  //         description: "An unknown error occurred.",
-  //         variant: "destructive",
-  //       });
-  //     }
-  //   }
-  // };
+  const [uploadedProfilePicDetails, setUploadedProfilePicDetails] = useState<
+    any | null
+  >(null);
+  const uploadProfilePicture = async (file: any, path: string) => {
+    try {
+      await uploadData({
+        data: file,
+        path: path,
+        options: {
+          onProgress: ({ transferredBytes, totalBytes }) => {
+            if (totalBytes) {
+              console.log(
+                `Upload progress ${Math.round(
+                  (transferredBytes / totalBytes) * 100
+                )} %`
+              );
+            }
+          },
+          contentType: file.type,
+          contentDisposition: "attachment",
+        },
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        toast({
+          title: "Error",
+          description: error.message,
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "An unknown error occurred.",
+          variant: "destructive",
+        });
+      }
+    }
+  };
   const onSubmit = async (values: z.infer<typeof userSettingsSchema>) => {
     const { username, email, bio, location, websiteUrl, pronouns } = values;
     try {
@@ -143,26 +144,26 @@ const ProfileSettings = () => {
           });
         }
       }
-      // if (uploadedProfilePicDetails && user) {
-      //   const fileType = uploadedProfilePicDetails.type.split("/")[1];
-      //   await uploadProfilePicture(
-      //     uploadedProfilePicDetails,
-      //     `profile-pictures/${user?.id}/profile-picture.${fileType}`
-      //   );
-      //   const { url } = await getUrl({
-      //     path: `profile-pictures/${user?.id}/profile-picture.${fileType}`,
-      //     options: {
-      //       expiresIn: 60 * 60 * 24 * 365,
-      //     }
-      //   });
-      //   await client.models.User.update({
-      //     id: user.id,
-      //     profilePicture: url.toString(),
-      //   });
-      // }
+      if (uploadedProfilePicDetails && user) {
+        const fileType = uploadedProfilePicDetails.type.split("/")[1];
+        await uploadProfilePicture(
+          uploadedProfilePicDetails,
+          `profile-pictures/${user?.id}/profile-picture.${fileType}`
+        );
+        const { url } = await getUrl({
+          path: `profile-pictures/${user?.id}/profile-picture.${fileType}`,
+          options: {
+            expiresIn: 60 * 60 * 24 * 365,
+          },
+        });
+        await client.models.User.update({
+          id: user.id,
+          profilePicture: url.toString(),
+        });
+      }
     } catch (error) {
       if (error instanceof Error) {
-        console.log(error)
+        console.log(error);
         toast({
           title: "Error",
           description: error.message,
@@ -177,28 +178,28 @@ const ProfileSettings = () => {
       }
     }
   };
-  // const handleProfilePicInputChange = (
-  //   event: React.ChangeEvent<HTMLInputElement>
-  // ) => {
-  //   const file = event.target.files?.[0];
-  //   const validateFile = (file: File) => {
-  //     const result = imageFileSchema.safeParse(file);
+  const handleProfilePicInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+    const validateFile = (file: any) => {
+      const result = imageFileSchema.safeParse(file);
 
-  //     if (!result.success) {
-  //       toast({
-  //         title: "Error",
-  //         description: result.error.issues[0].message,
-  //         variant: "destructive",
-  //       });
-  //       return false; // Invalid file
-  //     }
+      if (!result.success) {
+        toast({
+          title: "Error",
+          description: result.error.issues[0].message,
+          variant: "destructive",
+        });
+        return false; // Invalid file
+      }
 
-  //     return true; // Valid image file
-  //   };
-  //   if (file && validateFile(file as File)) {
-  //     setUploadedProfilePicDetails(file);
-  //   }
-  // };
+      return true; // Valid image file
+    };
+    if (file && validateFile(file as any)) {
+      setUploadedProfilePicDetails(file);
+    }
+  };
   useEffect(() => {
     if (user && !userSettingInputs) {
       setUserSettingInputs(USER_SETTING_INPUTS);
@@ -253,17 +254,17 @@ const ProfileSettings = () => {
               <div className="absolute group/profile-pen top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-full flex items-center justify-center hover:bg-black/40 cursor-pointer transition-colors duration-300 rounded-full">
                 <Pen className="group-hover/profile-pen:opacity-100 stroke-white opacity-0 transition-all duration-300" />
                 <Input
-                  // onChange={handleProfilePicInputChange}
+                  onChange={handleProfilePicInputChange}
                   type="file"
                   className="w-full h-full absolute opacity-0"
                 />
               </div>
             </div>
-            {/* {uploadedProfilePicDetails && (
+            {uploadedProfilePicDetails && (
               <p className="text-sm text-white">
                 {uploadedProfilePicDetails.name}
               </p>
-            )} */}
+            )}
           </div>
           {userSettingInputs &&
             userSettingInputs.map((input) => (

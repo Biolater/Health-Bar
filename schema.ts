@@ -88,24 +88,24 @@ const userSettingsSchema = z.object({
     .transform((val) => val?.trim()),
 });
 
-// const imageFileSchema = z
-//   .instanceof(File)
-//   .refine(
-//     (file) => {
-//       const validImageTypes = ["image/jpeg", "image/png", "image/gif"];
-//       return validImageTypes.includes(file.type);
-//     },
-//     {
-//       message: "Invalid file type. Only JPEG, PNG, and GIF are allowed.",
-//     }
-//   )
-//   .refine((file) => file.size <= 5 * 1024 * 1024, {
-//     message: "File size must be less than 5MB.",
-//   });
+const imageFileSchema = z
+  .instanceof(File)
+  .refine(
+    (file) => {
+      const validImageTypes = ["image/jpeg", "image/png", "image/gif"];
+      return validImageTypes.includes(file.type);
+    },
+    {
+      message: "Invalid file type. Only JPEG, PNG, and GIF are allowed.",
+    }
+  )
+  .refine((file) => file.size <= 5 * 1024 * 1024, {
+    message: "File size must be less than 5MB.",
+  });
 
 export {
   signUpFormSchema,
   signInFormSchema,
   userSettingsSchema,
-  // imageFileSchema,
+  imageFileSchema,
 };
