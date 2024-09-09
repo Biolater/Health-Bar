@@ -89,7 +89,11 @@ const userSettingsSchema = z.object({
 });
 
 const imageFileSchema = z
-  .instanceof(File)
+  .object({
+    name: z.string(),
+    size: z.number(),
+    type: z.string(),
+  })
   .refine(
     (file) => {
       const validImageTypes = ["image/jpeg", "image/png", "image/gif"];
