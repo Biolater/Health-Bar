@@ -1,14 +1,11 @@
-import { Metadata } from "next";
+"use client";
 import SignUpForm from "./SignupForm";
 import Link from "next/link";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import { FlipWords } from "@/components/ui/flip-words";
 import Logo from "@/assets/logo.svg";
-import RightSignUp from "./RightSignUp"
+import RightSignUp from "./RightSignUp";
 import Image from "next/image";
-export const metadata: Metadata = {
-  title: "Sign Up",
-};
 
 const SignUp = () => {
   return (
