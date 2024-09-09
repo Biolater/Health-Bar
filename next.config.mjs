@@ -14,13 +14,8 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'amplify-awsamplifygen2-yu-healthbarusersdrivebucke-fn1uis3g9jsr.s3.eu-central-1.amazonaws.com',
-                pathname: '/profile-pictures/**',
-            },
-            {
-                protocol: 'https',
-                hostname: 'amplify-d35n0mu3dfg9d4-ma-healthbarusersdrivebucke-rcmzlwvcvj3k.s3.eu-central-1.amazonaws.com',
-                pathname: '/profile-pictures/**',
+                hostname: 'res.cloudinary.com',
+                pathname: '/**'
             }
         ]
     }

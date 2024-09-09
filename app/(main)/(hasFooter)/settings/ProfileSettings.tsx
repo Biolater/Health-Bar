@@ -18,10 +18,13 @@ import { userSettingsSchema, imageFileSchema } from "@/schema";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { generateClient } from "aws-amplify/data";
+import {
+  CldUploadWidget,
+  type CloudinaryUploadWidgetInfo,
+} from "next-cloudinary";
 import { type Schema } from "@/amplify/data/resource";
 import { toast } from "@/components/ui/use-toast";
 import defaultImg from "@/assets/defaultProfileImg.png";
-import { uploadData, getUrl } from "aws-amplify/storage";
 import Image from "next/image";
 const ProfileSettings = () => {
   const client = generateClient<Schema>();
@@ -82,44 +85,7 @@ const ProfileSettings = () => {
     typeof USER_SETTING_INPUTS | null
   >(null);
   const [userUpdatedTrigger, setUserUpdatedTrigger] = useState(false);
-  const [uploadedProfilePicDetails, setUploadedProfilePicDetails] = useState<
-    any | null
-  >(null);
-  const uploadProfilePicture = async (file: any, path: string) => {
-    try {
-      await uploadData({
-        data: file,
-        path: path,
-        options: {
-          onProgress: ({ transferredBytes, totalBytes }) => {
-            if (totalBytes) {
-              console.log(
-                `Upload progress ${Math.round(
-                  (transferredBytes / totalBytes) * 100
-                )} %`
-              );
-            }
-          },
-          contentType: file.type,
-          contentDisposition: "attachment",
-        },
-      });
-    } catch (error) {
-      if (error instanceof Error) {
-        toast({
-          title: "Error",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Error",
-          description: "An unknown error occurred.",
-          variant: "destructive",
-        });
-      }
-    }
-  };
+
   const onSubmit = async (values: z.infer<typeof userSettingsSchema>) => {
     const { username, email, bio, location, websiteUrl, pronouns } = values;
     try {
@@ -144,23 +110,6 @@ const ProfileSettings = () => {
           });
         }
       }
-      if (uploadedProfilePicDetails && user) {
-        const fileType = uploadedProfilePicDetails.type.split("/")[1];
-        await uploadProfilePicture(
-          uploadedProfilePicDetails,
-          `profile-pictures/${user?.id}/profile-picture.${fileType}`
-        );
-        const { url } = await getUrl({
-          path: `profile-pictures/${user?.id}/profile-picture.${fileType}`,
-          options: {
-            expiresIn: 60 * 60 * 24 * 365,
-          },
-        });
-        await client.models.User.update({
-          id: user.id,
-          profilePicture: url.toString(),
-        });
-      }
     } catch (error) {
       if (error instanceof Error) {
         console.log(error);
@@ -178,28 +127,7 @@ const ProfileSettings = () => {
       }
     }
   };
-  const handleProfilePicInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const file = event.target.files?.[0];
-    const validateFile = (file: any) => {
-      const result = imageFileSchema.safeParse(file);
 
-      if (!result.success) {
-        toast({
-          title: "Error",
-          description: result.error.issues[0].message,
-          variant: "destructive",
-        });
-        return false; // Invalid file
-      }
-
-      return true; // Valid image file
-    };
-    if (file && validateFile(file as any)) {
-      setUploadedProfilePicDetails(file);
-    }
-  };
   useEffect(() => {
     if (user && !userSettingInputs) {
       setUserSettingInputs(USER_SETTING_INPUTS);
@@ -236,36 +164,73 @@ const ProfileSettings = () => {
       className="p-4 rounded-lg bg-primary md:basis-3/4"
     >
       <h2 className="text-white text-3xl font-bold mb-2">User</h2>
+      <div className="flex flex-col mb-1 gap-1 text-center">
+        <div className="size-36 cursor-pointer relative  transition-all duration-200 rounded-full self-center">
+          <Image
+            priority
+            className="rounded-full object-cover cursor-pointer size-36"
+            alt={`${user?.username}'s profile picture`}
+            src={user?.profilePicture || defaultImg.src}
+            width={144}
+            height={144}
+          />
+          <div className="absolute group/profile-pen top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-full flex items-center justify-center hover:bg-black/40 cursor-pointer transition-colors duration-300 rounded-full">
+            <Pen className="group-hover/profile-pen:opacity-100 stroke-white opacity-0 transition-all duration-300" />
+            <CldUploadWidget
+              options={{
+                multiple: false,
+                sources: ["local", "url", "camera"],
+              }}
+              uploadPreset="healthbar"
+              onSuccess={(results) => {
+                const handleProfilePicUpload = async (url: string) => {
+                  try {
+                    if (user) {
+                      const { errors, data: updatedUser } =
+                        await client.models.User.update({
+                          id: user.id,
+                          profilePicture: url.toString(),
+                        });
+                      if (errors && errors[0].message) {
+                        throw new Error(errors[0].message);
+                      }
+                      if (updatedUser) {
+                        toast({
+                          title: "Success",
+                          description: "Profile picture successfully updated",
+                        });
+                        setUserUpdatedTrigger(true);
+                      }
+                    }
+                  } catch (error) {
+                    console.log(error);
+                  }
+                };
+                if (results.info && typeof results.info === "object") {
+                  const info: CloudinaryUploadWidgetInfo = results.info;
+                  handleProfilePicUpload(info.secure_url);
+                }
+              }}
+            >
+              {({ open }) => {
+                return (
+                  <button
+                    className="w-full h-full opacity-0 absolute"
+                    onClick={() => open()}
+                  >
+                    Upload an Image
+                  </button>
+                );
+              }}
+            </CldUploadWidget>
+          </div>
+        </div>
+      </div>
       <Form {...form}>
         <form
           className="gap-4 flex flex-col"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          <div className="flex flex-col gap-1 text-center">
-            <div className="size-36 cursor-pointer relative  transition-all duration-200 rounded-full self-center">
-              <Image
-                priority
-                className="rounded-full object-cover cursor-pointer size-36"
-                alt={`${user?.username}'s profile picture`}
-                src={user?.profilePicture || defaultImg.src}
-                width={144}
-                height={144}
-              />
-              <div className="absolute group/profile-pen top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-full flex items-center justify-center hover:bg-black/40 cursor-pointer transition-colors duration-300 rounded-full">
-                <Pen className="group-hover/profile-pen:opacity-100 stroke-white opacity-0 transition-all duration-300" />
-                <Input
-                  onChange={handleProfilePicInputChange}
-                  type="file"
-                  className="w-full h-full absolute opacity-0"
-                />
-              </div>
-            </div>
-            {uploadedProfilePicDetails && (
-              <p className="text-sm text-white">
-                {uploadedProfilePicDetails.name}
-              </p>
-            )}
-          </div>
           {userSettingInputs &&
             userSettingInputs.map((input) => (
               <FormField
@@ -287,7 +252,11 @@ const ProfileSettings = () => {
                 )}
               />
             ))}
-          <Button className="w-full md:w-auto self-end" variant="secondary">
+          <Button
+            type="submit"
+            className="w-full md:w-auto self-end"
+            variant="secondary"
+          >
             Save Settings
           </Button>
         </form>
