@@ -1,7 +1,10 @@
-'use client'
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
 import Link from "next/link";
 import SignInContent from "./SignIn"
+export const metadata: Metadata = {
+  title: "Sign In",
+};
 
 const SignIn = () => {
   return (
