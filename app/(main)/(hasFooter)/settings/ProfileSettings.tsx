@@ -83,8 +83,8 @@ const ProfileSettings = () => {
   >(null);
   const [userUpdatedTrigger, setUserUpdatedTrigger] = useState(false);
   const [uploadedProfilePicDetails, setUploadedProfilePicDetails] =
-    useState<any | null>(null);
-  const uploadProfilePicture = async (file: any, path: string) => {
+    useState<File | null>(null);
+  const uploadProfilePicture = async (file: File, path: string) => {
     try {
       await uploadData({
         data: file,
@@ -181,7 +181,7 @@ const ProfileSettings = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files?.[0];
-    const validateFile = (file: any) => {
+    const validateFile = (file: File) => {
       const result = imageFileSchema.safeParse(file);
 
       if (!result.success) {
@@ -195,7 +195,7 @@ const ProfileSettings = () => {
 
       return true; // Valid image file
     };
-    if (file && validateFile(file as any)) {
+    if (file && validateFile(file as File)) {
       setUploadedProfilePicDetails(file);
     }
   };
