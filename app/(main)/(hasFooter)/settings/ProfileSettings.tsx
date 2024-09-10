@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { userSettingsSchema, imageFileSchema } from "@/schema";
+import { userSettingsSchema } from "@/schema";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { generateClient } from "aws-amplify/data";
@@ -85,10 +85,11 @@ const ProfileSettings = () => {
     typeof USER_SETTING_INPUTS | null
   >(null);
   const [userUpdatedTrigger, setUserUpdatedTrigger] = useState(false);
-
+  const [userUpdateLoading, setUserUpdateLoading] = useState(false)
   const onSubmit = async (values: z.infer<typeof userSettingsSchema>) => {
     const { username, email, bio, location, websiteUrl, pronouns } = values;
     try {
+      setUserUpdateLoading(true)
       if (user) {
         const { errors, data: updatedUser } = await client.models.User.update({
           id: user.id,
@@ -253,6 +254,7 @@ const ProfileSettings = () => {
               />
             ))}
           <Button
+            disabled={userUpdateLoading}
             type="submit"
             className="w-full md:w-auto self-end"
             variant="secondary"

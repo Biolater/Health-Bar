@@ -88,28 +88,35 @@ const userSettingsSchema = z.object({
     .transform((val) => val?.trim()),
 });
 
-const imageFileSchema = z
+const updatePasswordFormSchema = z
   .object({
-    name: z.string(),
-    size: z.number(),
-    type: z.string(),
+    currentPassword: z
+      .string()
+      .min(8, "Password must be at least 8 characters long"),
+    newPassword: z
+      .string()
+      .min(8, "Password must be at least 8 characters long")
+      .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+      .regex(/[0-9]/, "Password must contain at least one number")
+      .regex(/[\W_]/, "Password must contain at least one special character"),
+    confirmPassword: z
+      .string()
+      .min(8, "Password must be at least 8 characters long"),
   })
-  .refine(
-    (file) => {
-      const validImageTypes = ["image/jpeg", "image/png", "image/gif"];
-      return validImageTypes.includes(file.type);
-    },
-    {
-      message: "Invalid file type. Only JPEG, PNG, and GIF are allowed.",
+  .superRefine(({ newPassword, confirmPassword }, ctx) => {
+    if (newPassword !== confirmPassword) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Passwords do not match",
+        path: ["confirmPassword"],
+      });
     }
-  )
-  .refine((file) => file.size <= 5 * 1024 * 1024, {
-    message: "File size must be less than 5MB.",
   });
 
 export {
   signUpFormSchema,
   signInFormSchema,
   userSettingsSchema,
-  imageFileSchema,
+  updatePasswordFormSchema,
 };
