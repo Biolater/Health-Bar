@@ -129,9 +129,41 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
     }
   };
   const onSubmit = async (values: z.infer<typeof signUpFormSchema>) => {
-    await handleSignUp(values.email, values.password, values.username);
-    setEmail(values.email);
-    setUserSignedUp(true);
+    try{
+      const { errors, data: users } = await client.models.User.list({
+        authMode: "apiKey",
+        selectionSet: ['username'],
+        filter: {
+          username: {
+            beginsWith: values.username
+          }
+        }
+      })
+      if(errors && errors[0].message){
+        throw new Error(errors[0].message)
+      }
+      if(users.length > 0){
+        // check if username is taken
+        throw new Error("A user with this username already exists")
+      }
+      await handleSignUp(values.email, values.password, values.username);
+      setEmail(values.email);
+      setUserSignedUp(true);
+    }catch(error){
+      if (error instanceof Error) {
+        toast({
+          title: "Error",
+          description: error.message,
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Something went wrong",
+          variant: "destructive",
+        });
+      }
+    }
   };
   const [userSignedUp, setUserSignedUp] = useState(false);
   useEffect(() => {

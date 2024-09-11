@@ -13,10 +13,10 @@ const signUpFormSchema = z
       .transform((val) => val.trim()),
     password: z
       .string()
-      .min(6, "Password must be at least 6 characters long")
+      .min(8, "Password must be at least 8 characters long")
       .refine(
         (val) =>
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
             val
           ),
         {
@@ -27,7 +27,7 @@ const signUpFormSchema = z
       .transform((val) => val.trim()),
     confirmPassword: z
       .string()
-      .min(6, "Password must be at least 6 characters long")
+      .min(8, "Password must be at least 8 characters long")
       .transform((val) => val.trim()),
   })
   .superRefine(({ password, confirmPassword }, ctx) => {
@@ -47,7 +47,7 @@ const signInFormSchema = z.object({
     .transform((val) => val.trim()),
   password: z
     .string()
-    .min(6, "Password must be at least 6 characters long")
+    .min(8, "Password must be at least 8 characters long")
     .transform((val) => val.trim()),
 });
 
