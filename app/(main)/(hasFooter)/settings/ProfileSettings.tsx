@@ -19,6 +19,10 @@ import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { generateClient } from "aws-amplify/data";
 import {
+  updateUserAttribute,
+  type UpdateUserAttributeOutput,
+} from "aws-amplify/auth";
+import {
   CldUploadWidget,
   type CloudinaryUploadWidgetInfo,
 } from "next-cloudinary";
@@ -26,7 +30,102 @@ import { type Schema } from "@/amplify/data/resource";
 import { toast } from "@/components/ui/use-toast";
 import defaultImg from "@/assets/defaultProfileImg.png";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+const USER_SETTING_INPUTS = [
+  {
+    label: "Username",
+    name: "username",
+    type: "text",
+    value: "",
+  },
+  {
+    label: "Email",
+    name: "email",
+    type: "email",
+    value: "",
+  },
+  {
+    label: "Bio",
+    name: "bio",
+    type: "text",
+    value: "",
+  },
+  {
+    label: "Location",
+    name: "location",
+    type: "text",
+    value: "",
+    placeholder: "San Francisco, CA",
+  },
+  {
+    label: "Website",
+    name: "websiteUrl",
+    type: "text",
+    value: "",
+    placeholder: "https://example.com",
+  },
+  {
+    label: "Pronouns",
+    name: "pronouns",
+    type: "text",
+    value: "",
+    placeholder: "they/them",
+  },
+];
 const ProfileSettings = () => {
+  const router = useRouter();
+  function handleUpdateUserAttributeNextSteps(
+    output: UpdateUserAttributeOutput
+  ) {
+    const { nextStep } = output;
+    setUserAttributeUpdateDetails(output);
+    
+    switch (nextStep.updateAttributeStep) {
+      case "CONFIRM_ATTRIBUTE_WITH_CODE":
+        const codeDeliveryDetails = nextStep.codeDeliveryDetails;
+        toast({
+          title: "Confirmation Code",
+          description: `Please enter the code sent to ${codeDeliveryDetails?.destination}.`,
+          variant: "default",
+        });
+        router.push("/confirm-user-attribute");
+        break;
+      case "DONE":
+        toast({
+          title: "Success",
+          description: "User attribute updated.",
+        });
+        break;
+    }
+  }
+  async function handleUpdateUserAttribute(
+    attributeKey: string,
+    value: string
+  ) {
+    try {
+      const output = await updateUserAttribute({
+        userAttribute: {
+          attributeKey,
+          value,
+        },
+      });
+      handleUpdateUserAttributeNextSteps(output);
+    } catch (error) {
+      if (error instanceof Error) {
+        toast({
+          title: "Error",
+          description: error.message,
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Something went wrong. Please try again later.",
+          variant: "destructive",
+        });
+      }
+    }
+  }
   const client = generateClient<Schema>();
   const { user } = useAuth();
   const form = useForm<z.infer<typeof userSettingsSchema>>({
@@ -40,61 +139,24 @@ const ProfileSettings = () => {
       pronouns: "",
     },
   });
-  const USER_SETTING_INPUTS = [
-    {
-      label: "Username",
-      name: "username",
-      type: "text",
-      value: user?.username || "",
-    },
-    {
-      label: "Email",
-      name: "email",
-      type: "email",
-      value: user?.email || "",
-    },
-    {
-      label: "Bio",
-      name: "bio",
-      type: "text",
-      value: user?.bio || "",
-    },
-    {
-      label: "Location",
-      name: "location",
-      type: "text",
-      value: user?.location || "",
-      placeholder: "San Francisco, CA",
-    },
-    {
-      label: "Website",
-      name: "websiteUrl",
-      type: "text",
-      value: user?.websiteUrl || "",
-      placeholder: "https://example.com",
-    },
-    {
-      label: "Pronouns",
-      name: "pronouns",
-      type: "text",
-      value: user?.pronouns || "",
-      placeholder: "they/them",
-    },
-  ];
+
   const [userSettingInputs, setUserSettingInputs] = useState<
     typeof USER_SETTING_INPUTS | null
   >(null);
   const [userUpdatedTrigger, setUserUpdatedTrigger] = useState(false);
-  const [userUpdateLoading, setUserUpdateLoading] = useState(false)
+  const [userUpdateLoading, setUserUpdateLoading] = useState(false);
+  const [pendingEmail, setPendingEmail] = useState<string | null>(null)
+  const [userAttributeUpdateDetails, setUserAttributeUpdateDetails] =
+    useState<UpdateUserAttributeOutput | null>(null);
   const onSubmit = async (values: z.infer<typeof userSettingsSchema>) => {
     const { username, email, bio, location, websiteUrl, pronouns } = values;
+    let emailTimeoutId;
     try {
-      setUserUpdateLoading(true)
+      setUserUpdateLoading(true);
       if (user) {
         const { errors, data: updatedUser } = await client.models.User.update({
           id: user.id,
           username: username || user.username,
-          email: email || user.email,
           bio: bio || user.bio,
           location: location || user.location,
           websiteUrl: websiteUrl || user.websiteUrl,
@@ -109,6 +171,12 @@ const ProfileSettings = () => {
             title: "Success",
             description: "User successfully updated",
           });
+        }
+        if (email !== user.email) {
+          emailTimeoutId = setTimeout(async() => {
+          }, 1000)
+          setPendingEmail(email)
+          await handleUpdateUserAttribute("email", email);  
         }
       }
     } catch (error) {
@@ -157,7 +225,20 @@ const ProfileSettings = () => {
       }
     };
   }, [userUpdatedTrigger]);
-
+  useEffect(() => {
+    const codeDelivery =
+      userAttributeUpdateDetails?.nextStep?.codeDeliveryDetails;
+    if (
+      userAttributeUpdateDetails &&
+      codeDelivery &&
+      codeDelivery.attributeName
+    ) {
+      localStorage.setItem("updatedAttribute", codeDelivery.attributeName);
+    }
+  }, [userAttributeUpdateDetails]);
+  useEffect(() => {
+    if(pendingEmail) localStorage.setItem("pendingEmail", pendingEmail)
+  }, [pendingEmail])
   return (
     <motion.div
       initial={{ opacity: 0 }}

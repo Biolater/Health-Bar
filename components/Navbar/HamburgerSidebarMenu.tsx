@@ -50,13 +50,13 @@ const HamburgerSidebarMenu: FC<{ onClose: () => void }> = ({ onClose }) => {
       href: "/community",
       icon: <MessageCircleIcon />,
     },
-  ];
-  const BOTTOM_SIDEBAR_ITEMS = [
     {
       label: "Profile",
-      href: "/profile",
+      href: `${user?.username || "#"}`,
       icon: <CircleUser />,
     },
+  ];
+  const BOTTOM_SIDEBAR_ITEMS = [
     {
       label: "Settings",
       href: "/settings",

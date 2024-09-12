@@ -6,6 +6,10 @@ import { Amplify } from "aws-amplify";
 import { generateClient } from "aws-amplify/api";
 import { type Schema } from "@/amplify/data/resource";
 import { Hub } from "aws-amplify/utils";
+import {
+  fetchUserAttributes,
+  type FetchUserAttributesOutput,
+} from "aws-amplify/auth";
 
 Amplify.configure(outputs);
 
@@ -27,12 +31,14 @@ type AuthContextType = {
   user: User | null;
   loading: boolean;
   isLoggedIn: boolean;
+  userAttributes: FetchUserAttributesOutput | null;
 };
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
   loading: true,
   isLoggedIn: false,
+  userAttributes: null,
 });
 
 export const useAuth = () => useContext(AuthContext);
@@ -43,7 +49,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [userAttributes, setUserAttributes] =
+    useState<FetchUserAttributesOutput | null>(null);
   const fetchUsers = async (userId: string) => {
     const { errors, data: users } = await client.models.User.list({
       authMode: "apiKey",
@@ -74,9 +81,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setLoading(false);
       }
     };
+    const a = async () => {
+      const attributes = await fetchUserAttributes();
+      setUserAttributes(attributes as FetchUserAttributesOutput);
+    }
+    a()
     fetchUser();
   }, []);
-
   useEffect(() => {
     const hubListenerCancelToken = Hub.listen("auth", ({ payload }) => {
       switch (payload.event) {
@@ -102,9 +113,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     });
     return () => hubListenerCancelToken();
   }, []);
-
   return (
-    <AuthContext.Provider value={{ user, loading, isLoggedIn }}>
+    <AuthContext.Provider value={{ user, loading, isLoggedIn, userAttributes }}>
       {children}
     </AuthContext.Provider>
   );
