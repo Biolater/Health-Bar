@@ -84,8 +84,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const a = async () => {
       const attributes = await fetchUserAttributes();
       setUserAttributes(attributes as FetchUserAttributesOutput);
-    }
-    a()
+    };
+    if (user) a();
     fetchUser();
   }, []);
   useEffect(() => {

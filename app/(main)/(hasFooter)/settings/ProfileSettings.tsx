@@ -281,7 +281,6 @@ const ProfileSettings = () => {
                           title: "Success",
                           description: "Profile picture successfully updated",
                         });
-                        setUserUpdatedTrigger(true);
                       }
                     }
                   } catch (error) {

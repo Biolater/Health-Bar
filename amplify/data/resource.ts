@@ -12,10 +12,8 @@ const schema = a.schema({
       pronouns: a.string(),
       profilePicture: a.string(),
     })
-    .authorization((allow) => [
-      allow.publicApiKey(),
-      allow.owner(),
-    ]),
+    .secondaryIndexes((index) => [index("username")])
+    .authorization((allow) => [allow.publicApiKey(), allow.owner()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
