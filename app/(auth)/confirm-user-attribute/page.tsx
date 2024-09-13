@@ -13,7 +13,7 @@ import { useAuth } from "@/contexts/AuthContext";
 
 const ConfirmUserAttribute = () => {
   const client = generateClient<Schema>();
-  const { user, userAttributes } = useAuth();
+  const { user } = useAuth();
 
   const [confirmationCode, setConfirmationCode] = useState<string | null>(null);
   const [userAttributeKey, setUserAttributeKey] =
