@@ -15,7 +15,7 @@ import {
 import { FC, useEffect, useState, useRef, MouseEventHandler } from "react";
 import { motion } from "framer-motion";
 import SidebarItem from "./SidebarItem";
-import { signOut } from 'aws-amplify/auth';
+import { signOut } from "aws-amplify/auth";
 
 import { toast } from "../ui/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
@@ -50,11 +50,15 @@ const HamburgerSidebarMenu: FC<{ onClose: () => void }> = ({ onClose }) => {
       href: "/community",
       icon: <MessageCircleIcon />,
     },
-    {
-      label: "Profile",
-      href: `${user?.username || "#"}`,
-      icon: <CircleUser />,
-    },
+    ...(isLoggedIn
+      ? [
+          {
+            label: "Profile",
+            href: `${user?.username || "#"}`,
+            icon: <CircleUser />,
+          },
+        ]
+      : []),
   ];
   const BOTTOM_SIDEBAR_ITEMS = [
     {
@@ -74,7 +78,7 @@ const HamburgerSidebarMenu: FC<{ onClose: () => void }> = ({ onClose }) => {
             title: "Logged out",
             description: "You have successfully logged out.",
           });
-          router.push("/sign-in")
+          router.push("/sign-in");
         } catch (error) {
           if (error instanceof Error) {
             toast({
@@ -89,7 +93,6 @@ const HamburgerSidebarMenu: FC<{ onClose: () => void }> = ({ onClose }) => {
               variant: "destructive",
             });
           }
-          console.log(error);
         }
       },
     },

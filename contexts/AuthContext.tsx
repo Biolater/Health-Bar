@@ -51,6 +51,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userAttributes, setUserAttributes] =
     useState<FetchUserAttributesOutput | null>(null);
+
   const fetchUsers = async (userId: string) => {
     const { errors, data: users } = await client.models.User.list({
       authMode: "apiKey",
@@ -59,45 +60,41 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     if (errors) {
       throw new Error(errors[0].message);
     }
-    if (users) {
-      return users.filter((user) => user.userId === userId);
-    }
+    return users?.filter((user) => user.userId === userId) || [];
   };
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const initializeAuth = async () => {
       try {
         const currentUser = await getCurrentUser();
         if (currentUser) {
-          const user = await fetchUsers(currentUser.userId);
-          if (user && user.length > 0) {
-            setUser(user[0]);
+          const fetchedUsers = await fetchUsers(currentUser.userId);
+          if (fetchedUsers.length > 0) {
+            setUser(fetchedUsers[0]);
             setIsLoggedIn(true);
           }
         }
       } catch (error) {
+        console.error("Error fetching user:", error);
         setUser(null);
       } finally {
         setLoading(false);
       }
     };
-    const a = async () => {
-      const attributes = await fetchUserAttributes();
-      setUserAttributes(attributes as FetchUserAttributesOutput);
-    };
-    if (user) a();
-    fetchUser();
+
+    initializeAuth();
   }, []);
+
   useEffect(() => {
-    const hubListenerCancelToken = Hub.listen("auth", ({ payload }) => {
+    const handleAuthEvents = Hub.listen("auth", ({ payload }) => {
       switch (payload.event) {
         case "signedIn":
           setIsLoggedIn(true);
           const { userId } = payload.data;
           const fetchUser = async () => {
-            const user = await fetchUsers(userId);
-            if (user && user.length > 0) {
-              setUser(user[0]);
+            const fetchedUsers = await fetchUsers(userId);
+            if (fetchedUsers.length > 0) {
+              setUser(fetchedUsers[0]);
             }
             setLoading(false);
           };
@@ -111,8 +108,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           break;
       }
     });
-    return () => hubListenerCancelToken();
+
+    return () => handleAuthEvents();
   }, []);
+
   return (
     <AuthContext.Provider value={{ user, loading, isLoggedIn, userAttributes }}>
       {children}

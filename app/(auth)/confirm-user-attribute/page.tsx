@@ -10,7 +10,8 @@ import { toast } from "@/components/ui/use-toast";
 import { generateClient } from "aws-amplify/api";
 import { type Schema } from "@/amplify/data/resource";
 import { useAuth } from "@/contexts/AuthContext";
-
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 const ConfirmUserAttribute = () => {
   const client = generateClient<Schema>();
   const { user } = useAuth();
@@ -20,6 +21,7 @@ const ConfirmUserAttribute = () => {
     useState<AuthVerifiableAttributeKey | null>(null);
   const [pendingEmail, setPendingEmail] = useState<string | null>(null);
   const [userEmailConfirmed, setUserEmailConfirmed] = useState(false);
+  const [emailConfirming, setEmailConfirming] = useState(false);
   const router = useRouter();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,10 +30,13 @@ const ConfirmUserAttribute = () => {
       confirmationCode,
     }: ConfirmUserAttributeInput) {
       try {
+        setEmailConfirming(true);
         await confirmUserAttribute({ userAttributeKey, confirmationCode });
         await updateUserEmail(pendingEmail!);
         setUserEmailConfirmed(true);
+        setEmailConfirming(false);
       } catch (error) {
+        setEmailConfirming(false);
         if (error instanceof Error) {
           toast({
             title: "Error",
@@ -112,14 +117,21 @@ const ConfirmUserAttribute = () => {
     }
   }, [userEmailConfirmed]);
   return (
-    <main className="w-full h-svh flex items-center justify-center">
-      <form onSubmit={handleSubmit}>
-        <input
+    <main className="w-full max-w-lg mx-auto p-4 h-svh flex flex-col gap-4 justify-center">
+      <div className="flex flex-col gap-1">
+        <h1 className="text-2xl font-semibold">Confirm your new email</h1>
+        <p className="">We sent a code to your new email</p>
+      </div>
+      <form className="w-full space-y-4" onSubmit={handleSubmit}>
+        <Input
           onChange={(e) => setConfirmationCode(e.target.value)}
           value={confirmationCode || ""}
           type="text"
+          required
         />
-        <button type="submit">Submit</button>
+        <Button disabled={emailConfirming} className="w-full" type="submit">
+          Submit
+        </Button>
       </form>
     </main>
   );
