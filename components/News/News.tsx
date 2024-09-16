@@ -19,6 +19,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
+import { toast } from "../ui/use-toast";
 
 export type Item = {
   title: string;
@@ -38,6 +39,8 @@ export type HealthNews = {
   status: string;
   items: Item[];
 };
+
+const twoDays = 2 * 24 * 60 * 60;
 
 const News = () => {
   const [healthNews, setHealthNews] = useState<HealthNews>({
@@ -362,23 +365,35 @@ const News = () => {
       },
     };
     try {
-      const response = await fetch(url, options);
+      const response = await fetch(url, {
+        ...options,
+        cache: "force-cache",
+        next: { revalidate: twoDays },
+      });
       const data: HealthNews = await response.json();
       data.items = data?.items?.slice(0, 10);
       if (data && data?.items?.length > 0) setHealthNews(data);
-    } catch (err) {
+    } catch (error) {
       setNewsLoading(false);
-      console.log(err);
+      if (error instanceof Error) {
+        toast({
+          title: "Error occured",
+          description: error.message,
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error occured",
+          description: "Unknown error occured",
+          variant: "destructive",
+        });
+      }
     } finally {
       setNewsLoading(false);
     }
   };
   useEffect(() => {
-    // fetchHealthNews()
-    const timeout = setTimeout(() => {
-      setNewsLoading(false);
-    }, 5000);
-    return () => clearTimeout(timeout);
+    fetchHealthNews()
   }, []);
   return (
     <section id="news" className="px-4 py-8 relative">
