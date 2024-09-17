@@ -285,6 +285,7 @@ const News = () => {
   const [displayLoadMoreButton, setDisplayLoadMoreButton] = useState(false);
   const [initialFetch, setInitialFetch] = useState(true);
   const handleLoadMoreButton = () => {
+    setInitialFetch(false);
     setLoading(true);
     setNewsCount((prevNewsCount) => prevNewsCount + 10);
   };
@@ -335,10 +336,7 @@ const News = () => {
     };
     fetchNews();
   }, [newsCount, initialFetch, toast]);
-  useEffect(() => {
-    setInitialFetch(false);
-    return () => setInitialFetch(true);
-  }, []);
+
   return (
     <main id="news" className="px-4 py-8 sm:px-16 md:px-32">
       {loading && <Loading />}
@@ -348,7 +346,9 @@ const News = () => {
       <HoverEffect items={news?.items || projects.items} />
       {displayLoadMoreButton && (
         <div className="w-full pt-4 flex items-center justify-center">
-          <Button onClick={handleLoadMoreButton}>Load More</Button>
+          <Button className="text-white" onClick={handleLoadMoreButton}>
+            Load More
+          </Button>
         </div>
       )}
       <ScrollToTop />

@@ -143,7 +143,7 @@ const Navbar = () => {
               className="cursor-pointer lg:hidden"
               onClick={handleSidebarOpen}
             >
-              <HamburgerIcon />
+              <HamburgerIcon className="stroke-white text-white" />
             </button>
           )}
         </div>

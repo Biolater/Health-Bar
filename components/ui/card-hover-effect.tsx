@@ -34,6 +34,7 @@ export const HoverEffect = ({
         <Link
           href={item?.newsUrl}
           key={item?.newsUrl}
+          target="_blank"
           className="relative group  block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -56,8 +57,10 @@ export const HoverEffect = ({
             )}
           </AnimatePresence>
           <Card>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.snippet}</CardDescription>
+            <CardTitle className="text-white">{item.title}</CardTitle>
+            <CardDescription className="text-white/90">
+              {item.snippet}
+            </CardDescription>
           </Card>
         </Link>
       ))}

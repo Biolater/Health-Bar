@@ -393,7 +393,7 @@ const News = () => {
     }
   };
   useEffect(() => {
-    fetchHealthNews()
+    fetchHealthNews();
   }, []);
   return (
     <section id="news" className="px-4 py-8 relative">
@@ -405,7 +405,6 @@ const News = () => {
           <Carousel
             opts={{
               align: "start",
-              loop: true,
             }}
             plugins={[
               Autoplay({

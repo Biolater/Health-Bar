@@ -135,7 +135,7 @@ const SymptomChecker = () => {
       </div>
       <div
         tabIndex={0}
-        className="w-full max-w-7xl mx-auto p-4 sm:px-16 md:px-32 flex flex-col"
+        className="w-full max-w-7xl mx-auto pb-4 px-4 sm:px-16 md:px-32 flex flex-col"
       >
         {chatMessages.length === 0 && (
           <div className="suggestions mb-4 gap-4 flex-wrap flex items-center justify-center">

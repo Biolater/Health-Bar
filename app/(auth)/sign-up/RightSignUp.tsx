@@ -91,7 +91,7 @@ const RightSignUp = () => {
             Sign up with Google
           </Button>
           <div className="my-5 text-sm text-muted-foreground h-[1px] w-full  bg-border signup-line relative">
-            <div className="divider">or</div>
+            <div className="divider bg-background">or</div>
           </div>
           <Button onClick={handleContinueWithEmail} className="h-10">
             Continue with email

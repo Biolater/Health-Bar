@@ -104,6 +104,5 @@ body {
   left: 50%;
   transform: translateX(-50%);
   padding: 0 16px;
-  background: #fff;
   font: normal 14px / 14px "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

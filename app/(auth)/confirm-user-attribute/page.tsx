@@ -75,7 +75,6 @@ const ConfirmUserAttribute = () => {
         if (errors && errors[0].message) {
           throw new Error(errors[0].message);
         }
-        console.log(data);
         toast({
           title: "Success",
           description: userAttributeKey
@@ -129,7 +128,7 @@ const ConfirmUserAttribute = () => {
           type="text"
           required
         />
-        <Button disabled={emailConfirming} className="w-full" type="submit">
+        <Button disabled={emailConfirming} className="w-full text-white" type="submit">
           Submit
         </Button>
       </form>
