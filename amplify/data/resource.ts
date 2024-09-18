@@ -11,9 +11,23 @@ const schema = a.schema({
       location: a.string(),
       pronouns: a.string(),
       profilePicture: a.string(),
+      posts: a.hasMany("Post", "userId"),
     })
     .secondaryIndexes((index) => [index("username")])
     .authorization((allow) => [allow.publicApiKey(), allow.owner()]),
+  Post: a
+    .model({
+      content: a.string().required(),
+      likesCount: a.integer().default(0),
+      commentsCount: a.integer().default(0),
+      userId: a.id(),
+      mediaUrl: a.string(),
+      user: a.belongsTo("User", "userId"),
+    })
+    .authorization((allow) => [
+      allow.publicApiKey().to(["read"]),
+      allow.owner(),
+    ]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
