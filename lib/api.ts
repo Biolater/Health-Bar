@@ -22,7 +22,9 @@ async function getUserByUsername(username: string) {
 
     // If data is available, return the first user in the list
     if (data && data.length > 0) {
-      return { user: data[0] };
+      const { posts, ...userWithoutPosts } = data[0];
+      const user = userWithoutPosts;
+      return { user };
     }
 
     // Return null if no user is found
