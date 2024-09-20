@@ -11,6 +11,7 @@ const Profile: React.FC<{ params: { username: string } }> = async ({
 
   // Await fetching the user data and current user data
   const { user } = await getUserByUsername(username);
+  
   // If no user is found, return a 404 page
   if (!user) {
     return notFound();

@@ -68,8 +68,8 @@ const ConfirmUserAttribute = () => {
   const updateUserEmail = async (email: string) => {
     if (user) {
       try {
-        const { errors, data } = await client.models.User.update({
-          id: user.id,
+        const { errors } = await client.models.User.update({
+          userId: user.userId,
           email,
         });
         if (errors && errors[0].message) {

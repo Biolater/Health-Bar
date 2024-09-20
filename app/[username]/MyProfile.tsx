@@ -10,9 +10,9 @@ const MyProfile: React.FC<{
   bio: string;
   joinDate: string;
   email: string;
-  websiteUrl: string | null;
-  location: string | null;
-  pronouns: string | null;
+  websiteUrl: string | null | undefined;
+  location: string | null | undefined;
+  pronouns: string | null | undefined;
   profilePicture: string;
 }> = ({
   username,

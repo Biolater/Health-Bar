@@ -13,22 +13,8 @@ import {
 
 Amplify.configure(outputs);
 
-interface User {
-  userId: string;
-  username: string;
-  email: string;
-  bio: string | null;
-  websiteUrl: string | null;
-  location: string | null;
-  pronouns: string | null;
-  profilePicture: string | null;
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
 type AuthContextType = {
-  user: User | null;
+  user: Schema["User"]["type"] | null;
   loading: boolean;
   isLoggedIn: boolean;
   userAttributes: FetchUserAttributesOutput | null;
@@ -46,7 +32,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const client = generateClient<Schema>();
 
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<Schema["User"]["type"] | null>(null);
   const [loading, setLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userAttributes, setUserAttributes] =

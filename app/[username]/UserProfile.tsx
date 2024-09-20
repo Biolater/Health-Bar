@@ -6,9 +6,9 @@ import { Separator } from "@radix-ui/react-separator";
 import MetaDataItem from "./MetaDataItem";
 import { formatTimestamp } from "@/lib/utils";
 import { Cake, Link, Mail, MapPin } from "lucide-react";
-const UserProfile: React.FC<{ userDetails: Schema["User"]["type"] }> = ({
-  userDetails,
-}) => {
+const UserProfile: React.FC<{
+  userDetails: Omit<Schema["User"]["type"], "posts">;
+}> = ({ userDetails }) => {
   const META_DATA = [
     {
       title: "Join date",

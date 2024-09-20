@@ -13,8 +13,13 @@ const schema = a.schema({
       profilePicture: a.string(),
       posts: a.hasMany("Post", "userId"),
     })
+    .identifier(["userId"])
     .secondaryIndexes((index) => [index("username")])
-    .authorization((allow) => [allow.publicApiKey(), allow.owner()]),
+    .authorization((allow) => [
+      allow.publicApiKey().to(["read", "create"]),
+      allow.owner(),
+      allow.authenticated().to(["read"]),
+    ]),
   Post: a
     .model({
       content: a.string().required(),
@@ -26,6 +31,7 @@ const schema = a.schema({
     })
     .authorization((allow) => [
       allow.publicApiKey().to(["read"]),
+      allow.authenticated().to(["read"]),
       allow.owner(),
     ]),
 });

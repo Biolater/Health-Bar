@@ -9,7 +9,7 @@ import ProfileSkeleton from "./ProfileSkeleton";
 
 const ClientProfile: React.FC<{
   username: string;
-  userDetails: Schema["User"]["type"];
+  userDetails: Omit<Schema["User"]["type"], "posts">;
 }> = ({ username, userDetails }) => {
   const { user, loading } = useAuth();
 

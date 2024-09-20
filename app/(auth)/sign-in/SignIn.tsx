@@ -14,7 +14,7 @@ const SignInContent = () => {
         Sign in with Google
       </Button>
       <div className="my-5 text-sm text-muted-foreground h-[1px] w-full  bg-border signup-line relative">
-        <div className="divider">or sign in with email</div>
+        <div className="divider bg-background">or sign in with email</div>
       </div>
       <SignInForm />
     </>

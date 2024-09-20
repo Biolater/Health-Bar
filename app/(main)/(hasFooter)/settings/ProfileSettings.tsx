@@ -155,7 +155,7 @@ const ProfileSettings = () => {
       setUserUpdateLoading(true);
       if (user) {
         const { errors, data: updatedUser } = await client.models.User.update({
-          id: user.id,
+          userId: user.userId,
           username: username || user.username,
           bio: bio || user.bio,
           location: location || user.location,
@@ -270,7 +270,7 @@ const ProfileSettings = () => {
                     if (user) {
                       const { errors, data: updatedUser } =
                         await client.models.User.update({
-                          id: user.id,
+                          userId: user.userId,
                           profilePicture: url.toString(),
                         });
                       if (errors && errors[0].message) {

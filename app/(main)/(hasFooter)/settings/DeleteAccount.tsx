@@ -29,7 +29,7 @@ const DeleteAccount = () => {
         setAccountDeleteLoading(true);
         if (user) {
           const { errors } = await client.models.User.delete({
-            id: user.id,
+            userId: user.userId,
           });
           if (errors && errors[0].message) {
             throw new Error(errors[0].message);
