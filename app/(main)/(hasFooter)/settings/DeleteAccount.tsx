@@ -42,19 +42,10 @@ const DeleteAccount = () => {
           });
         }
       } catch (error) {
-        if (error instanceof Error) {
-          toast({
-            title: "Error",
-            description: error.message,
-            variant: "destructive",
-          });
-        } else {
-          toast({
-            title: "Error",
-            description: "An unknown error occurred",
-            variant: "destructive",
-          });
-        }
+        toast({
+          description: error instanceof Error ? error.message : "An unknown Error occured",
+          variant: "destructive",
+        })
       }
     }
   };

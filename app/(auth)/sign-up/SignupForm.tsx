@@ -111,18 +111,10 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
           "Please confirm your account with the code we've sent your email.",
       });
     } catch (error) {
-      if (error instanceof Error) {
-        toast({
-          title: "Sign up Error",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Sign up Error",
-          description: "Something went wrong",
-          variant: "destructive",
-        });
+      toast({
+        description: error instanceof Error ? error.message : "An unknown Error occured",
+        variant: "destructive",
+      })
       }
     } finally {
       setLoading(false);
@@ -150,19 +142,10 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
       setEmail(values.email);
       setUserSignedUp(true);
     }catch(error){
-      if (error instanceof Error) {
-        toast({
-          title: "Error",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Error",
-          description: "Something went wrong",
-          variant: "destructive",
-        });
-      }
+      toast({
+        description: error instanceof Error ? error.message : "An unknown Error occured",
+        variant: "destructive",
+      })
     }
   };
   const [userSignedUp, setUserSignedUp] = useState(false);

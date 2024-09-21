@@ -323,13 +323,11 @@ const News = () => {
           });
         }
       } catch (error) {
-        if (error instanceof Error) {
-          console.error(error.message);
-          setDisplayLoadMoreButton(false);
-        } else {
-          console.error("An unknown error occurred:", error);
-          setDisplayLoadMoreButton(false);
-        }
+        toast({
+          description: error instanceof Error ? error.message : "An unknown Error occured",
+          variant: "destructive",
+        })
+        setDisplayLoadMoreButton(false)
       } finally {
         setLoading(false);
       }

@@ -3,7 +3,6 @@ import { generateClient } from "aws-amplify/api";
 import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json";
 import { getCurrentUser } from "aws-amplify/auth";
-import { toast } from "@/components/ui/use-toast";
 
 // Configure Amplify
 Amplify.configure(outputs);
@@ -49,7 +48,7 @@ async function getAllPosts(): Promise<{ posts: Schema["Post"]["type"][] }> {
     const { data, errors } = await client.models.Post.list({
       authMode: "apiKey",
     });
-    
+
     if (errors && errors.length > 0) {
       throw new Error(errors[0].message); // Throw the first error message
     }
@@ -61,4 +60,27 @@ async function getAllPosts(): Promise<{ posts: Schema["Post"]["type"][] }> {
     );
   }
 }
-export { getUserByUsername, getLoggedInUser, getAllPosts };
+
+async function deletePost(postId: string) {
+  try {
+    const { errors } = await client.models.Post.delete(
+      {
+        id: postId,
+      },
+      {
+        authMode: "userPool",
+      }
+    );
+    if (errors && errors.length > 0) {
+      throw new Error(errors[0].message); // Throw the first error message
+    }
+
+    return { isDeleted: true };
+  } catch (error) {
+    throw new Error(
+      error instanceof Error ? error.message : "An unknown error occured"
+    );
+  }
+}
+
+export { getUserByUsername, getLoggedInUser, getAllPosts, deletePost };

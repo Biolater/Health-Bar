@@ -19,14 +19,17 @@ import { generateClient } from "aws-amplify/api";
 import { type Schema } from "@/amplify/data/resource";
 import { toast } from "@/components/ui/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
+
 export default function CreatePostDialog() {
   const client = generateClient<Schema>();
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [mediaUrl, setMediaUrl] = useState("");
   const [mediaFile, setMediaFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { user } = useAuth();
+
   const createPost = async () => {
     try {
       if (!message) {
@@ -38,6 +41,7 @@ export default function CreatePostDialog() {
       }
 
       if (user) {
+        setLoading(true);
         const { data, errors } = await client.models.Post.create(
           {
             content: message,
@@ -67,26 +71,18 @@ export default function CreatePostDialog() {
       setMediaUrl("");
       setMediaFile(null);
     } catch (error) {
-      if (error instanceof Error) {
-        toast({
-          title: "Sign up Error",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Sign up Error",
-          description: "Something went wrong",
-          variant: "destructive",
-        });
-      }
+      toast({
+        description:
+          error instanceof Error ? error.message : "An unknown error occurred",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    // Here you would typically send the post data to your backend
-    console.log("Submitting post:", { message, mediaUrl, mediaFile });
     await createPost();
   };
 
@@ -175,7 +171,9 @@ export default function CreatePostDialog() {
             )}
           </div>
           <DialogFooter>
-            <Button type="submit">Post</Button>
+            <Button disabled={loading} type="submit">
+              Post
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>

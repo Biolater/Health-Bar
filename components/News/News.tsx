@@ -375,19 +375,10 @@ const News = () => {
       if (data && data?.items?.length > 0) setHealthNews(data);
     } catch (error) {
       setNewsLoading(false);
-      if (error instanceof Error) {
-        toast({
-          title: "Error occured",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Error occured",
-          description: "Unknown error occured",
-          variant: "destructive",
-        });
-      }
+      toast({
+        description: error instanceof Error ? error.message : "An unknown Error occured",
+        variant: "destructive",
+      })
     } finally {
       setNewsLoading(false);
     }

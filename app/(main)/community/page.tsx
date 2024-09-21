@@ -1,7 +1,5 @@
-import Posts from "./Posts";
-import { Suspense } from "react";
 import CreatePostDialog from "./CreatePost";
-import { Loading } from "@/components/index";
+import Posts from "./Posts";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Healthbar | Community",

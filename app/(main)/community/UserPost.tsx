@@ -4,13 +4,12 @@ import {
   Card,
   CardContent,
   CardHeader,
-  CardDescription,
-  CardTitle,
   CardFooter,
 } from "@/components/ui/card";
 import { Heart, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import type { myPostProps as userPostProps } from "./MyPost";
+import Link from "next/link";
 
 const UserPost: React.FC<userPostProps> = ({
   profileImage,
@@ -23,18 +22,23 @@ const UserPost: React.FC<userPostProps> = ({
 }) => {
   return (
     <Card className="w-full mx-auto">
-      <CardHeader className="flex flex-row items-center gap-4">
-        <Avatar>
-          <AvatarImage alt="Your profile picture" src={profileImage} />
-          <AvatarFallback>{username.slice(0, 2).toUpperCase()}</AvatarFallback>
-        </Avatar>
-        <div className="flex flex-col">
-          <p className="text-sm font-semibold">{username}</p>
-          <p className="text-xs text-muted-foreground">
-            {/* Posted on April 20, 2023 */}
-            Posted on {postDate}
-          </p>
-        </div>
+      <CardHeader className="flex items-start">
+        <Link href={`/${username}`}>
+          <div className="inline-flex flex-row gap-4 items-center">
+            <Avatar>
+              <AvatarImage alt="Your profile picture" src={profileImage} />
+              <AvatarFallback>
+                {username.slice(0, 2).toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
+            <div className="flex flex-col">
+              <p className="text-sm font-semibold">{username}</p>
+              <p className="text-xs text-muted-foreground">
+                Posted on {postDate}
+              </p>
+            </div>
+          </div>
+        </Link>
       </CardHeader>
       <CardContent>
         <p className="text-sm">{postContent}</p>

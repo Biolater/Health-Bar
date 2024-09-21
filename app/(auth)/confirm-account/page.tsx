@@ -44,19 +44,10 @@ const ConfirmAccount = () => {
         router.push("/sign-in");
       }
     } catch (error) {
-      if (error instanceof Error) {
-        toast({
-          title: "Error",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Error",
-          description: "An unkown error occured",
-          variant: "destructive",
-        });
-      }
+      toast({
+        description: error instanceof Error ? error.message : "An unknown Error occured",
+        variant: "destructive",
+      })
     } finally {
       setConfirmationLoading(false);
     }

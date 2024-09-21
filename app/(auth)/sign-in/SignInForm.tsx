@@ -120,19 +120,11 @@ const SignInForm = () => {
             variant: "destructive",
           });
       }
-    } catch (error: any) {
-      if (error instanceof Error) {
-        toast({
-          title: "An Error Occurred!",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          description: "An unknown error occurred!",
-          variant: "destructive",
-        });
-      }
+    } catch (error) {
+      toast({
+        description: error instanceof Error ? error.message : "An unknown Error occured",
+        variant: "destructive",
+      })
     } finally {
       setLoading(false);
     }

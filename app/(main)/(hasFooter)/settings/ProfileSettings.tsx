@@ -79,7 +79,7 @@ const ProfileSettings = () => {
   ) {
     const { nextStep } = output;
     setUserAttributeUpdateDetails(output);
-    
+
     switch (nextStep.updateAttributeStep) {
       case "CONFIRM_ATTRIBUTE_WITH_CODE":
         const codeDeliveryDetails = nextStep.codeDeliveryDetails;
@@ -111,240 +111,226 @@ const ProfileSettings = () => {
       });
       handleUpdateUserAttributeNextSteps(output);
     } catch (error) {
-      if (error instanceof Error) {
-        toast({
-          title: "Error",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Error",
-          description: "Something went wrong. Please try again later.",
-          variant: "destructive",
-        });
-      }
-    }
-  }
-  const client = generateClient<Schema>();
-  const { user } = useAuth();
-  const form = useForm<z.infer<typeof userSettingsSchema>>({
-    resolver: zodResolver(userSettingsSchema),
-    defaultValues: {
-      username: "",
-      email: "",
-      bio: "",
-      location: "",
-      websiteUrl: "",
-      pronouns: "",
-    },
-  });
-
-  const [userSettingInputs, setUserSettingInputs] = useState<
-    typeof USER_SETTING_INPUTS | null
-  >(null);
-  const [userUpdatedTrigger, setUserUpdatedTrigger] = useState(false);
-  const [userUpdateLoading, setUserUpdateLoading] = useState(false);
-  const [pendingEmail, setPendingEmail] = useState<string | null>(null)
-  const [userAttributeUpdateDetails, setUserAttributeUpdateDetails] =
-    useState<UpdateUserAttributeOutput | null>(null);
-  const onSubmit = async (values: z.infer<typeof userSettingsSchema>) => {
-    const { username, email, bio, location, websiteUrl, pronouns } = values;
-    let emailTimeoutId;
-    try {
-      setUserUpdateLoading(true);
-      if (user) {
-        const { errors, data: updatedUser } = await client.models.User.update({
-          userId: user.userId,
-          username: username || user.username,
-          bio: bio || user.bio,
-          location: location || user.location,
-          websiteUrl: websiteUrl || user.websiteUrl,
-          pronouns: pronouns || user.pronouns,
-        });
-        if (errors) {
-          throw new Error(errors[0].message);
-        }
-        if (updatedUser) {
-          setUserUpdatedTrigger(true);
-          toast({
-            title: "Success",
-            description: "User successfully updated",
-          });
-        }
-        if (email !== user.email) {
-          emailTimeoutId = setTimeout(async() => {
-          }, 1000)
-          setPendingEmail(email)
-          await handleUpdateUserAttribute("email", email);  
-        }
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log(error);
-        toast({
-          title: "Error",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Error",
-          description: "An unknown error occurred.",
-          variant: "destructive",
-        });
-      }
-    }
-  };
-
-  useEffect(() => {
-    if (user && !userSettingInputs) {
-      setUserSettingInputs(USER_SETTING_INPUTS);
-    }
-    if (user) {
-      form.reset({
-        username: user.username,
-        email: user.email,
-        bio: user.bio ?? "No bio yet",
-        location: user.location ?? "",
-        websiteUrl: user.websiteUrl ?? "",
-        pronouns: user.pronouns ?? "",
+      toast({
+        description:
+          error instanceof Error ? error.message : "An unknown Error occured",
+        variant: "destructive",
       });
     }
-  }, [user, form]);
-  useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
-    if (userUpdatedTrigger) {
-      timeoutId = setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-    }
-    return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
+    const client = generateClient<Schema>();
+    const { user } = useAuth();
+    const form = useForm<z.infer<typeof userSettingsSchema>>({
+      resolver: zodResolver(userSettingsSchema),
+      defaultValues: {
+        username: "",
+        email: "",
+        bio: "",
+        location: "",
+        websiteUrl: "",
+        pronouns: "",
+      },
+    });
+
+    const [userSettingInputs, setUserSettingInputs] = useState<
+      typeof USER_SETTING_INPUTS | null
+    >(null);
+    const [userUpdatedTrigger, setUserUpdatedTrigger] = useState(false);
+    const [userUpdateLoading, setUserUpdateLoading] = useState(false);
+    const [pendingEmail, setPendingEmail] = useState<string | null>(null);
+    const [userAttributeUpdateDetails, setUserAttributeUpdateDetails] =
+      useState<UpdateUserAttributeOutput | null>(null);
+    const onSubmit = async (values: z.infer<typeof userSettingsSchema>) => {
+      const { username, email, bio, location, websiteUrl, pronouns } = values;
+      let emailTimeoutId;
+      try {
+        setUserUpdateLoading(true);
+        if (user) {
+          const { errors, data: updatedUser } = await client.models.User.update(
+            {
+              userId: user.userId,
+              username: username || user.username,
+              bio: bio || user.bio,
+              location: location || user.location,
+              websiteUrl: websiteUrl || user.websiteUrl,
+              pronouns: pronouns || user.pronouns,
+            }
+          );
+          if (errors) {
+            throw new Error(errors[0].message);
+          }
+          if (updatedUser) {
+            setUserUpdatedTrigger(true);
+            toast({
+              title: "Success",
+              description: "User successfully updated",
+            });
+          }
+          if (email !== user.email) {
+            emailTimeoutId = setTimeout(async () => {}, 1000);
+            setPendingEmail(email);
+            await handleUpdateUserAttribute("email", email);
+          }
+        }
+      } catch (error) {
+        toast({
+          description:
+            error instanceof Error ? error.message : "An unknown Error occured",
+          variant: "destructive",
+        });
       }
     };
-  }, [userUpdatedTrigger]);
-  useEffect(() => {
-    const codeDelivery =
-      userAttributeUpdateDetails?.nextStep?.codeDeliveryDetails;
-    if (
-      userAttributeUpdateDetails &&
-      codeDelivery &&
-      codeDelivery.attributeName
-    ) {
-      localStorage.setItem("updatedAttribute", codeDelivery.attributeName);
-    }
-  }, [userAttributeUpdateDetails]);
-  useEffect(() => {
-    if(pendingEmail) localStorage.setItem("pendingEmail", pendingEmail)
-  }, [pendingEmail])
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="p-4 rounded-lg bg-primary md:basis-3/4"
-    >
-      <h2 className="text-white text-3xl font-bold mb-2">User</h2>
-      <div className="flex flex-col mb-1 gap-1 text-center">
-        <div className="size-36 cursor-pointer relative  transition-all duration-200 rounded-full self-center">
-          <Image
-            priority
-            className="rounded-full object-cover cursor-pointer size-36"
-            alt={`${user?.username}'s profile picture`}
-            src={user?.profilePicture || defaultImg.src}
-            width={144}
-            height={144}
-          />
-          <div className="absolute group/profile-pen top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-full flex items-center justify-center hover:bg-black/40 cursor-pointer transition-colors duration-300 rounded-full">
-            <Pen className="group-hover/profile-pen:opacity-100 stroke-white opacity-0 transition-all duration-300" />
-            <CldUploadWidget
-              options={{
-                multiple: false,
-                sources: ["local", "url", "camera"],
-              }}
-              uploadPreset="healthbar"
-              onSuccess={(results) => {
-                const handleProfilePicUpload = async (url: string) => {
-                  try {
-                    if (user) {
-                      const { errors, data: updatedUser } =
-                        await client.models.User.update({
-                          userId: user.userId,
-                          profilePicture: url.toString(),
-                        });
-                      if (errors && errors[0].message) {
-                        throw new Error(errors[0].message);
+
+    useEffect(() => {
+      if (user && !userSettingInputs) {
+        setUserSettingInputs(USER_SETTING_INPUTS);
+      }
+      if (user) {
+        form.reset({
+          username: user.username,
+          email: user.email,
+          bio: user.bio ?? "No bio yet",
+          location: user.location ?? "",
+          websiteUrl: user.websiteUrl ?? "",
+          pronouns: user.pronouns ?? "",
+        });
+      }
+    }, [user, form]);
+    useEffect(() => {
+      let timeoutId: ReturnType<typeof setTimeout> | null = null;
+      if (userUpdatedTrigger) {
+        timeoutId = setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }
+      return () => {
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+      };
+    }, [userUpdatedTrigger]);
+    useEffect(() => {
+      const codeDelivery =
+        userAttributeUpdateDetails?.nextStep?.codeDeliveryDetails;
+      if (
+        userAttributeUpdateDetails &&
+        codeDelivery &&
+        codeDelivery.attributeName
+      ) {
+        localStorage.setItem("updatedAttribute", codeDelivery.attributeName);
+      }
+    }, [userAttributeUpdateDetails]);
+    useEffect(() => {
+      if (pendingEmail) localStorage.setItem("pendingEmail", pendingEmail);
+    }, [pendingEmail]);
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="p-4 rounded-lg bg-primary md:basis-3/4"
+      >
+        <h2 className="text-white text-3xl font-bold mb-2">User</h2>
+        <div className="flex flex-col mb-1 gap-1 text-center">
+          <div className="size-36 cursor-pointer relative  transition-all duration-200 rounded-full self-center">
+            <Image
+              priority
+              className="rounded-full object-cover cursor-pointer size-36"
+              alt={`${user?.username}'s profile picture`}
+              src={user?.profilePicture || defaultImg.src}
+              width={144}
+              height={144}
+            />
+            <div className="absolute group/profile-pen top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-full flex items-center justify-center hover:bg-black/40 cursor-pointer transition-colors duration-300 rounded-full">
+              <Pen className="group-hover/profile-pen:opacity-100 stroke-white opacity-0 transition-all duration-300" />
+              <CldUploadWidget
+                options={{
+                  multiple: false,
+                  sources: ["local", "url", "camera"],
+                }}
+                uploadPreset="healthbar"
+                onSuccess={(results) => {
+                  const handleProfilePicUpload = async (url: string) => {
+                    try {
+                      if (user) {
+                        const { errors, data: updatedUser } =
+                          await client.models.User.update({
+                            userId: user.userId,
+                            profilePicture: url.toString(),
+                          });
+                        if (errors && errors[0].message) {
+                          throw new Error(errors[0].message);
+                        }
+                        if (updatedUser) {
+                          toast({
+                            title: "Success",
+                            description: "Profile picture successfully updated",
+                          });
+                        }
                       }
-                      if (updatedUser) {
-                        toast({
-                          title: "Success",
-                          description: "Profile picture successfully updated",
-                        });
-                      }
+                    } catch (error) {
+                      console.log(error);
                     }
-                  } catch (error) {
-                    console.log(error);
+                  };
+                  if (results.info && typeof results.info === "object") {
+                    const info: CloudinaryUploadWidgetInfo = results.info;
+                    handleProfilePicUpload(info.secure_url);
                   }
-                };
-                if (results.info && typeof results.info === "object") {
-                  const info: CloudinaryUploadWidgetInfo = results.info;
-                  handleProfilePicUpload(info.secure_url);
-                }
-              }}
-            >
-              {({ open }) => {
-                return (
-                  <button
-                    className="w-full h-full opacity-0 absolute"
-                    onClick={() => open()}
-                  >
-                    Upload an Image
-                  </button>
-                );
-              }}
-            </CldUploadWidget>
+                }}
+              >
+                {({ open }) => {
+                  return (
+                    <button
+                      className="w-full h-full opacity-0 absolute"
+                      onClick={() => open()}
+                    >
+                      Upload an Image
+                    </button>
+                  );
+                }}
+              </CldUploadWidget>
+            </div>
           </div>
         </div>
-      </div>
-      <Form {...form}>
-        <form
-          className="gap-4 flex flex-col"
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
-          {userSettingInputs &&
-            userSettingInputs.map((input) => (
-              <FormField
-                key={input.label}
-                control={form.control}
-                name={input.name as keyof z.infer<typeof userSettingsSchema>}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-white">{input.label}</FormLabel>
-                    <FormControl>
-                      <Input
-                        className="text-white placeholder:text-white/60"
-                        placeholder={input.placeholder}
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            ))}
-          <Button
-            disabled={userUpdateLoading}
-            type="submit"
-            className="w-full md:w-auto self-end"
-            variant="secondary"
+        <Form {...form}>
+          <form
+            className="gap-4 flex flex-col"
+            onSubmit={form.handleSubmit(onSubmit)}
           >
-            Save Settings
-          </Button>
-        </form>
-      </Form>
-    </motion.div>
-  );
+            {userSettingInputs &&
+              userSettingInputs.map((input) => (
+                <FormField
+                  key={input.label}
+                  control={form.control}
+                  name={input.name as keyof z.infer<typeof userSettingsSchema>}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">
+                        {input.label}
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          className="text-white placeholder:text-white/60"
+                          placeholder={input.placeholder}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              ))}
+            <Button
+              disabled={userUpdateLoading}
+              type="submit"
+              className="w-full md:w-auto self-end"
+              variant="secondary"
+            >
+              Save Settings
+            </Button>
+          </form>
+        </Form>
+      </motion.div>
+    );
+  }
 };
 
 export default ProfileSettings;

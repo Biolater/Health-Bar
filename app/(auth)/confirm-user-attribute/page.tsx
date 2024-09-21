@@ -37,18 +37,10 @@ const ConfirmUserAttribute = () => {
         setEmailConfirming(false);
       } catch (error) {
         setEmailConfirming(false);
-        if (error instanceof Error) {
-          toast({
-            title: "Error",
-            description: error.message,
-            variant: "destructive",
-          });
-        } else {
-          toast({
-            title: "Error",
-            description: "An unknown error occurred",
-            variant: "destructive",
-          });
+        toast({
+          description: error instanceof Error ? error.message : "An unknown Error occured",
+          variant: "destructive",
+        })
         }
       }
     }
@@ -84,19 +76,10 @@ const ConfirmUserAttribute = () => {
             : "",
         });
       } catch (err) {
-        if (err instanceof Error) {
-          toast({
-            title: "Error",
-            description: err.message,
-            variant: "destructive",
-          });
-        } else {
-          toast({
-            title: "Error",
-            description: "An unknown error occurred",
-            variant: "destructive",
-          });
-        }
+        toast({
+          description: error instanceof Error ? error.message : "An unknown Error occured",
+          variant: "destructive",
+        })
       }
     }
   };

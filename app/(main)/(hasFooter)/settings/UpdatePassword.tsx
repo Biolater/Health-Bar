@@ -60,19 +60,10 @@ const UpdatePassword = () => {
         });
         router.push("/");
       } catch (error) {
-        if (error instanceof Error) {
-          toast({
-            title: "Error",
-            description: error.message,
-            variant: "destructive",
-          });
-        } else {
-          toast({
-            title: "Error",
-            description: "Something went wrong",
-            variant: "destructive",
-          });
-        }
+        toast({
+          description: error instanceof Error ? error.message : "An unknown Error occured",
+          variant: "destructive",
+        })
       }
     };
     handleUpdatePassword();
