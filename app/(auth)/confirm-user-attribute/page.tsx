@@ -12,6 +12,7 @@ import { type Schema } from "@/amplify/data/resource";
 import { useAuth } from "@/contexts/AuthContext";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+
 const ConfirmUserAttribute = () => {
   const client = generateClient<Schema>();
   const { user } = useAuth();
@@ -23,6 +24,7 @@ const ConfirmUserAttribute = () => {
   const [userEmailConfirmed, setUserEmailConfirmed] = useState(false);
   const [emailConfirming, setEmailConfirming] = useState(false);
   const router = useRouter();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     async function handleConfirmUserAttribute({
@@ -38,10 +40,10 @@ const ConfirmUserAttribute = () => {
       } catch (error) {
         setEmailConfirming(false);
         toast({
-          description: error instanceof Error ? error.message : "An unknown Error occured",
+          description:
+            error instanceof Error ? error.message : "An unknown Error occured",
           variant: "destructive",
-        })
-        }
+        });
       }
     }
     if (confirmationCode && userAttributeKey) {
@@ -57,6 +59,7 @@ const ConfirmUserAttribute = () => {
       });
     }
   };
+
   const updateUserEmail = async (email: string) => {
     if (user) {
       try {
@@ -77,12 +80,13 @@ const ConfirmUserAttribute = () => {
         });
       } catch (err) {
         toast({
-          description: error instanceof Error ? error.message : "An unknown Error occured",
+          description: err instanceof Error ? err.message : "An unknown Error occured",
           variant: "destructive",
-        })
+        });
       }
     }
   };
+
   useEffect(() => {
     const userAttributeKey = localStorage.getItem("updatedAttribute");
     const pendingEmail = localStorage.getItem("pendingEmail");
@@ -90,6 +94,7 @@ const ConfirmUserAttribute = () => {
     if (userAttributeKey)
       setUserAttributeKey(userAttributeKey as AuthVerifiableAttributeKey);
   }, []);
+
   useEffect(() => {
     if (userEmailConfirmed) {
       localStorage.removeItem("updatedAttribute");
@@ -98,11 +103,12 @@ const ConfirmUserAttribute = () => {
       router.push("/");
     }
   }, [userEmailConfirmed]);
+
   return (
     <main className="w-full max-w-lg mx-auto p-4 h-svh flex flex-col gap-4 justify-center">
       <div className="flex flex-col gap-1">
         <h1 className="text-2xl font-semibold">Confirm your new email</h1>
-        <p className="">We sent a code to your new email</p>
+        <p>We sent a code to your new email</p>
       </div>
       <form className="w-full space-y-4" onSubmit={handleSubmit}>
         <Input

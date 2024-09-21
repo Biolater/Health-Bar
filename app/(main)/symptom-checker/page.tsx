@@ -88,7 +88,7 @@ const SymptomChecker = () => {
         });
         return [...prevMessages];
       });
-    } catch (err) {
+    } catch (error) {
       setLoading(false)
       toast({
         description: error instanceof Error ? error.message : "An unknown Error occured",

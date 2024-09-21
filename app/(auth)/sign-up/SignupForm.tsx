@@ -53,6 +53,22 @@ const FORM_ITEMS: FormItem[] = [
 
 const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
   const client = generateClient<Schema>();
+  const router = useRouter();
+
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [userSignedUp, setUserSignedUp] = useState(false);
+
+  const form = useForm<z.infer<typeof signUpFormSchema>>({
+    resolver: zodResolver(signUpFormSchema),
+    defaultValues: {
+      email: "",
+      username: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
+
   const fetchUsers = async () => {
     try {
       const { errors, data: users } = await client.models.User.list({
@@ -66,18 +82,7 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
       console.log(error);
     }
   };
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const form = useForm<z.infer<typeof signUpFormSchema>>({
-    resolver: zodResolver(signUpFormSchema),
-    defaultValues: {
-      email: "",
-      username: "",
-      password: "",
-      confirmPassword: "",
-    },
-  });
-  const router = useRouter();
+
   const handleSignUp = async (
     email: string,
     password: string,
@@ -89,6 +94,7 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
         username: email,
         password,
       });
+
       if (userId) {
         const { errors } = await client.models.User.create(
           {
@@ -104,6 +110,7 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
           throw new Error(errors[0].message);
         }
       }
+
       router.push("/confirm-account");
       toast({
         title: "Confirm Account",
@@ -112,49 +119,54 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
       });
     } catch (error) {
       toast({
-        description: error instanceof Error ? error.message : "An unknown Error occured",
+        description:
+          error instanceof Error ? error.message : "An unknown error occurred",
         variant: "destructive",
-      })
-      }
+      });
     } finally {
       setLoading(false);
     }
   };
+
   const onSubmit = async (values: z.infer<typeof signUpFormSchema>) => {
-    try{
+    try {
       const { errors, data: users } = await client.models.User.list({
         authMode: "apiKey",
-        selectionSet: ['username'],
+        selectionSet: ["username"],
         filter: {
           username: {
-            beginsWith: values.username
-          }
-        }
-      })
-      if(errors && errors[0].message){
-        throw new Error(errors[0].message)
+            beginsWith: values.username,
+          },
+        },
+      });
+
+      if (errors && errors[0].message) {
+        throw new Error(errors[0].message);
       }
-      if(users.length > 0){
-        // check if username is taken
-        throw new Error("A user with this username already exists")
+
+      if (users.length > 0) {
+        throw new Error("A user with this username already exists");
       }
+
       await handleSignUp(values.email, values.password, values.username);
       setEmail(values.email);
       setUserSignedUp(true);
-    }catch(error){
+    } catch (error) {
       toast({
-        description: error instanceof Error ? error.message : "An unknown Error occured",
+        description:
+          error instanceof Error ? error.message : "An unknown error occurred",
         variant: "destructive",
-      })
+      });
     }
   };
-  const [userSignedUp, setUserSignedUp] = useState(false);
+
   useEffect(() => {
     fetchUsers();
     if (userSignedUp) {
       localStorage.setItem("emailForConfirmation", email);
     }
   }, [userSignedUp]);
+
   return (
     <Form {...form}>
       <motion.form
@@ -180,6 +192,7 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
             )}
           />
         ))}
+
         <div className="buttons flex items-center gap-2">
           <Button
             disabled={loading}
