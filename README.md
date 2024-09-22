@@ -79,11 +79,9 @@
 
 * **Focus on user empowerment:** We equip users with the knowledge and tools to make informed decisions about their health.
 * **Supportive community:** We foster a positive and encouraging environment for users to connect and offer each other support.
-* **AI integration (future):** Our planned AI-powered features will provide personalized insights and enhance user experience (planned feature).
+* **AI integration :** Our planned AI-powered features will provide personalized insights and enhance user experience.
 
 We are still under development, but we're excited to share our progress and welcome your feedback!
-
-Use the `BLANK_README.md` to get started.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -99,16 +97,6 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-<!-- USAGE EXAMPLES -->
-
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## Contributing
