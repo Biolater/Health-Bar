@@ -61,7 +61,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://main.d35n0mu3dfg9d4.amplifyapp.com/)
 
   HealthBar is a comprehensive healthcare website designed to empower individuals to take charge of their health and connect with a supportive community. We aim to provide users with:
 
@@ -70,7 +70,7 @@
 * **Search functionality:** Easily find relevant information with our powerful search bar.
 * **Personalized newsfeed:** Stay updated on the latest health news based on your interests (optional feature).
 * **Community forum:** Connect with others, share experiences, and offer support.
-* **Symptom checker (future):** Utilize an AI-powered symptom checker to gain insights into your health concerns (planned feature).
+* **Symptom checker:** Utilize an AI-powered symptom checker to gain insights into your health concerns.
 * **Direct messaging (future):**  Connect privately with other users who follow you (planned feature).
 * **Social features (future):** Follow users, view profiles, and stay updated on their health journey (planned feature).
 
