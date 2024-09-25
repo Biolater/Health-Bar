@@ -74,8 +74,6 @@ async function deletePost(postId: string) {
     if (errors && errors.length > 0) {
       throw new Error(errors[0].message); // Throw the first error message
     }
-
-    return { isDeleted: true };
   } catch (error) {
     throw new Error(
       error instanceof Error ? error.message : "An unknown error occured"
@@ -83,4 +81,76 @@ async function deletePost(postId: string) {
   }
 }
 
-export { getUserByUsername, getLoggedInUser, getAllPosts, deletePost };
+async function updatePostContent(postId: string, newContent: string) {
+  try {
+    const { errors } = await client.models.Post.update(
+      {
+        id: postId,
+        content: newContent,
+      },
+      {
+        authMode: "userPool",
+      }
+    );
+    if (errors && errors.length > 0) {
+      throw new Error(errors[0].message); // Throw the first error message
+    }
+  } catch (error) {
+    throw new Error(
+      error instanceof Error ? error.message : "An unknown error occured"
+    );
+  }
+}
+
+async function toggleLike(
+  postId: string,
+  userId: string,
+  action: "like" | "dislike"
+) {
+  try {
+    if (action === "like") {
+      const existingLike = await client.models.Like.get(
+        {
+          postId,
+          userId,
+        },
+        {
+          authMode: "userPool",
+        }
+      );
+      if (!existingLike?.data) {
+        const { errors } = await client.models.Like.create(
+          { postId, userId },
+          { authMode: "userPool" }
+        );
+        if (errors && errors.length > 0) {
+          throw new Error(errors[0].message); // Specific error handling for create
+        }
+      }
+    } else {
+      const { errors } = await client.models.Like.delete(
+        {
+          postId,
+          userId,
+        },
+        { authMode: "userPool" }
+      );
+      if (errors && errors.length > 0) {
+        throw new Error(errors[0].message); // Specific error handling for delete
+      }
+    }
+  } catch (error) {
+    throw new Error(
+      error instanceof Error ? error.message : "An unknown error occured"
+    );
+  }
+}
+
+export {
+  getUserByUsername,
+  getLoggedInUser,
+  getAllPosts,
+  deletePost,
+  updatePostContent,
+  toggleLike,
+};
