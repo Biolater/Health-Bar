@@ -26,15 +26,15 @@
     <img src="https://main.d35n0mu3dfg9d4.amplifyapp.com/_next/static/media/logo.7e601d73.svg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Health Bar</h3>
+  <h3 align="center">Job Hub</h3>
 
   <p align="center">
-    A comprehensive healthcare website to empower individuals and foster a supportive community.
+  JobHub is a centralized job search platform designed to help you find and track your dream jobs.** Streamline your application process with features like saving and organizing jobs, adding personalized notes, and visualizing your progress through interactive charts. Sign up today and take control of your job search journey with JobHub!
     <br />
-     <a href="https://github.com/biolater/healthbar"><strong>Explore the docs »</strong></a>
+     <a href="https://github.com/biolater/jobhub"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://main.d35n0mu3dfg9d4.amplifyapp.com/">View Demo</a>
+    <a href="https://newmain.d2uhr2kwe1sd1q.amplifyapp.com/">View Demo</a>
     ·
   </p>
 </div>
@@ -63,23 +63,21 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://main.d35n0mu3dfg9d4.amplifyapp.com/)
 
-  HealthBar is a comprehensive healthcare website designed to empower individuals to take charge of their health and connect with a supportive community. We aim to provide users with:
+HealthBar is a comprehensive healthcare website designed to empower individuals to take charge of their health and connect with a supportive community. We aim to provide users with:
 
-
-* **In-depth health information:** Learn about diseases, symptoms, treatments, and preventative measures.
-* **Search functionality:** Easily find relevant information with our powerful search bar.
-* **Personalized newsfeed:** Stay updated on the latest health news based on your interests (optional feature).
-* **Community forum:** Connect with others, share experiences, and offer support.
-* **Symptom checker:** Utilize an AI-powered symptom checker to gain insights into your health concerns.
-* **Direct messaging (future):**  Connect privately with other users who follow you (planned feature).
-* **Social features (future):** Follow users, view profiles, and stay updated on their health journey (planned feature).
-
+- **In-depth health information:** Learn about diseases, symptoms, treatments, and preventative measures.
+- **Search functionality:** Easily find relevant information with our powerful search bar.
+- **Personalized newsfeed:** Stay updated on the latest health news based on your interests (optional feature).
+- **Community forum:** Connect with others, share experiences, and offer support.
+- **Symptom checker:** Utilize an AI-powered symptom checker to gain insights into your health concerns.
+- **Direct messaging (future):** Connect privately with other users who follow you (planned feature).
+- **Social features (future):** Follow users, view profiles, and stay updated on their health journey (planned feature).
 
 **Here's why HealthBar is unique:**
 
-* **Focus on user empowerment:** We equip users with the knowledge and tools to make informed decisions about their health.
-* **Supportive community:** We foster a positive and encouraging environment for users to connect and offer each other support.
-* **AI integration :** Our planned AI-powered features will provide personalized insights and enhance user experience.
+- **Focus on user empowerment:** We equip users with the knowledge and tools to make informed decisions about their health.
+- **Supportive community:** We foster a positive and encouraging environment for users to connect and offer each other support.
+- **AI integration :** Our planned AI-powered features will provide personalized insights and enhance user experience.
 
 We are still under development, but we're excited to share our progress and welcome your feedback!
 
@@ -96,8 +94,6 @@ This section should list any major frameworks/libraries used to bootstrap your p
 - [![Aws][AWS]][Aws-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ## Contributing
 

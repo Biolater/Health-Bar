@@ -1,13 +1,13 @@
 "use client";
 import { useAuth } from "@/contexts/AuthContext";
 import UserPost from "./UserPost";
-import { type Schema } from "@/amplify/data/resource";
 import MyPost from "./MyPost";
 import { useEffect, useState } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { getAllPosts } from "@/lib/api";
 import PostCardSkeleton from "./PostCardSkeleton";
 import defaultImg from "@/assets/defaultProfileImg.png";
+import { type Schema } from "@/amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 const Posts = () => {
   const client = generateClient<Schema>();
@@ -60,15 +60,6 @@ const Posts = () => {
     return () => sub.unsubscribe();
   }, []);
 
-  function formatDate(isoString: string): string {
-    const date = new Date(isoString);
-    const options: Intl.DateTimeFormatOptions = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    return date.toLocaleDateString("en-US", options);
-  }
   if (postsLoading || loading)
     return Array.from({ length: 15 }).map((_, idx) => (
       <PostCardSkeleton key={idx} />
@@ -83,13 +74,23 @@ const Posts = () => {
               postContent={post.content}
               postId={post.id}
               profileImage={user?.profilePicture || defaultImg.src}
+              userId={user?.userId || ""}
               username={user?.username || ""}
-              postDate={formatDate(post.createdAt)}
-              commentCount={post.commentsCount || 0}
-              likeCount={post.likesCount || 0}
+              postDate={post.createdAt}
+              media={{
+                type: (post.media?.type as "video" | "image") || "image",
+                url: post.media?.url || "",
+              }}
               onDelete={(postId) =>
                 setPosts(posts?.filter((post) => post.id !== postId))
               }
+              onUpdate={(postId, newContent) => {
+                setPosts((prevPosts) =>
+                  prevPosts?.map((post) =>
+                    postId === post.id ? { ...post, content: newContent } : post
+                  )
+                );
+              }}
               key={idx}
             />
           );
@@ -99,10 +100,9 @@ const Posts = () => {
               postContent={post.content}
               postId={post.id}
               profileImage={user?.profilePicture || defaultImg.src}
-              postDate={formatDate(post.createdAt)}
+              postDate={post.createdAt}
+              userId={user?.userId || ""}
               username={usernames[post.id] || ""}
-              commentCount={post.commentsCount || 0}
-              likeCount={post.likesCount || 0}
               key={idx}
             />
           );

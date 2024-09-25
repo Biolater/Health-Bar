@@ -1,6 +1,7 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Plus, ImageIcon, X } from "lucide-react";
 import { useState, useRef } from "react";
 import {
   Dialog,
@@ -11,21 +12,20 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { ImageIcon, X } from "lucide-react";
 import { generateClient } from "aws-amplify/api";
 import { type Schema } from "@/amplify/data/resource";
 import { toast } from "@/components/ui/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
+import { uploadFile } from "@uploadcare/upload-client";
 
 export default function CreatePostDialog() {
   const client = generateClient<Schema>();
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const [mediaUrl, setMediaUrl] = useState("");
   const [mediaFile, setMediaFile] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null); // State for media preview
   const [loading, setLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { user } = useAuth();
@@ -42,22 +42,32 @@ export default function CreatePostDialog() {
 
       if (user) {
         setLoading(true);
-        const { data, errors } = await client.models.Post.create(
-          {
-            content: message,
-            userId: user.userId,
-          },
-          {
-            authMode: "userPool",
-          }
-        );
-        if (errors && errors[0].message) {
-          throw new Error(errors[0].message);
-        }
-        if (data) {
-          toast({
-            description: "Post created successfully",
+        // TODO: Implement file upload logic here
+        if (mediaFile) {
+          const result = await uploadFile(mediaFile, {
+            publicKey: "1d847a0dfe61deca953d",
+            store: "auto",
           });
+          console.log(result);
+          const fileType = result.isImage ? "image" : "video";
+          const { data, errors } = await client.models.Post.create(
+            {
+              content: message,
+              userId: user.userId,
+              media: { type: fileType, url: result.cdnUrl || "" },
+            },
+            {
+              authMode: "userPool",
+            }
+          );
+          if (errors && errors[0].message) {
+            throw new Error(errors[0].message);
+          }
+          if (data) {
+            toast({
+              description: "Post created successfully",
+            });
+          }
         }
       } else {
         toast({
@@ -68,8 +78,8 @@ export default function CreatePostDialog() {
       setOpen(false);
       // Reset form
       setMessage("");
-      setMediaUrl("");
       setMediaFile(null);
+      setPreview(null);
     } catch (error) {
       toast({
         description:
@@ -90,13 +100,14 @@ export default function CreatePostDialog() {
     const file = event.target.files?.[0];
     if (file) {
       setMediaFile(file);
-      setMediaUrl("");
+      const blob = URL.createObjectURL(file);
+      setPreview(blob);
     }
   };
 
   const removeMedia = () => {
     setMediaFile(null);
-    setMediaUrl("");
+    setPreview(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
@@ -107,7 +118,7 @@ export default function CreatePostDialog() {
       <DialogTrigger asChild>
         <CreatePostButton onClick={() => setOpen(true)} />
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] max-h-[90svh] overflow-auto">
         <DialogHeader>
           <DialogTitle>Create a new post</DialogTitle>
           <DialogDescription>
@@ -136,38 +147,39 @@ export default function CreatePostDialog() {
                 >
                   <ImageIcon className="h-4 w-4" />
                 </Button>
-                <Input
+                <input
                   type="file"
                   ref={fileInputRef}
                   className="hidden"
                   onChange={handleFileChange}
                   accept="image/*,video/*"
                 />
-                <Input
-                  value={mediaUrl}
-                  onChange={(e) => {
-                    setMediaUrl(e.target.value);
-                    setMediaFile(null);
-                  }}
-                  placeholder="Or enter media URL"
-                />
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="icon"
-                  onClick={removeMedia}
-                  disabled={!mediaFile && !mediaUrl}
-                >
-                  <X className="h-4 w-4" />
-                </Button>
+                {mediaFile && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    onClick={removeMedia}
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                )}
               </div>
             </div>
-            {(mediaFile || mediaUrl) && (
+            {mediaFile && (
               <div className="text-sm text-muted-foreground">
-                {mediaFile
-                  ? `File selected: ${mediaFile.name}`
-                  : `URL: ${mediaUrl}`}
+                File selected: {mediaFile.name}
               </div>
+            )}
+            {preview && mediaFile?.type.startsWith("image/") && (
+              <img
+                src={preview}
+                alt="Media preview"
+                className="max-w-full w-full object-cover rounded max-h-64"
+              />
+            )}
+            {preview && mediaFile?.type.startsWith("video/") && (
+              <video controls src={preview} className="max-w-full max-h-64" />
             )}
           </div>
           <DialogFooter>
