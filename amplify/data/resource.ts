@@ -12,6 +12,7 @@ const schema = a.schema({
       pronouns: a.string(),
       profilePicture: a.string(),
       posts: a.hasMany("Post", "userId"),
+      
     })
     .identifier(["userId"])
     .secondaryIndexes((index) => [index("username")])
@@ -25,6 +26,7 @@ const schema = a.schema({
       content: a.string().required(),
       likesCount: a.integer().default(0),
       likes: a.hasMany("Like", "postId"),
+      comments: a.hasMany("Comment", "postId"),
       commentsCount: a.integer().default(0),
       userId: a.id(),
       media: a.customType({
@@ -49,18 +51,18 @@ const schema = a.schema({
       allow.authenticated(),
       allow.owner().to(["update", "delete"]),
     ]),
-  // Comment: a
-  //   .model({
-  //     content: a.string().required(),
-  //     postId: a.id().required(),
-  //     userId: a.id().required(),
-  //     post: a.belongsTo("Post", "postId"),
-  //   })
-  //   .identifier(["postId", "userId"])
-  //   .authorization((allow) => [
-  //     allow.authenticated(),
-  //     allow.owner().to(["update", "delete"]),
-  //   ]),
+  Comment: a
+    .model({
+      content: a.string().required(),
+      postId: a.id().required(),
+      userId: a.id().required(),
+      post: a.belongsTo("Post", "postId"),
+    })
+    .identifier(["postId", "userId"])
+    .authorization((allow) => [
+      allow.authenticated(),
+      allow.owner().to(["update", "delete"]),
+    ]),
 });
 
 export type Schema = ClientSchema<typeof schema>;

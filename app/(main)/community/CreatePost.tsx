@@ -47,6 +47,7 @@ export default function CreatePostDialog() {
           const result = await uploadFile(mediaFile, {
             publicKey: "1d847a0dfe61deca953d",
             store: "auto",
+            source: ""
           });
           console.log(result);
           const fileType = result.isImage ? "image" : "video";
@@ -81,7 +82,9 @@ export default function CreatePostDialog() {
       setMediaFile(null);
       setPreview(null);
     } catch (error) {
+      console.log(error)
       toast({
+        title: "Error",
         description:
           error instanceof Error ? error.message : "An unknown error occurred",
         variant: "destructive",
@@ -98,11 +101,31 @@ export default function CreatePostDialog() {
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    if (file) {
-      setMediaFile(file);
-      const blob = URL.createObjectURL(file);
-      setPreview(blob);
+    const fileType = file?.type;
+    if (!file || !fileType) {
+      // Handle invalid input
+      toast({
+        title: "Error",
+        description: "Please select a valid file.",
+        variant: "destructive",
+      });
+      return;
     }
+
+    const allowedMimeTypes = ["image/", "video/"]; 
+
+    if (!allowedMimeTypes.some((mimeType) => fileType.startsWith(mimeType))) {
+      toast({
+        title: "Error",
+        description: "Invalid file type. Only images and videos are allowed.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setMediaFile(file);
+    const blob = URL.createObjectURL(file);
+    setPreview(blob);
   };
 
   const removeMedia = () => {
@@ -179,7 +202,7 @@ export default function CreatePostDialog() {
               />
             )}
             {preview && mediaFile?.type.startsWith("video/") && (
-              <video controls src={preview} className="max-w-full max-h-64" />
+              <video controls src={preview} className="max-w-full rounded max-h-64" />
             )}
           </div>
           <DialogFooter>
