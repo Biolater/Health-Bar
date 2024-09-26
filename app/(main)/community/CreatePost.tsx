@@ -47,7 +47,7 @@ export default function CreatePostDialog() {
           const result = await uploadFile(mediaFile, {
             publicKey: "1d847a0dfe61deca953d",
             store: "auto",
-            source: ""
+            source: "",
           });
           console.log(result);
           const fileType = result.isImage ? "image" : "video";
@@ -82,7 +82,7 @@ export default function CreatePostDialog() {
       setMediaFile(null);
       setPreview(null);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       toast({
         title: "Error",
         description:
@@ -112,7 +112,7 @@ export default function CreatePostDialog() {
       return;
     }
 
-    const allowedMimeTypes = ["image/", "video/"]; 
+    const allowedMimeTypes = ["image/", "video/"];
 
     if (!allowedMimeTypes.some((mimeType) => fileType.startsWith(mimeType))) {
       toast({
@@ -202,7 +202,11 @@ export default function CreatePostDialog() {
               />
             )}
             {preview && mediaFile?.type.startsWith("video/") && (
-              <video controls src={preview} className="max-w-full rounded max-h-64" />
+              <video
+                controls
+                src={preview}
+                className="max-w-full rounded max-h-64"
+              />
             )}
           </div>
           <DialogFooter>
@@ -226,3 +230,4 @@ const CreatePostButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
     </Button>
   );
 };
+
