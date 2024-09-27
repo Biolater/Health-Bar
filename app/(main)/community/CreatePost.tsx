@@ -230,4 +230,3 @@ const CreatePostButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
     </Button>
   );
 };
-
