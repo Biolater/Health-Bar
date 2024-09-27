@@ -31,6 +31,7 @@ import { toast } from "@/components/ui/use-toast";
 import { deletePost, updatePostContent, toggleLike } from "@/lib/api";
 import Link from "next/link";
 import { PostProps, formatPostDate, truncateText } from "./postUtils";
+import { CommentModal } from "./PostCommentModal";
 import Image from "next/image";
 import { type Schema } from "@/amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
@@ -301,10 +302,18 @@ export default function MyPost({
               />{" "}
               <span>{likes}</span>
             </Button>
-            <Button variant="ghost" size="sm" className="text-muted-foreground">
-              <MessageCircle className="w-4 h-4 mr-2" />
-              <span>{comments}</span>
-            </Button>
+            <CommentModal
+              triggerButton={
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground"
+                >
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  <span>{comments}</span>
+                </Button>
+              }
+            />
           </>
         )}
       </CardFooter>
