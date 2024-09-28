@@ -17,23 +17,30 @@ import { MessageCircle } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 import { generateClient } from "aws-amplify/api";
 import { type Schema } from "@/amplify/data/resource";
+import { formatPostDate } from "./postUtils";
 
 interface CommentModalProps {
-  postId?: string;
-  postContent?: string;
-  postAuthor?: string;
-  postAuthorImage?: string;
-  postDate?: string;
+  userId: string;
+  postId: string;
+  postContent: string;
+  postAuthor: string;
+  postAuthorImage: string;
+  postDate: string;
   triggerButton: React.ReactNode;
+  commentAddedCallback: () => void;
+  commentFailedCallback: () => void;
 }
 
 export function CommentModal({
+  userId,
   postId,
-  postContent = "Coh mutluyum 31 cekicem kanka asdkjasfkjasfjkasdjkasa",
-  postAuthor = "Anonymous",
-  postAuthorImage = "/placeholder-avatar.jpg",
-  postDate = "Unknown date",
+  postContent,
+  postAuthor,
+  postAuthorImage,
+  postDate,
   triggerButton,
+  commentAddedCallback,
+  commentFailedCallback
 }: CommentModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [comment, setComment] = useState("");
@@ -55,13 +62,15 @@ export function CommentModal({
       const { data, errors } = await client.models.Comment.create(
         {
           content: comment,
-          postId: "postId",
-          userId: "1",
+          postId,
+          userId,
         },
         {
           authMode: "userPool",
         }
       );
+
+      commentAddedCallback();
 
       if (errors && errors[0].message) {
         throw new Error(errors[0].message);
@@ -75,6 +84,7 @@ export function CommentModal({
         setIsOpen(false);
       }
     } catch (error) {
+      commentFailedCallback();
       toast({
         description:
           error instanceof Error ? error.message : "An unknown error occurred",
@@ -107,7 +117,7 @@ export function CommentModal({
               <div className="flex items-center space-x-2">
                 <h4 className="font-semibold">{postAuthor}</h4>
                 <span className="text-sm text-muted-foreground">
-                  {postDate}
+                  {formatPostDate(postDate)}
                 </span>
               </div>
               <p className="mt-1 text-sm">{postContent}</p>

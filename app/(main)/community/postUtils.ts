@@ -8,9 +8,9 @@ export interface PostProps {
   postContent: string;
   userId: string;
   media?: {
-    type: "image" | "video";
+    type: string;
     url: string;
-  };
+  } | null;
 }
 
 export const formatPostDate = (date: string) => {

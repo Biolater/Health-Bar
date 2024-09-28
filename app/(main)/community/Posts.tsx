@@ -77,10 +77,7 @@ const Posts = () => {
               userId={user?.userId || ""}
               username={user?.username || ""}
               postDate={post.createdAt}
-              media={{
-                type: (post.media?.type as "video" | "image") || "image",
-                url: post.media?.url || "",
-              }}
+              media={post.media}
               onDelete={(postId) =>
                 setPosts(posts?.filter((post) => post.id !== postId))
               }

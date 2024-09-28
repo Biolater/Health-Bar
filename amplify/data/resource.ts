@@ -58,7 +58,6 @@ const schema = a.schema({
       userId: a.id().required(),
       post: a.belongsTo("Post", "postId"),
     })
-    .identifier(["postId", "userId"])
     .authorization((allow) => [
       allow.authenticated(),
       allow.owner().to(["update", "delete"]),

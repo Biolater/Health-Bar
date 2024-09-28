@@ -49,13 +49,30 @@ export default function CreatePostDialog() {
             store: "auto",
             source: "",
           });
-          console.log(result);
           const fileType = result.isImage ? "image" : "video";
           const { data, errors } = await client.models.Post.create(
             {
               content: message,
               userId: user.userId,
               media: { type: fileType, url: result.cdnUrl || "" },
+            },
+            {
+              authMode: "userPool",
+            }
+          );
+          if (errors && errors[0].message) {
+            throw new Error(errors[0].message);
+          }
+          if (data) {
+            toast({
+              description: "Post created successfully",
+            });
+          }
+        } else {
+          const { data, errors } = await client.models.Post.create(
+            {
+              content: message,
+              userId: user.userId,
             },
             {
               authMode: "userPool",

@@ -61,7 +61,7 @@ export default function MyPost({
   const [showFullContent, setShowFullContent] = useState(false);
   const [likes, setLikes] = useState<number | null>(null);
   const [isLiked, setIsLiked] = useState<boolean | undefined>(undefined);
-  const [comments, setComments] = useState(0);
+  const [comments, setComments] = useState<number | null>(null);
   const [loadingLikeClick, setLoadingLikeClick] = useState(false);
 
   const handleEdit = () => setIsEditing(true);
@@ -151,7 +151,7 @@ export default function MyPost({
         setIsLiked(false);
       }
     };
-    const fetchLikeCount = async () => {
+    const postDetails = async () => {
       const { data: postData } = await client.models.Post.get(
         {
           id: postId,
@@ -161,11 +161,13 @@ export default function MyPost({
 
       if (postData) {
         const { data: likeData } = await postData.likes();
+        const { data: commentsData } = await postData.comments();
         if (likeData) setLikes(likeData.length || 0);
+        if (commentsData) setComments(commentsData.length || 0);
       }
     };
     fetchLike();
-    fetchLikeCount();
+    postDetails();
   }, []);
 
   return (
@@ -303,6 +305,18 @@ export default function MyPost({
               <span>{likes}</span>
             </Button>
             <CommentModal
+              postId={postId}
+              userId={userId}
+              postContent={postContent}
+              postAuthor={username}
+              postAuthorImage={profileImage}
+              postDate={postDate}
+              commentAddedCallback={() =>
+                setComments((prev) => (prev || 0) + 1)
+              }
+              commentFailedCallback={() =>
+                setComments((prev) => (prev || 1) - 1)
+              }
               triggerButton={
                 <Button
                   variant="ghost"
