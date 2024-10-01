@@ -8,18 +8,18 @@ const schema = a.schema({
       email: a.email().required(),
       bio: a.string().default("No bio yet"),
       websiteUrl: a.url(),
+      userOwner: a.id().required(),
       location: a.string(),
       pronouns: a.string(),
       profilePicture: a.string(),
       posts: a.hasMany("Post", "userId"),
-      
     })
     .identifier(["userId"])
     .secondaryIndexes((index) => [index("username")])
     .authorization((allow) => [
       allow.publicApiKey().to(["read", "create"]),
-      allow.owner(),
-      allow.authenticated().to(["read"]),
+      allow.guest().to(["read", "create"]),
+      allow.ownerDefinedIn("userOwner"),
     ]),
   Post: a
     .model({
@@ -28,6 +28,7 @@ const schema = a.schema({
       likes: a.hasMany("Like", "postId"),
       comments: a.hasMany("Comment", "postId"),
       commentsCount: a.integer().default(0),
+      postOwner: a.id().required(),
       userId: a.id(),
       media: a.customType({
         type: a.string().required(),
@@ -37,30 +38,34 @@ const schema = a.schema({
     })
     .authorization((allow) => [
       allow.publicApiKey().to(["read"]),
+      allow.guest().to(["read"]),
       allow.authenticated().to(["read"]),
-      allow.owner(),
+      allow.ownerDefinedIn("postOwner"),
     ]),
   Like: a
     .model({
       postId: a.id().required(),
+      likeOwner: a.id().required(),
       userId: a.id().required(),
       post: a.belongsTo("Post", "postId"),
     })
     .identifier(["postId", "userId"])
     .authorization((allow) => [
-      allow.authenticated(),
-      allow.owner().to(["update", "delete"]),
+      allow.authenticated().to(["read", "create"]),
+      allow.ownerDefinedIn("likeOwner").to(["read", "create", "delete"]),
     ]),
   Comment: a
     .model({
       content: a.string().required(),
       postId: a.id().required(),
       userId: a.id().required(),
+      commentOwner: a.id().required(),
       post: a.belongsTo("Post", "postId"),
     })
     .authorization((allow) => [
-      allow.authenticated(),
-      allow.owner().to(["update", "delete"]),
+      allow.authenticated().to(["read", "create"]),
+      allow.guest().to(["read"]),
+      allow.ownerDefinedIn("commentOwner"),
     ]),
 });
 

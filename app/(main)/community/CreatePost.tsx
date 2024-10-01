@@ -55,6 +55,7 @@ export default function CreatePostDialog() {
               content: message,
               userId: user.userId,
               media: { type: fileType, url: result.cdnUrl || "" },
+              postOwner: user.userId,
             },
             {
               authMode: "userPool",
@@ -73,6 +74,7 @@ export default function CreatePostDialog() {
             {
               content: message,
               userId: user.userId,
+              postOwner: user.userId,
             },
             {
               authMode: "userPool",

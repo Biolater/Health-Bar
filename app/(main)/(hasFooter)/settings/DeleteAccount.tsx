@@ -30,7 +30,7 @@ const DeleteAccount = () => {
         if (user) {
           const { errors } = await client.models.User.delete({
             userId: user.userId,
-          });
+          }, { authMode: "userPool" });
           if (errors && errors[0].message) {
             throw new Error(errors[0].message);
           }
@@ -46,6 +46,8 @@ const DeleteAccount = () => {
           description: error instanceof Error ? error.message : "An unknown Error occured",
           variant: "destructive",
         })
+      } finally{
+        setAccountDeleteLoading(false)
       }
     }
   };

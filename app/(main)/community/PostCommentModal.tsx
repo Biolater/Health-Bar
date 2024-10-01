@@ -40,7 +40,7 @@ export function CommentModal({
   postDate,
   triggerButton,
   commentAddedCallback,
-  commentFailedCallback
+  commentFailedCallback,
 }: CommentModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [comment, setComment] = useState("");
@@ -64,6 +64,7 @@ export function CommentModal({
           content: comment,
           postId,
           userId,
+          commentOwner: userId,
         },
         {
           authMode: "userPool",

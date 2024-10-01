@@ -146,14 +146,17 @@ const ProfileSettings = () => {
     try {
       setUserUpdateLoading(true);
       if (user) {
-        const { errors, data: updatedUser } = await client.models.User.update({
-          userId: user.userId,
-          username: username || user.username,
-          bio: bio || user.bio,
-          location: location || user.location,
-          websiteUrl: websiteUrl || user.websiteUrl,
-          pronouns: pronouns || user.pronouns,
-        });
+        const { errors, data: updatedUser } = await client.models.User.update(
+          {
+            userId: user.userId,
+            username: username || user.username,
+            bio: bio || user.bio,
+            location: location || user.location,
+            websiteUrl: websiteUrl || user.websiteUrl,
+            pronouns: pronouns || user.pronouns,
+          },
+          { authMode: "userPool" }
+        );
         if (errors) {
           throw new Error(errors[0].message);
         }
@@ -176,6 +179,8 @@ const ProfileSettings = () => {
           error instanceof Error ? error.message : "An unknown Error occured",
         variant: "destructive",
       });
+    } finally {
+      setUserUpdateLoading(false);
     }
   };
 

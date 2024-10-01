@@ -120,7 +120,7 @@ async function toggleLike(
       );
       if (!existingLike?.data) {
         const { errors } = await client.models.Like.create(
-          { postId, userId },
+          { postId, userId, likeOwner: userId },
           { authMode: "userPool" }
         );
         if (errors && errors.length > 0) {

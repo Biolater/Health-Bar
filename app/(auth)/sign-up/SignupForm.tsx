@@ -90,20 +90,22 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
   ) => {
     try {
       setLoading(true);
-      const { userId } = await signUp({
+      const { userId, isSignUpComplete } = await signUp({
         username: email,
         password,
       });
 
+
       if (userId) {
-        const { errors } = await client.models.User.create(
+        const { errors, data } = await client.models.User.create(
           {
             userId,
             username,
             email,
+            userOwner: userId,
           },
           {
-            authMode: "apiKey",
+            authMode: "identityPool",
           }
         );
         if (errors) {

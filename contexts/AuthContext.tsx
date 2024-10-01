@@ -38,15 +38,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [userAttributes, setUserAttributes] =
     useState<FetchUserAttributesOutput | null>(null);
 
-  const fetchUsers = async (userId: string) => {
-    const { errors, data: users } = await client.models.User.list({
-      authMode: "apiKey",
-    });
+  const fetchUser = async (userId: string) => {
+    const { errors, data: user } = await client.models.User.get({ userId }, { authMode: "apiKey" });
 
     if (errors) {
       throw new Error(errors[0].message);
     }
-    return users?.filter((user) => user.userId === userId) || [];
+    return user;
   };
 
   useEffect(() => {
@@ -54,9 +52,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       try {
         const currentUser = await getCurrentUser();
         if (currentUser) {
-          const fetchedUsers = await fetchUsers(currentUser.userId);
-          if (fetchedUsers.length > 0) {
-            setUser(fetchedUsers[0]);
+          const fetchedUser = await fetchUser(currentUser.userId);
+          if (fetchedUser) {
+            setUser(fetchedUser);
             setIsLoggedIn(true);
           }
         }
@@ -77,14 +75,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         case "signedIn":
           setIsLoggedIn(true);
           const { userId } = payload.data;
-          const fetchUser = async () => {
-            const fetchedUsers = await fetchUsers(userId);
-            if (fetchedUsers.length > 0) {
-              setUser(fetchedUsers[0]);
+          const fetchSignedinUser = async () => {
+            const fetchedUser = await fetchUser(userId);
+            if (fetchedUser) {
+              setUser(fetchedUser);
             }
             setLoading(false);
           };
-          fetchUser();
+          fetchSignedinUser();
           break;
         case "signedOut":
           setIsLoggedIn(false);

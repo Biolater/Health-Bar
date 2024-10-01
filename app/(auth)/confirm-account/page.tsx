@@ -45,9 +45,10 @@ const ConfirmAccount = () => {
       }
     } catch (error) {
       toast({
-        description: error instanceof Error ? error.message : "An unknown Error occured",
+        description:
+          error instanceof Error ? error.message : "An unknown Error occured",
         variant: "destructive",
-      })
+      });
     } finally {
       setConfirmationLoading(false);
     }
