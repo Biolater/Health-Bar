@@ -51,6 +51,8 @@ const schema = a.schema({
     })
     .identifier(["postId", "userId"])
     .authorization((allow) => [
+      allow.publicApiKey().to(["read"]),
+      allow.guest().to(["read"]),
       allow.authenticated().to(["read", "create"]),
       allow.ownerDefinedIn("likeOwner").to(["read", "create", "delete"]),
     ]),
@@ -63,8 +65,9 @@ const schema = a.schema({
       post: a.belongsTo("Post", "postId"),
     })
     .authorization((allow) => [
-      allow.authenticated().to(["read", "create"]),
+      allow.publicApiKey().to(["read"]),
       allow.guest().to(["read"]),
+      allow.authenticated().to(["read", "create"]),
       allow.ownerDefinedIn("commentOwner"),
     ]),
 });

@@ -30,4 +30,8 @@ function formatTimestamp(time: string): string {
   return formattedDate;
 }
 
-export { cn, validateUsername, formatTimestamp };
+function fallbackNameGenerator(username: string) {
+  return `${username[0]}${username[username.length - 1]}`.toUpperCase();
+}
+
+export { cn, validateUsername, formatTimestamp, fallbackNameGenerator };

@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Plus, ImageIcon, X } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -155,6 +155,12 @@ export default function CreatePostDialog() {
     }
   };
 
+  useEffect(() => {
+    if (preview) {
+      URL.revokeObjectURL(preview);
+    }
+  }, [preview]);
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -243,7 +249,7 @@ const CreatePostButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
   return (
     <Button
       onClick={onClick}
-      className="size-12 p-0 rounded-full fixed right-8 bottom-8"
+      className="size-12 sm:hidden p-0 rounded-full fixed right-8 bottom-8"
     >
       <Plus />
     </Button>

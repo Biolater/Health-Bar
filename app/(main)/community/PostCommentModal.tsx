@@ -99,7 +99,7 @@ export function CommentModal({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>{triggerButton}</DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent onClick={(e) => e.stopPropagation()} className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Add a comment</DialogTitle>
           <DialogDescription>

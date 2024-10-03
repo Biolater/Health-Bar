@@ -6,10 +6,7 @@ import { Amplify } from "aws-amplify";
 import { generateClient } from "aws-amplify/api";
 import { type Schema } from "@/amplify/data/resource";
 import { Hub } from "aws-amplify/utils";
-import {
-  fetchUserAttributes,
-  type FetchUserAttributesOutput,
-} from "aws-amplify/auth";
+import { type FetchUserAttributesOutput } from "aws-amplify/auth";
 
 Amplify.configure(outputs);
 
@@ -39,7 +36,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     useState<FetchUserAttributesOutput | null>(null);
 
   const fetchUser = async (userId: string) => {
-    const { errors, data: user } = await client.models.User.get({ userId }, { authMode: "apiKey" });
+    const { errors, data: user } = await client.models.User.get(
+      { userId },
+      { authMode: "apiKey" }
+    );
 
     if (errors) {
       throw new Error(errors[0].message);

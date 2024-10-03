@@ -35,9 +35,9 @@ import { CommentModal } from "./PostCommentModal";
 import Image from "next/image";
 import { type Schema } from "@/amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
+import { useRouter } from "next/navigation";
 
 interface MyPostProps extends PostProps {
-  onDelete?: (postId: string) => void;
   onUpdate?: (postId: string, newContent: string) => void;
 }
 
@@ -49,7 +49,6 @@ export default function MyPost({
   postContent,
   userId,
   media,
-  onDelete,
   onUpdate,
 }: MyPostProps) {
   const client = generateClient<Schema>();
@@ -63,7 +62,7 @@ export default function MyPost({
   const [isLiked, setIsLiked] = useState<boolean | undefined>(undefined);
   const [comments, setComments] = useState<number | null>(null);
   const [loadingLikeClick, setLoadingLikeClick] = useState(false);
-
+  const router = useRouter();
   const handleEdit = () => setIsEditing(true);
 
   const handleSave = async () => {
@@ -119,7 +118,6 @@ export default function MyPost({
     try {
       setDeleting(true);
       await deletePost(postId);
-      if (onDelete) onDelete(postId);
       toast({ title: "Success", description: "Post deleted successfully" });
       setIsDeleteDialogOpen(false);
     } catch (error) {
@@ -132,6 +130,10 @@ export default function MyPost({
     } finally {
       setDeleting(false);
     }
+  };
+
+  const handlePostClick = (postId: string) => {
+    router.push(`/p/${postId}`);
   };
 
   const toggleContent = () => setShowFullContent((prev) => !prev);
@@ -171,7 +173,10 @@ export default function MyPost({
   }, []);
 
   return (
-    <Card className="w-full mx-auto">
+    <Card
+      onClick={() => handlePostClick(postId)}
+      className="w-full mx-auto hover:bg-muted transition-colors duration-300 cursor-pointer"
+    >
       <CardHeader className="flex flex-row items-center justify-between gap-4">
         <Link href={`/${username}`} className="flex items-center gap-4">
           <Avatar>
@@ -191,7 +196,14 @@ export default function MyPost({
           </div>
         </Link>
         <div className="flex gap-2">
-          <Button variant="ghost" size="icon" onClick={handleEdit}>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleEdit();
+            }}
+          >
             <Pencil className="h-4 w-4" />
             <span className="sr-only">Edit post</span>
           </Button>
@@ -200,12 +212,16 @@ export default function MyPost({
             onOpenChange={setIsDeleteDialogOpen}
           >
             <DialogTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button
+                onClick={(e) => e.stopPropagation()}
+                variant="ghost"
+                size="icon"
+              >
                 <Trash2 className="h-4 w-4" />
                 <span className="sr-only">Delete post</span>
               </Button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent onClick={(e) => e.stopPropagation()}>
               <DialogHeader>
                 <DialogTitle>
                   Are you sure you want to delete this post?
@@ -237,6 +253,7 @@ export default function MyPost({
       <CardContent>
         {isEditing ? (
           <Textarea
+            onClick={(e) => e.stopPropagation()}
             value={content}
             disabled={saving}
             onChange={(e) => setContent(e.target.value)}
@@ -244,11 +261,18 @@ export default function MyPost({
           />
         ) : (
           <>
-            <p className="text-sm">
+            <p className="text-sm break-words">
               {showFullContent ? postContent : truncateText(postContent, 150)}
             </p>
             {postContent.length > 150 && (
-              <Button variant="link" size="sm" onClick={toggleContent}>
+              <Button
+                variant="link"
+                size="sm"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleContent();
+                }}
+              >
                 {showFullContent ? "Show less" : "Show more"}
               </Button>
             )}
@@ -275,13 +299,23 @@ export default function MyPost({
       <CardFooter className="flex justify-between">
         {isEditing ? (
           <>
-            <Button variant="outline" size="sm" onClick={handleCancel}>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleCancel();
+              }}
+            >
               Cancel
             </Button>
             <Button
               size="sm"
               disabled={!content || saving}
-              onClick={handleSave}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleSave();
+              }}
             >
               Save
             </Button>
@@ -289,7 +323,10 @@ export default function MyPost({
         ) : (
           <>
             <Button
-              onClick={handleLike}
+              onClick={(e) => {
+                e.stopPropagation()
+                handleLike();
+              }}
               disabled={
                 isLiked === undefined || likes === null || loadingLikeClick
               }
@@ -319,6 +356,7 @@ export default function MyPost({
               }
               triggerButton={
                 <Button
+                  onClick={(e) => e.stopPropagation()}
                   variant="ghost"
                   size="sm"
                   className="text-muted-foreground"

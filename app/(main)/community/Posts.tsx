@@ -2,6 +2,7 @@
 import { useAuth } from "@/contexts/AuthContext";
 import UserPost from "./UserPost";
 import MyPost from "./MyPost";
+import PostComposer from "./PostComposer";
 import { useEffect, useState } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { getAllPosts } from "@/lib/api";
@@ -31,8 +32,12 @@ const Posts = () => {
             usernamesMap[post.id] = data.username;
           }
         }
+        const sortedPosts = posts.sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
         setUsernames(usernamesMap);
-        setPosts(posts);
+        setPosts(sortedPosts);
       } catch (error) {
         toast({
           title: "Error",
@@ -48,7 +53,14 @@ const Posts = () => {
     };
     fetchPosts();
     const sub = client.models.Post.onCreate().subscribe({
-      next: (post) => setPosts((prevPosts) => [post, ...(prevPosts || [])]),
+      next: (post) =>
+        setPosts((prevPosts) => {
+          if (prevPosts) {
+            return [post, ...prevPosts];
+          } else {
+            return [post];
+          }
+        }),
       error: (error) =>
         error instanceof Error
           ? toast({ description: error.message, variant: "destructive" })
@@ -57,7 +69,21 @@ const Posts = () => {
               variant: "destructive",
             }),
     });
-    return () => sub.unsubscribe();
+    const deleteSub = client.models.Post.onDelete().subscribe({
+      next: (post) =>
+        setPosts((prevPosts) => prevPosts?.filter((p) => p.id !== post.id)),
+      error: (error) =>
+        error instanceof Error
+          ? toast({ description: error.message, variant: "destructive" })
+          : toast({
+              description: "An unknown error occurred",
+              variant: "destructive",
+            }),
+    });
+    return () => {
+      sub.unsubscribe();
+      deleteSub.unsubscribe();
+    };
   }, []);
 
   if (postsLoading || loading)
@@ -67,7 +93,14 @@ const Posts = () => {
 
   return (
     <>
-      {posts?.map((post, idx) => {
+      {user && (
+        <PostComposer
+          userAvatarFallback={user.username}
+          userAvatarSrc={user?.profilePicture || defaultImg.src}
+          onPostSubmit={(content) => console.log(content)}
+        />
+      )}
+      {posts?.map((post) => {
         if (post.userId === user?.userId) {
           return (
             <MyPost
@@ -78,9 +111,6 @@ const Posts = () => {
               username={user?.username || ""}
               postDate={post.createdAt}
               media={post.media}
-              onDelete={(postId) =>
-                setPosts(posts?.filter((post) => post.id !== postId))
-              }
               onUpdate={(postId, newContent) => {
                 setPosts((prevPosts) =>
                   prevPosts?.map((post) =>
@@ -88,7 +118,7 @@ const Posts = () => {
                   )
                 );
               }}
-              key={idx}
+              key={post.id}
             />
           );
         } else {
@@ -100,7 +130,7 @@ const Posts = () => {
               postDate={post.createdAt}
               userId={user?.userId || ""}
               username={usernames[post.id] || ""}
-              key={idx}
+              key={post.id}
             />
           );
         }
