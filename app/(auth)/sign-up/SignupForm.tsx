@@ -105,7 +105,7 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
             userOwner: userId,
           },
           {
-            authMode: "identityPool",
+            authMode: "apiKey",
           }
         );
         if (errors) {
