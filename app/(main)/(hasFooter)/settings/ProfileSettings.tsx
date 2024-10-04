@@ -259,7 +259,7 @@ const ProfileSettings = () => {
                         await client.models.User.update({
                           userId: user.userId,
                           profilePicture: url.toString(),
-                        });
+                        }, { authMode: "userPool" });
                       if (errors && errors[0].message) {
                         throw new Error(errors[0].message);
                       }

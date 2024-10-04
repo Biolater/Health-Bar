@@ -29,7 +29,7 @@ const schema = a.schema({
       comments: a.hasMany("Comment", "postId"),
       commentsCount: a.integer().default(0),
       postOwner: a.id().required(),
-      userId: a.id(),
+      userId: a.id().required(),
       media: a.customType({
         type: a.string().required(),
         url: a.url().required(),

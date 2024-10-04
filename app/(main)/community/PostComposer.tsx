@@ -1,32 +1,109 @@
+"use client";
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ImageIcon, X } from "lucide-react";
 import { fallbackNameGenerator } from "@/lib/utils";
-
+import { useAuth } from "@/contexts/AuthContext";
+import { uploadFile } from "@uploadcare/upload-client";
+import { toast } from "@/components/ui/use-toast";
+import { generateClient } from "aws-amplify/api";
+import { type Schema } from "@/amplify/data/resource";
 interface PostComposerProps {
-  onPostSubmit: (content: string, media?: File) => void;
-  userAvatarSrc?: string;
-  userAvatarFallback?: string;
+  userAvatarSrc: string;
+  userAvatarFallback: string;
 }
 
 export default function PostComposer({
-  onPostSubmit,
-  userAvatarSrc = "/placeholder-user.jpg",
-  userAvatarFallback = "UN",
+  userAvatarSrc,
+  userAvatarFallback,
 }: PostComposerProps) {
+  const client = generateClient<Schema>();
+  const { user } = useAuth();
   const [postContent, setPostContent] = useState("");
   const [selectedMedia, setSelectedMedia] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handlePostSubmit = () => {
-    if (postContent.trim()) {
-      onPostSubmit(postContent, selectedMedia || undefined);
+  const handlePostSubmit = async () => {
+    if (!postContent.trim()) {
+      toast({
+        description: "Please enter a message",
+        variant: "destructive",
+      });
+      return;
+    }
+    try {
+      if (user) {
+        setLoading(true);
+        // TODO: Implement file upload logic here
+        if (selectedMedia) {
+          const result = await uploadFile(selectedMedia, {
+            publicKey: "1d847a0dfe61deca953d",
+            store: "auto",
+            source: "",
+          });
+          const fileType = result.isImage ? "image" : "video";
+          const { data, errors } = await client.models.Post.create(
+            {
+              content: postContent,
+              userId: user.userId,
+              media: { type: fileType, url: result.cdnUrl || "" },
+              postOwner: user.userId,
+            },
+            {
+              authMode: "userPool",
+            }
+          );
+          if (errors && errors[0].message) {
+            throw new Error(errors[0].message);
+          }
+          if (data) {
+            toast({
+              description: "Post created successfully",
+            });
+          }
+        } else {
+          const { data, errors } = await client.models.Post.create(
+            {
+              content: postContent,
+              userId: user.userId,
+              postOwner: user.userId,
+            },
+            {
+              authMode: "userPool",
+            }
+          );
+          if (errors && errors[0].message) {
+            throw new Error(errors[0].message);
+          }
+          if (data) {
+            toast({
+              description: "Post created successfully",
+            });
+          }
+        }
+      } else {
+        toast({
+          description: "Please sign in to create a post",
+          variant: "destructive",
+        });
+      }
+      // Reset form
       setPostContent("");
       setSelectedMedia(null);
       setPreviewUrl(null);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description:
+          error instanceof Error ? error.message : "An unknown error occurred",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -60,10 +137,14 @@ export default function PostComposer({
   }, [previewUrl]);
 
   return (
-    <div className="bg-white w-full dark:bg-gray-800 p-4 rounded-lg shadow mb-6">
+    <div className="bg-white hidden sm:block w-full dark:bg-gray-800 p-4 rounded-lg shadow mb-6">
       <div className="flex items-start space-x-4">
         <Avatar>
-          <AvatarImage src={userAvatarSrc} alt="User avatar" />
+          <AvatarImage
+            className="object-cover"
+            src={userAvatarSrc}
+            alt="User avatar"
+          />
           <AvatarFallback>
             {fallbackNameGenerator(userAvatarFallback)}
           </AvatarFallback>
@@ -124,7 +205,7 @@ export default function PostComposer({
             </div>
             <Button
               onClick={handlePostSubmit}
-              disabled={!postContent.trim()}
+              disabled={!postContent.trim() || loading}
               className="bg-green-600 hover:bg-green-700 text-white dark:bg-green-700 dark:hover:bg-green-800"
             >
               Post

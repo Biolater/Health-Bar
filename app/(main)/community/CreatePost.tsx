@@ -32,7 +32,7 @@ export default function CreatePostDialog() {
 
   const createPost = async () => {
     try {
-      if (!message) {
+      if (!message.trim()) {
         toast({
           description: "Please enter a message",
           variant: "destructive",
@@ -101,7 +101,6 @@ export default function CreatePostDialog() {
       setMediaFile(null);
       setPreview(null);
     } catch (error) {
-      console.log(error);
       toast({
         title: "Error",
         description:

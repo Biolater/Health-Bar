@@ -146,6 +146,24 @@ async function toggleLike(
   }
 }
 
+async function getPostDetails(postId: string) {
+  try {
+    const { data: postDetails, errors } = await client.models.Post.get(
+      { id: postId },
+      { authMode: "apiKey" }
+    );
+    if (errors) {
+      throw new Error(errors[0].message);
+    }
+    const user = await postDetails?.user()
+    return { data: { postDetails, user: user?.data, isFound: postDetails ? true : false } };
+  } catch (error) {
+    throw new Error(
+      error instanceof Error ? error.message : "An unknown error occured"
+    );
+  }
+}
+
 export {
   getUserByUsername,
   getLoggedInUser,
@@ -153,4 +171,5 @@ export {
   deletePost,
   updatePostContent,
   toggleLike,
+  getPostDetails,
 };

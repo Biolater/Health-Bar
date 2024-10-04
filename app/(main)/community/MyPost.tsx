@@ -39,6 +39,7 @@ import { useRouter } from "next/navigation";
 
 interface MyPostProps extends PostProps {
   onUpdate?: (postId: string, newContent: string) => void;
+  profileImage: string;
 }
 
 export default function MyPost({
@@ -181,6 +182,7 @@ export default function MyPost({
         <Link href={`/${username}`} className="flex items-center gap-4">
           <Avatar>
             <AvatarImage
+              className="object-cover"
               alt={`${username}'s profile picture`}
               src={profileImage}
             />
@@ -197,6 +199,7 @@ export default function MyPost({
         </Link>
         <div className="flex gap-2">
           <Button
+            className="hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
             variant="ghost"
             size="icon"
             onClick={(e) => {
@@ -213,6 +216,7 @@ export default function MyPost({
           >
             <DialogTrigger asChild>
               <Button
+                className="hover:bg-destructive hover:text-destructive-foreground transition-colors duration-200"
                 onClick={(e) => e.stopPropagation()}
                 variant="ghost"
                 size="icon"
@@ -324,7 +328,7 @@ export default function MyPost({
           <>
             <Button
               onClick={(e) => {
-                e.stopPropagation()
+                e.stopPropagation();
                 handleLike();
               }}
               disabled={

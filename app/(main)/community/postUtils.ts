@@ -2,7 +2,6 @@ import { formatDistanceToNow } from "date-fns";
 
 export interface PostProps {
   postId: string;
-  profileImage: string;
   username: string;
   postDate: string;
   postContent: string;

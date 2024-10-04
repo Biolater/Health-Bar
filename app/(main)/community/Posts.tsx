@@ -97,7 +97,6 @@ const Posts = () => {
         <PostComposer
           userAvatarFallback={user.username}
           userAvatarSrc={user?.profilePicture || defaultImg.src}
-          onPostSubmit={(content) => console.log(content)}
         />
       )}
       {posts?.map((post) => {
@@ -126,8 +125,8 @@ const Posts = () => {
             <UserPost
               postContent={post.content}
               postId={post.id}
-              profileImage={user?.profilePicture || defaultImg.src}
               postDate={post.createdAt}
+              postOwnerId={post.userId}
               userId={user?.userId || ""}
               username={usernames[post.id] || ""}
               key={post.id}

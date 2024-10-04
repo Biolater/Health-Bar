@@ -99,7 +99,10 @@ export function CommentModal({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>{triggerButton}</DialogTrigger>
-      <DialogContent onClick={(e) => e.stopPropagation()} className="sm:max-w-[425px]">
+      <DialogContent
+        onClick={(e) => e.stopPropagation()}
+        className="sm:max-w-[425px]"
+      >
         <DialogHeader>
           <DialogTitle>Add a comment</DialogTitle>
           <DialogDescription>
@@ -109,7 +112,11 @@ export function CommentModal({
         <div className="mt-4 space-y-4">
           <div className="flex items-start space-x-4">
             <Avatar>
-              <AvatarImage src={postAuthorImage} alt={postAuthor} />
+              <AvatarImage
+                className="object-cover"
+                src={postAuthorImage}
+                alt={postAuthor}
+              />
               <AvatarFallback>
                 {postAuthor.slice(0, 2).toUpperCase()}
               </AvatarFallback>

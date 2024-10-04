@@ -19,16 +19,21 @@ import { generateClient } from "aws-amplify/api";
 import type { Schema } from "@/amplify/data/resource";
 import { toast } from "@/components/ui/use-toast";
 import { CommentModal } from "./PostCommentModal";
+import defaultImg from "@/assets/defaultProfileImg.png"
+
+interface UserPostProps extends PostProps {
+  postOwnerId: string;
+}
 
 export default function UserPost({
   postId,
-  profileImage,
   username,
   postDate,
   postContent,
   media,
   userId,
-}: PostProps) {
+  postOwnerId
+}: UserPostProps) {
   const client = generateClient<Schema>();
   const router = useRouter();
   const [isLiked, setIsLiked] = useState(false);
@@ -36,7 +41,8 @@ export default function UserPost({
   const [comments, setComments] = useState<number | null>(null);
   const [likes, setLikes] = useState<number | null>(null);
   const [loadingLikeClick, setLoadingLikeClick] = useState(false);
-
+  const [postOwnerProfileImg, setPostOwnerProfileImg] = useState(defaultImg.src)
+  
   const handleLike = async () => {
     if (userId) {
       try {
@@ -89,7 +95,6 @@ export default function UserPost({
         { postId, userId },
         { authMode: "apiKey" }
       );
-      console.log(data, errors);
       if (errors) {
         setIsLiked(false);
       }
@@ -114,8 +119,19 @@ export default function UserPost({
         if (commentsData) setComments(commentsData.length || 0);
       }
     };
+    const userDetails = async () => {
+      try{
+        const { data } = await client.models.User.get({ userId: postOwnerId }, { authMode: "apiKey", selectionSet: ["profilePicture"] })
+        if(data && data?.profilePicture){
+          setPostOwnerProfileImg(data.profilePicture)
+        }
+      }catch(error){
+        console.log("Error while fetching user data: ", error)
+      }
+    }
     fetchLike();
     postDetails();
+    userDetails();
   }, []);
 
   return (
@@ -131,8 +147,9 @@ export default function UserPost({
         >
           <Avatar>
             <AvatarImage
+              className="object-cover"
               alt={`${username}'s profile picture`}
-              src={profileImage}
+              src={postOwnerProfileImg}
             />
             <AvatarFallback>
               {username.slice(0, 2).toUpperCase()}
@@ -200,7 +217,7 @@ export default function UserPost({
             userId={userId}
             postContent={postContent}
             postAuthor={username}
-            postAuthorImage={profileImage}
+            postAuthorImage={postOwnerProfileImg}
             postDate={postDate}
             commentAddedCallback={() => setComments((prev) => (prev || 0) + 1)}
             commentFailedCallback={() => setComments((prev) => (prev || 1) - 1)}

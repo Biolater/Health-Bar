@@ -31,7 +31,7 @@ function formatTimestamp(time: string): string {
 }
 
 function fallbackNameGenerator(username: string) {
-  return `${username[0]}${username[username.length - 1]}`.toUpperCase();
+  return `${username.slice(0, 2)}`.toUpperCase();
 }
 
 export { cn, validateUsername, formatTimestamp, fallbackNameGenerator };
