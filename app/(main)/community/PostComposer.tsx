@@ -26,6 +26,8 @@ export default function PostComposer({
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const contentInputRef = useRef<HTMLInputElement>(null);
+  const postButtonRef = useRef<HTMLButtonElement>(null);
 
   const handlePostSubmit = async () => {
     if (!postContent.trim()) {
@@ -136,6 +138,22 @@ export default function PostComposer({
     };
   }, [previewUrl]);
 
+  useEffect(() => {
+    const listenForCtrlEnter = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.key === "Enter" && contentInputRef.current && postButtonRef.current) {
+        if (document.activeElement === contentInputRef.current) {
+          postButtonRef.current.click();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", listenForCtrlEnter);
+
+    return () => {
+      document.removeEventListener("keydown", listenForCtrlEnter);
+    };
+  }, []);
+  
   return (
     <div className="bg-white hidden sm:block w-full dark:bg-gray-800 p-4 rounded-lg shadow mb-6">
       <div className="flex items-start space-x-4">
@@ -151,6 +169,7 @@ export default function PostComposer({
         </Avatar>
         <div className="flex-grow">
           <Input
+            ref={contentInputRef}
             placeholder="What is happening?!"
             value={postContent}
             onChange={(e) => setPostContent(e.target.value)}
@@ -204,6 +223,7 @@ export default function PostComposer({
               </Button>
             </div>
             <Button
+              ref={postButtonRef}
               onClick={handlePostSubmit}
               disabled={!postContent.trim() || loading}
               className="bg-green-600 hover:bg-green-700 text-white dark:bg-green-700 dark:hover:bg-green-800"

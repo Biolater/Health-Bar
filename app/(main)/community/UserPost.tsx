@@ -51,6 +51,7 @@ export default function UserPost({
           setLikes((prevLikeCount) => (prevLikeCount || 1) - 1);
           setIsLiked(false);
           await toggleLike(postId, userId, "dislike");
+          
         } else if (isLiked === false) {
           setLikes((prevLikeCount) => (prevLikeCount || 0) + 1);
           setIsLiked(true);

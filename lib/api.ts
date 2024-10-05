@@ -3,6 +3,7 @@ import { generateClient } from "aws-amplify/api";
 import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json";
 import { getCurrentUser } from "aws-amplify/auth";
+import { revalidateAfterLike } from "./actions";
 
 // Configure Amplify
 Amplify.configure(outputs);
@@ -108,6 +109,15 @@ async function toggleLike(
   action: "like" | "dislike"
 ) {
   try {
+    const { data: postData } = await client.models.Post.get(
+      {
+        id: postId,
+      },
+      {
+        authMode: "userPool",
+        selectionSet: ["id", "likesCount"],
+      }
+    );
     if (action === "like") {
       const existingLike = await client.models.Like.get(
         {
@@ -118,13 +128,26 @@ async function toggleLike(
           authMode: "userPool",
         }
       );
+
       if (!existingLike?.data) {
         const { errors } = await client.models.Like.create(
           { postId, userId, likeOwner: userId },
           { authMode: "userPool" }
         );
+
         if (errors && errors.length > 0) {
           throw new Error(errors[0].message); // Specific error handling for create
+        }
+
+        if (postData) {
+          await client.models.Post.update(
+            {
+              id: postId,
+              likesCount: (postData.likesCount || 0) + 1,
+            },
+            { authMode: "userPool" }
+          );
+          revalidateAfterLike(postId);
         }
       }
     } else {
@@ -137,6 +160,16 @@ async function toggleLike(
       );
       if (errors && errors.length > 0) {
         throw new Error(errors[0].message); // Specific error handling for delete
+      }
+      if (postData) {
+        await client.models.Post.update(
+          {
+            id: postId,
+            likesCount: (postData.likesCount || 1) - 1,
+          },
+          { authMode: "userPool" }
+        );
+        revalidateAfterLike(postId);
       }
     }
   } catch (error) {
@@ -155,14 +188,38 @@ async function getPostDetails(postId: string) {
     if (errors) {
       throw new Error(errors[0].message);
     }
-    const user = await postDetails?.user()
-    return { data: { postDetails, user: user?.data, isFound: postDetails ? true : false } };
+
+    const userDetails = await postDetails?.user();
+    if (!postDetails || !userDetails || !userDetails.data) {
+      return {
+        data: {
+          postDetails: null,
+          user: null,
+          isFound: false,
+        },
+      };
+    }
+    const { likes, comments, user, ...postwithoutLikesComments } = postDetails;
+    const { posts, ...userWithoutPosts } = userDetails.data;
+    return {
+      data: {
+        postDetails: postwithoutLikesComments,
+        user: userWithoutPosts,
+        isFound: !!postDetails,
+      },
+    };
   } catch (error) {
     throw new Error(
       error instanceof Error ? error.message : "An unknown error occured"
     );
   }
 }
+
+type dataTypeForPostId = {
+  postDetails: Omit<Schema["Post"]["type"], "user" | "likes" | "comments"> | null;
+  user: Omit<Schema["User"]["type"], "posts"> | null ;
+  isFound: boolean;
+};
 
 export {
   getUserByUsername,
@@ -172,4 +229,46 @@ export {
   updatePostContent,
   toggleLike,
   getPostDetails,
+  type dataTypeForPostId,
+};
+
+// type userType = {
+//   userId: string;
+//   username: string;
+//   email: string;
+//   userOwner: string;
+//   bio?: Nullable<string> | undefined;
+//   websiteUrl?: Nullable<string> | undefined;
+//   location?: Nullable<string> | undefined;
+//   pronouns?: Nullable<string> | undefined;
+//   profilePicture?: Nullable<string> | undefined;
+//   createdAt: string;
+//   updatedAt: string;
+// }
+
+// type postDetailsType = {
+//   content: string;
+//   postOwner: string;
+//   userId: string;
+//   likesCount: Nullable<number>;
+//   commentsCount: Nullable<number>;
+//   media: {
+//     type: string;
+//     url: string;
+//   } | null;
+//   id: string;
+//   createdAt: string;
+//   updatedAt: string;
+// } | {};
+
+const postDetailsDefault = {
+  content: "",
+  postOwner: "",
+  userId: "",
+  likesCount: 0,
+  commentsCount: 0,
+  media: null,
+  id: "",
+  createdAt: "",
+  updatedAt: "",
 };
