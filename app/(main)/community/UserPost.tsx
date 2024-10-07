@@ -19,7 +19,7 @@ import { generateClient } from "aws-amplify/api";
 import type { Schema } from "@/amplify/data/resource";
 import { toast } from "@/components/ui/use-toast";
 import { CommentModal } from "./PostCommentModal";
-import defaultImg from "@/assets/defaultProfileImg.png"
+import defaultImg from "@/assets/defaultProfileImg.png";
 
 interface UserPostProps extends PostProps {
   postOwnerId: string;
@@ -32,7 +32,7 @@ export default function UserPost({
   postContent,
   media,
   userId,
-  postOwnerId
+  postOwnerId,
 }: UserPostProps) {
   const client = generateClient<Schema>();
   const router = useRouter();
@@ -41,8 +41,10 @@ export default function UserPost({
   const [comments, setComments] = useState<number | null>(null);
   const [likes, setLikes] = useState<number | null>(null);
   const [loadingLikeClick, setLoadingLikeClick] = useState(false);
-  const [postOwnerProfileImg, setPostOwnerProfileImg] = useState(defaultImg.src)
-  
+  const [postOwnerProfileImg, setPostOwnerProfileImg] = useState(
+    defaultImg.src
+  );
+
   const handleLike = async () => {
     if (userId) {
       try {
@@ -51,7 +53,6 @@ export default function UserPost({
           setLikes((prevLikeCount) => (prevLikeCount || 1) - 1);
           setIsLiked(false);
           await toggleLike(postId, userId, "dislike");
-          
         } else if (isLiked === false) {
           setLikes((prevLikeCount) => (prevLikeCount || 0) + 1);
           setIsLiked(true);
@@ -121,15 +122,18 @@ export default function UserPost({
       }
     };
     const userDetails = async () => {
-      try{
-        const { data } = await client.models.User.get({ userId: postOwnerId }, { authMode: "apiKey", selectionSet: ["profilePicture"] })
-        if(data && data?.profilePicture){
-          setPostOwnerProfileImg(data.profilePicture)
+      try {
+        const { data } = await client.models.User.get(
+          { userId: postOwnerId },
+          { authMode: "apiKey", selectionSet: ["profilePicture"] }
+        );
+        if (data && data?.profilePicture) {
+          setPostOwnerProfileImg(data.profilePicture);
         }
-      }catch(error){
-        console.log("Error while fetching user data: ", error)
+      } catch (error) {
+        console.log("Error while fetching user data: ", error);
       }
-    }
+    };
     fetchLike();
     postDetails();
     userDetails();
@@ -233,6 +237,7 @@ export default function UserPost({
                 <span>{comments}</span>
               </Button>
             }
+            commentCount={comments || 0}
           />
         ) : (
           <Button

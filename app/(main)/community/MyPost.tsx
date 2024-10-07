@@ -369,6 +369,7 @@ export default function MyPost({
                   <span>{comments}</span>
                 </Button>
               }
+              commentCount={comments || 0}
             />
           </>
         )}

@@ -13,7 +13,7 @@ import PostInner from "./PostInner";
 
 const Post: React.FC<{ postId: string }> = async ({ postId }) => {
   const { data } = await getPostDetails(postId);
-
+  
   if (!data.isFound) notFound();
 
   return (

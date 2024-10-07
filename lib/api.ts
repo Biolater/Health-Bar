@@ -75,6 +75,7 @@ async function deletePost(postId: string) {
     if (errors && errors.length > 0) {
       throw new Error(errors[0].message); // Throw the first error message
     }
+    revalidateAfterLike(postId);
   } catch (error) {
     throw new Error(
       error instanceof Error ? error.message : "An unknown error occured"
@@ -96,6 +97,7 @@ async function updatePostContent(postId: string, newContent: string) {
     if (errors && errors.length > 0) {
       throw new Error(errors[0].message); // Throw the first error message
     }
+    revalidateAfterLike(postId);
   } catch (error) {
     throw new Error(
       error instanceof Error ? error.message : "An unknown error occured"
@@ -216,8 +218,11 @@ async function getPostDetails(postId: string) {
 }
 
 type dataTypeForPostId = {
-  postDetails: Omit<Schema["Post"]["type"], "user" | "likes" | "comments"> | null;
-  user: Omit<Schema["User"]["type"], "posts"> | null ;
+  postDetails: Omit<
+    Schema["Post"]["type"],
+    "user" | "likes" | "comments"
+  > | null;
+  user: Omit<Schema["User"]["type"], "posts"> | null;
   isFound: boolean;
 };
 
@@ -230,45 +235,4 @@ export {
   toggleLike,
   getPostDetails,
   type dataTypeForPostId,
-};
-
-// type userType = {
-//   userId: string;
-//   username: string;
-//   email: string;
-//   userOwner: string;
-//   bio?: Nullable<string> | undefined;
-//   websiteUrl?: Nullable<string> | undefined;
-//   location?: Nullable<string> | undefined;
-//   pronouns?: Nullable<string> | undefined;
-//   profilePicture?: Nullable<string> | undefined;
-//   createdAt: string;
-//   updatedAt: string;
-// }
-
-// type postDetailsType = {
-//   content: string;
-//   postOwner: string;
-//   userId: string;
-//   likesCount: Nullable<number>;
-//   commentsCount: Nullable<number>;
-//   media: {
-//     type: string;
-//     url: string;
-//   } | null;
-//   id: string;
-//   createdAt: string;
-//   updatedAt: string;
-// } | {};
-
-const postDetailsDefault = {
-  content: "",
-  postOwner: "",
-  userId: "",
-  likesCount: 0,
-  commentsCount: 0,
-  media: null,
-  id: "",
-  createdAt: "",
-  updatedAt: "",
 };

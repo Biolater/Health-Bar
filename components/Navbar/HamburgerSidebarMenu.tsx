@@ -54,7 +54,7 @@ const HamburgerSidebarMenu: FC<{ onClose: () => void }> = ({ onClose }) => {
       ? [
           {
             label: "Profile",
-            href: `${user?.username || "#"}`,
+            href: `/${user?.username || "#"}`,
             icon: <CircleUser />,
           },
         ]

@@ -24,10 +24,26 @@ const schema = a.schema({
   Post: a
     .model({
       content: a.string().required(),
-      likesCount: a.integer().default(0),
+      likesCount: a
+        .integer()
+        .default(0)
+        .authorization((allow) => [
+          allow.publicApiKey().to(["read"]),
+          allow.authenticated().to(["read", "update"]),
+          allow.guest().to(["read"]),
+          allow.ownerDefinedIn("postOwner"),
+        ]),
       likes: a.hasMany("Like", "postId"),
       comments: a.hasMany("Comment", "postId"),
-      commentsCount: a.integer().default(0),
+      commentsCount: a
+        .integer()
+        .default(0)
+        .authorization((allow) => [
+          allow.publicApiKey().to(["read"]),
+          allow.authenticated().to(["read", "update"]),
+          allow.guest().to(["read"]),
+          allow.ownerDefinedIn("postOwner"),
+        ]),
       postOwner: a.id().required(),
       userId: a.id().required(),
       media: a.customType({

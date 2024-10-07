@@ -18,6 +18,7 @@ import { toast } from "@/components/ui/use-toast";
 import { generateClient } from "aws-amplify/api";
 import { type Schema } from "@/amplify/data/resource";
 import { formatPostDate } from "./postUtils";
+import { revalidateAfterLike } from "@/lib/actions";
 
 interface CommentModalProps {
   userId: string;
@@ -27,6 +28,7 @@ interface CommentModalProps {
   postAuthorImage: string;
   postDate: string;
   triggerButton: React.ReactNode;
+  commentCount: number;
   commentAddedCallback: () => void;
   commentFailedCallback: () => void;
 }
@@ -39,6 +41,7 @@ export function CommentModal({
   postAuthorImage,
   postDate,
   triggerButton,
+  commentCount,
   commentAddedCallback,
   commentFailedCallback,
 }: CommentModalProps) {
@@ -71,7 +74,14 @@ export function CommentModal({
         }
       );
 
+      await client.models.Post.update({
+        id: postId,
+        commentsCount: commentCount + 1
+      }, { authMode: "userPool" });
+
       commentAddedCallback();
+
+      revalidateAfterLike(postId);
 
       if (errors && errors[0].message) {
         throw new Error(errors[0].message);
