@@ -13,6 +13,7 @@ const schema = a.schema({
       pronouns: a.string(),
       profilePicture: a.string(),
       posts: a.hasMany("Post", "userId"),
+      comments: a.hasMany("Comment", "userId"),
     })
     .identifier(["userId"])
     .secondaryIndexes((index) => [index("username")])
@@ -79,6 +80,7 @@ const schema = a.schema({
       userId: a.id().required(),
       commentOwner: a.id().required(),
       post: a.belongsTo("Post", "postId"),
+      user: a.belongsTo("User", "userId"),
     })
     .authorization((allow) => [
       allow.publicApiKey().to(["read"]),

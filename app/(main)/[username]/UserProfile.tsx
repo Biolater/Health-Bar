@@ -7,7 +7,7 @@ import MetaDataItem from "./MetaDataItem";
 import { formatTimestamp } from "@/lib/utils";
 import { Cake, Link, Mail, MapPin } from "lucide-react";
 const UserProfile: React.FC<{
-  userDetails: Omit<Schema["User"]["type"], "posts">;
+  userDetails: Omit<Schema["User"]["type"], "posts" | "comments">;
 }> = ({ userDetails }) => {
   const META_DATA = [
     {

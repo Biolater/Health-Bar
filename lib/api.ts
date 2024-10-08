@@ -27,9 +27,9 @@ async function getUserByUsername(username: string) {
     }
 
     // Return user without posts, assuming 'posts' needs to be excluded
-    const { posts, ...userWithoutPosts } = data[0];
+    const { posts, comments, ...rest } = data[0];
 
-    return { user: userWithoutPosts }; // Return user object without posts
+    return { user: rest }; // Return user object without posts
   } catch (error) {
     // Handle errors gracefully and throw them to the caller
     throw new Error(
@@ -202,11 +202,11 @@ async function getPostDetails(postId: string) {
       };
     }
     const { likes, comments, user, ...postwithoutLikesComments } = postDetails;
-    const { posts, ...userWithoutPosts } = userDetails.data;
+    const { posts, comments: userComments, ...userWithoutPostsComments } = userDetails.data;
     return {
       data: {
         postDetails: postwithoutLikesComments,
-        user: userWithoutPosts,
+        user: userWithoutPostsComments,
         isFound: !!postDetails,
       },
     };
@@ -222,7 +222,7 @@ type dataTypeForPostId = {
     Schema["Post"]["type"],
     "user" | "likes" | "comments"
   > | null;
-  user: Omit<Schema["User"]["type"], "posts"> | null;
+  user: Omit<Schema["User"]["type"], "posts" | "comments"> | null;
   isFound: boolean;
 };
 
