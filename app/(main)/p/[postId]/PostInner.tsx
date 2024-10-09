@@ -21,6 +21,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "@/components/ui/use-toast";
 import { revalidateAfterLike } from "@/lib/actions";
+import Link from "next/link";
 
 type Comment = {
   id: string;
@@ -101,7 +102,6 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
 
         if (commentData) {
           setComments((prevComments) => [
-            ...prevComments,
             {
               id: commentData.id,
               content: commentData.content,
@@ -111,6 +111,7 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
                 profilePicture: user?.profilePicture || defaultImage.src,
               },
             },
+            ...prevComments,
           ]);
         }
         setNewComment("");
@@ -163,16 +164,22 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
             console.error("Error fetching comments:", errors);
           } else {
             setComments(
-              commentsData.map((comment) => ({
-                id: comment.id,
-                content: comment.content,
-                createdAt: comment.createdAt,
-                user: {
-                  username: comment.user?.username || "Anonymous",
-                  profilePicture:
-                    comment.user?.profilePicture || defaultImage.src,
-                },
-              }))
+              commentsData
+                .map((comment) => ({
+                  id: comment.id,
+                  content: comment.content,
+                  createdAt: comment.createdAt,
+                  user: {
+                    username: comment.user?.username || "Anonymous",
+                    profilePicture:
+                      comment.user?.profilePicture || defaultImage.src,
+                  },
+                }))
+                .sort(
+                  (a, b) =>
+                    new Date(b.createdAt).getTime() -
+                    new Date(a.createdAt).getTime()
+                )
             );
           }
         } catch (error) {
@@ -183,31 +190,37 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
       }
     };
     fetchLikeAndComments();
-    console.log(data);
-  }, [data, user]);
+  }, [user]);
 
   return (
     <Card className="max-w-2xl mx-auto">
-      <CardHeader className="flex flex-row items-center space-x-4">
-        <Avatar>
-          <AvatarImage
-            className="object-cover"
-            src={data?.user?.profilePicture || defaultImage.src}
-            alt={data?.user?.username || "Profile Picture"}
-          />
-          <AvatarFallback>
-            {fallbackNameGenerator(data.user?.username || "")}
-          </AvatarFallback>
-        </Avatar>
-        <div>
-          <h2 className="text-lg font-semibold">
-            {data?.user?.username || ""}
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            {data.postDetails?.createdAt
-              ? new Date(data.postDetails.createdAt).toLocaleDateString()
-              : "Unknown date"}
-          </p>
+      <CardHeader>
+        <div className="inline-flex flex-row items-center self-start space-x-4">
+          <Avatar>
+            <AvatarImage
+              className="object-cover"
+              src={data?.user?.profilePicture || defaultImage.src}
+              alt={data?.user?.username || "Profile Picture"}
+            />
+            <AvatarFallback>
+              {fallbackNameGenerator(data.user?.username || "")}
+            </AvatarFallback>
+          </Avatar>
+          <div>
+            <Link
+              className="cursor-pointer"
+              href={`/${data.user?.username || ""}`}
+            >
+              <h2 className="text-lg font-semibold">
+                {data?.user?.username || ""}
+              </h2>
+            </Link>
+            <p className="text-sm text-muted-foreground">
+              {data.postDetails?.createdAt
+                ? new Date(data.postDetails.createdAt).toLocaleDateString()
+                : "Unknown date"}
+            </p>
+          </div>
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -277,7 +290,12 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="font-semibold">{comment.user.username}</p>
+                  <Link
+                    className="cursor-pointer"
+                    href={`/${comment.user.username}`}
+                  >
+                    <p className="font-semibold">{comment.user.username}</p>
+                  </Link>
                   <p className="text-sm">{comment.content}</p>
                   <p className="text-xs text-muted-foreground">
                     {new Date(comment.createdAt).toLocaleString()}

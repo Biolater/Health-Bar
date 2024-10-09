@@ -38,7 +38,8 @@ import { generateClient } from "aws-amplify/data";
 import { useRouter } from "next/navigation";
 
 interface MyPostProps extends PostProps {
-  onUpdate?: (postId: string, newContent: string) => void;
+  onUpdate: (postId: string, newContent: string) => void;
+  onDelete: (postId: string) => void;
   profileImage: string;
 }
 
@@ -51,6 +52,7 @@ export default function MyPost({
   userId,
   media,
   onUpdate,
+  onDelete,
 }: MyPostProps) {
   const client = generateClient<Schema>();
   const [isEditing, setIsEditing] = useState(false);
@@ -70,9 +72,9 @@ export default function MyPost({
     try {
       setSaving(true);
       await updatePostContent(postId, content);
-      if (onUpdate) await onUpdate(postId, content);
+      onUpdate(postId, content);
       setIsEditing(false);
-      toast({ title: "Success", description: "Post updated successfully" });
+      toast({ description: "Post updated successfully" });
     } catch (error) {
       toast({
         description:
@@ -119,8 +121,11 @@ export default function MyPost({
     try {
       setDeleting(true);
       await deletePost(postId);
-      toast({ title: "Success", description: "Post deleted successfully" });
+      onDelete(postId);
       setIsDeleteDialogOpen(false);
+      setTimeout(() => {
+        toast({ description: "Post deleted successfully" });
+      }, 100);
     } catch (error) {
       toast({
         title: "Error",

@@ -18,6 +18,17 @@ const Posts = () => {
   );
   const [usernames, setUsernames] = useState<Record<string, string>>({}); // State to store usernames for each post
   const [postsLoading, setPostsLoading] = useState(true);
+  const [newPostTrigger, setNewPostTrigger] = useState<boolean | null>(null);
+  const handlePostUpdate = (postId: string, newContent: string) => {
+    setPosts((prevPosts) =>
+      prevPosts?.map((post) =>
+        postId === post.id ? { ...post, content: newContent } : post
+      )
+    );
+  };
+  const handlePostDelete = (postId: string) => {
+    setPosts((prevPosts) => prevPosts?.filter((post) => post.id !== postId));
+  };
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -51,40 +62,28 @@ const Posts = () => {
         setPostsLoading(false);
       }
     };
+    // const sub = client.models.Post.onCreate().subscribe({
+    //   next: (post) => setPosts((prevPosts) => [post, ...(prevPosts || [])]),
+    //   error: (error) => {
+    //     toast({
+    //       title: "Error",
+    //       description:
+    //         error instanceof Error
+    //           ? error.message
+    //           : "An unknown error occurred",
+    //       variant: "destructive",
+    //     });
+    //   },
+    // });
     fetchPosts();
-    const sub = client.models.Post.onCreate().subscribe({
-      next: (post) =>
-        setPosts((prevPosts) => {
-          if (prevPosts) {
-            return [post, ...prevPosts];
-          } else {
-            return [post];
-          }
-        }),
-      error: (error) =>
-        error instanceof Error
-          ? toast({ description: error.message, variant: "destructive" })
-          : toast({
-              description: "An unknown error occurred",
-              variant: "destructive",
-            }),
-    });
-    const deleteSub = client.models.Post.onDelete().subscribe({
-      next: (post) =>
-        setPosts((prevPosts) => prevPosts?.filter((p) => p.id !== post.id)),
-      error: (error) =>
-        error instanceof Error
-          ? toast({ description: error.message, variant: "destructive" })
-          : toast({
-              description: "An unknown error occurred",
-              variant: "destructive",
-            }),
-    });
-    return () => {
-      sub.unsubscribe();
-      deleteSub.unsubscribe();
-    };
+    // return () => sub.unsubscribe()
   }, []);
+  useEffect(() => {
+    console.log(newPostTrigger)
+    if(newPostTrigger !== null){
+      window.location.reload()
+    }
+  }, [newPostTrigger])
 
   if (postsLoading || loading)
     return Array.from({ length: 15 }).map((_, idx) => (
@@ -97,6 +96,7 @@ const Posts = () => {
         <PostComposer
           userAvatarFallback={user.username}
           userAvatarSrc={user?.profilePicture || defaultImg.src}
+          onCreate={() => setNewPostTrigger((prevState) => prevState === null ? false : !prevState)}
         />
       )}
       {posts?.map((post) => {
@@ -110,13 +110,8 @@ const Posts = () => {
               username={user?.username || ""}
               postDate={post.createdAt}
               media={post.media}
-              onUpdate={(postId, newContent) => {
-                setPosts((prevPosts) =>
-                  prevPosts?.map((post) =>
-                    postId === post.id ? { ...post, content: newContent } : post
-                  )
-                );
-              }}
+              onUpdate={handlePostUpdate}
+              onDelete={handlePostDelete}
               key={post.id}
             />
           );

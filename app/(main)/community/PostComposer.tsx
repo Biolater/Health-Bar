@@ -13,11 +13,13 @@ import { type Schema } from "@/amplify/data/resource";
 interface PostComposerProps {
   userAvatarSrc: string;
   userAvatarFallback: string;
+  onCreate: () => void;
 }
 
 export default function PostComposer({
   userAvatarSrc,
   userAvatarFallback,
+  onCreate,
 }: PostComposerProps) {
   const client = generateClient<Schema>();
   const { user } = useAuth();
@@ -87,6 +89,9 @@ export default function PostComposer({
             });
           }
         }
+        setTimeout(() => {
+          onCreate();
+        }, 300);
       } else {
         toast({
           description: "Please sign in to create a post",
@@ -140,7 +145,12 @@ export default function PostComposer({
 
   useEffect(() => {
     const listenForCtrlEnter = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.key === "Enter" && contentInputRef.current && postButtonRef.current) {
+      if (
+        e.ctrlKey &&
+        e.key === "Enter" &&
+        contentInputRef.current &&
+        postButtonRef.current
+      ) {
         if (document.activeElement === contentInputRef.current) {
           postButtonRef.current.click();
         }
@@ -153,7 +163,7 @@ export default function PostComposer({
       document.removeEventListener("keydown", listenForCtrlEnter);
     };
   }, []);
-  
+
   return (
     <div className="bg-white hidden sm:block w-full dark:bg-gray-800 p-4 rounded-lg shadow mb-6">
       <div className="flex items-start space-x-4">
