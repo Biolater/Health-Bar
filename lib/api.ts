@@ -190,7 +190,6 @@ async function getPostDetails(postId: string) {
     if (errors) {
       throw new Error(errors[0].message);
     }
-
     const userDetails = await postDetails?.user();
     if (!postDetails || !userDetails || !userDetails.data) {
       return {

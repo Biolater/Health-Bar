@@ -7,7 +7,7 @@ import Link from "next/link"
 
 export default function PostNotFound() {
   return (
-    <main className="w-full min-h-[calc(100svh-4rem)] flex flex-col items-center justify-center bg-gradient-to-b from-background to-muted px-4">
+    <main className="w-full min-h-svh flex flex-col items-center justify-center bg-gradient-to-b from-background to-muted p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -79,7 +79,6 @@ const Posts = () => {
     // return () => sub.unsubscribe()
   }, []);
   useEffect(() => {
-    console.log(newPostTrigger)
     if(newPostTrigger !== null){
       window.location.reload()
     }

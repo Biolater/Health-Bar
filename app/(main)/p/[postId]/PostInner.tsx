@@ -10,7 +10,8 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Heart, MessageCircle, Share2, Send } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { Heart, MessageCircle, Share2, Send, Edit, Trash2 } from "lucide-react";
 import Image from "next/image";
 import defaultImage from "@/assets/defaultProfileImg.png";
 import { fallbackNameGenerator } from "@/lib/utils";
@@ -22,6 +23,18 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "@/components/ui/use-toast";
 import { revalidateAfterLike } from "@/lib/actions";
 import Link from "next/link";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { useRouter } from "next/navigation";
 
 type Comment = {
   id: string;
@@ -41,7 +54,14 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
   const [newComment, setNewComment] = useState("");
   const [loadingLikeClick, setLoadingLikeClick] = useState(false);
   const [loadingComments, setLoadingComments] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedContent, setEditedContent] = useState(
+    data?.postDetails?.content || ""
+  );
+  const router = useRouter();
   const client = generateClient<Schema>();
+
+  const isOwner = user?.userId === data.postDetails?.userId;
 
   const handleLike = async () => {
     if (user) {
@@ -132,6 +152,68 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
     }
   };
 
+  const handleEdit = async () => {
+    if (!isOwner || !data.postDetails) return;
+
+    try {
+      const { errors } = await client.models.Post.update(
+        {
+          id: data.postDetails.id,
+          content: editedContent,
+        },
+        { authMode: "userPool" }
+      );
+      
+      if (errors) throw new Error(errors[0].message);
+      
+      
+      toast({
+        title: "Success",
+        description: "Post updated successfully",
+      });
+      setIsEditing(false);
+      // Update the local state to reflect the changes
+      data.postDetails.content = editedContent;
+      revalidateAfterLike(data.postDetails.id);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to update post",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!isOwner || !data.postDetails) return;
+
+    try {
+      const { errors } = await client.models.Post.delete(
+        {
+          id: data.postDetails.id,
+        },
+        { authMode: "userPool" }
+      );
+
+      if (errors) throw new Error(errors[0].message);
+
+      
+      toast({
+        title: "Success",
+        description: "Post deleted successfully",
+      });
+      revalidateAfterLike(data.postDetails.id);
+      // Redirect to the user's profile or home page after deletion
+      router.push(`/${user?.username || ""}`);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to delete post",
+        variant: "destructive",
+      });
+    }
+  };
+
   useEffect(() => {
     const fetchLikeAndComments = async () => {
       if (data && data.postDetails && data.user) {
@@ -195,36 +277,87 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
   return (
     <Card className="max-w-2xl mx-auto">
       <CardHeader>
-        <div className="inline-flex flex-row items-center self-start space-x-4">
-          <Avatar>
-            <AvatarImage
-              className="object-cover"
-              src={data?.user?.profilePicture || defaultImage.src}
-              alt={data?.user?.username || "Profile Picture"}
-            />
-            <AvatarFallback>
-              {fallbackNameGenerator(data.user?.username || "")}
-            </AvatarFallback>
-          </Avatar>
-          <div>
-            <Link
-              className="cursor-pointer"
-              href={`/${data.user?.username || ""}`}
-            >
-              <h2 className="text-lg font-semibold">
-                {data?.user?.username || ""}
-              </h2>
-            </Link>
-            <p className="text-sm text-muted-foreground">
-              {data.postDetails?.createdAt
-                ? new Date(data.postDetails.createdAt).toLocaleDateString()
-                : "Unknown date"}
-            </p>
+        <div className="flex justify-between items-center">
+          <div className="inline-flex flex-row items-center space-x-4">
+            <Avatar>
+              <AvatarImage
+                className="object-cover"
+                src={data?.user?.profilePicture || defaultImage.src}
+                alt={data?.user?.username || "Profile Picture"}
+              />
+              <AvatarFallback>
+                {fallbackNameGenerator(data.user?.username || "")}
+              </AvatarFallback>
+            </Avatar>
+            <div>
+              <Link
+                className="cursor-pointer"
+                href={`/${data.user?.username || ""}`}
+              >
+                <h2 className="text-lg font-semibold">
+                  {data?.user?.username || ""}
+                </h2>
+              </Link>
+              <p className="text-sm text-muted-foreground">
+                {data.postDetails?.createdAt
+                  ? new Date(data.postDetails.createdAt).toLocaleDateString()
+                  : "Unknown date"}
+              </p>
+            </div>
           </div>
+          {isOwner && (
+            <div className="flex space-x-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsEditing((prev) => !prev)}
+              >
+                <Edit className="h-4 w-4" />
+              </Button>
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action cannot be undone. This will permanently delete
+                      your post.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction onClick={handleDelete}>
+                      Delete
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
+          )}
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-base">{data.postDetails?.content}</p>
+        {isEditing ? (
+          <div className="space-y-2">
+            <Textarea
+              value={editedContent}
+              onChange={(e) => setEditedContent(e.target.value)}
+              className="w-full"
+            />
+            <div className="flex justify-end space-x-2">
+              <Button variant="outline" onClick={() => setIsEditing(false)}>
+                Cancel
+              </Button>
+              <Button onClick={handleEdit}>Save</Button>
+            </div>
+          </div>
+        ) : (
+          <p className="text-base">{data.postDetails?.content}</p>
+        )}
         {data.postDetails?.media && data.postDetails.media.type === "image" && (
           <div className="relative w-full h-[400px]">
             <Image
@@ -305,7 +438,7 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
             ))
           )}
         </div>
-        <form onSubmit={handleCommentSubmit} className="mt-4 flex space-x-2">
+        <form onSubmit={handleCommentSubmit} className="mt-4 flex  space-x-2">
           <Input
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
