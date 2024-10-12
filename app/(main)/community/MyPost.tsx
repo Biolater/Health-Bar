@@ -40,6 +40,9 @@ import { useRouter } from "next/navigation";
 interface MyPostProps extends PostProps {
   onUpdate: (postId: string, newContent: string) => void;
   onDelete: (postId: string) => void;
+  onEdit: (postId: string) => void;
+  onEditFinish: () => void;
+  isBeingEdited: boolean;
   profileImage: string;
 }
 
@@ -53,9 +56,11 @@ export default function MyPost({
   media,
   onUpdate,
   onDelete,
+  onEdit,
+  onEditFinish,
+  isBeingEdited,
 }: MyPostProps) {
   const client = generateClient<Schema>();
-  const [isEditing, setIsEditing] = useState(false);
   const [content, setContent] = useState(postContent);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -66,14 +71,16 @@ export default function MyPost({
   const [comments, setComments] = useState<number | null>(null);
   const [loadingLikeClick, setLoadingLikeClick] = useState(false);
   const router = useRouter();
-  const handleEdit = () => setIsEditing(true);
+  const handleEdit = () => {
+    onEdit(postId)
+  };
 
   const handleSave = async () => {
     try {
       setSaving(true);
       await updatePostContent(postId, content);
       onUpdate(postId, content);
-      setIsEditing(false);
+      onEditFinish()
       toast({ description: "Post updated successfully" });
     } catch (error) {
       toast({
@@ -114,7 +121,7 @@ export default function MyPost({
 
   const handleCancel = () => {
     setContent(postContent);
-    setIsEditing(false);
+    onEditFinish()
   };
 
   const handleDelete = async () => {
@@ -184,7 +191,7 @@ export default function MyPost({
       className="w-full mx-auto hover:bg-muted transition-colors duration-300 cursor-pointer"
     >
       <CardHeader className="flex flex-row items-center justify-between gap-4">
-        <Link href={`/${username}`} className="flex items-center gap-4">
+        <div className="flex items-center gap-4">
           <Avatar>
             <AvatarImage
               className="object-cover"
@@ -196,12 +203,12 @@ export default function MyPost({
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col">
-            <p className="text-sm font-semibold">{username}</p>
+            <Link href={`/${username}`} className="text-sm font-semibold">{username}</Link>
             <p className="text-xs text-muted-foreground">
               {formatPostDate(postDate)}
             </p>
           </div>
-        </Link>
+        </div>
         <div className="flex gap-2">
           <Button
             className="hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
@@ -260,7 +267,7 @@ export default function MyPost({
         </div>
       </CardHeader>
       <CardContent>
-        {isEditing ? (
+        {isBeingEdited ? (
           <Textarea
             onClick={(e) => e.stopPropagation()}
             value={content}
@@ -306,7 +313,7 @@ export default function MyPost({
         )}
       </CardContent>
       <CardFooter className="flex justify-between">
-        {isEditing ? (
+        {isBeingEdited ? (
           <>
             <Button
               variant="outline"

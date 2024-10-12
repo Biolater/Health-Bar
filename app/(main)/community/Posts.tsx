@@ -18,7 +18,9 @@ const Posts = () => {
   );
   const [usernames, setUsernames] = useState<Record<string, string>>({}); // State to store usernames for each post
   const [postsLoading, setPostsLoading] = useState(true);
-  const [newPostTrigger, setNewPostTrigger] = useState<boolean | null>(null);
+  const [currentEditingPostId, setCurrentEditingPostId] = useState<
+    string | null
+  >(null);
   const handlePostUpdate = (postId: string, newContent: string) => {
     setPosts((prevPosts) =>
       prevPosts?.map((post) =>
@@ -62,27 +64,24 @@ const Posts = () => {
         setPostsLoading(false);
       }
     };
-    // const sub = client.models.Post.onCreate().subscribe({
-    //   next: (post) => setPosts((prevPosts) => [post, ...(prevPosts || [])]),
-    //   error: (error) => {
-    //     toast({
-    //       title: "Error",
-    //       description:
-    //         error instanceof Error
-    //           ? error.message
-    //           : "An unknown error occurred",
-    //       variant: "destructive",
-    //     });
-    //   },
-    // });
+    const sub = client.models.Post.onCreate().subscribe({
+      next: (post) =>
+        post.userId === user?.userId &&
+        setPosts((prevPosts) => [post, ...(prevPosts || [])]),
+      error: (error) => {
+        toast({
+          title: "Error",
+          description:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+          variant: "destructive",
+        });
+      },
+    });
     fetchPosts();
-    // return () => sub.unsubscribe()
-  }, []);
-  useEffect(() => {
-    if(newPostTrigger !== null){
-      window.location.reload()
-    }
-  }, [newPostTrigger])
+    return () => sub.unsubscribe();
+  }, [user?.userId]);
 
   if (postsLoading || loading)
     return Array.from({ length: 15 }).map((_, idx) => (
@@ -95,7 +94,6 @@ const Posts = () => {
         <PostComposer
           userAvatarFallback={user.username}
           userAvatarSrc={user?.profilePicture || defaultImg.src}
-          onCreate={() => setNewPostTrigger((prevState) => prevState === null ? false : !prevState)}
         />
       )}
       {posts?.map((post) => {
@@ -111,6 +109,9 @@ const Posts = () => {
               media={post.media}
               onUpdate={handlePostUpdate}
               onDelete={handlePostDelete}
+              onEdit={(postId) => setCurrentEditingPostId(postId)}
+              isBeingEdited={currentEditingPostId === post.id}
+              onEditFinish={() => setCurrentEditingPostId(null)}
               key={post.id}
             />
           );

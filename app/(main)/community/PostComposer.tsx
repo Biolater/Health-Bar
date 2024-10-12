@@ -13,13 +13,11 @@ import { type Schema } from "@/amplify/data/resource";
 interface PostComposerProps {
   userAvatarSrc: string;
   userAvatarFallback: string;
-  onCreate: () => void;
 }
 
 export default function PostComposer({
   userAvatarSrc,
   userAvatarFallback,
-  onCreate,
 }: PostComposerProps) {
   const client = generateClient<Schema>();
   const { user } = useAuth();
@@ -89,9 +87,6 @@ export default function PostComposer({
             });
           }
         }
-        setTimeout(() => {
-          onCreate();
-        }, 300);
       } else {
         toast({
           description: "Please sign in to create a post",

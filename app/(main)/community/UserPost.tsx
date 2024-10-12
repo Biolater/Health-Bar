@@ -145,9 +145,7 @@ export default function UserPost({
       className="w-full mx-auto hover:bg-muted transition-colors duration-300 cursor-pointer"
     >
       <CardHeader className="flex items-start">
-        <Link
-          href={`/${username}`}
-          onClick={(e) => e.stopPropagation()}
+        <div
           className="inline-flex flex-row gap-4 items-center"
         >
           <Avatar>
@@ -161,12 +159,18 @@ export default function UserPost({
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col">
-            <p className="text-sm font-semibold">{username}</p>
+            <Link
+              href={`/${username}`}
+              onClick={(e) => e.stopPropagation()}
+              className="text-sm font-semibold"
+            >
+              {username}
+            </Link>
             <p className="text-xs text-muted-foreground">
               {formatPostDate(postDate)}
             </p>
           </div>
-        </Link>
+        </div>
       </CardHeader>
       <CardContent>
         <p className="text-sm">

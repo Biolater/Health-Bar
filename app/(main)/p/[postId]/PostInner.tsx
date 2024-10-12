@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Card,
   CardHeader,
@@ -40,6 +40,7 @@ type Comment = {
   id: string;
   content: string;
   createdAt: string;
+  userId: string;
   user: {
     username: string;
     profilePicture?: string;
@@ -58,9 +59,12 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
   const [editedContent, setEditedContent] = useState(
     data?.postDetails?.content || ""
   );
+  const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
+  const [editedCommentContent, setEditedCommentContent] = useState("");
+  const [submittingComment, setSubmittingComment] = useState(false);
   const router = useRouter();
   const client = generateClient<Schema>();
-
+  const commentInputRef = useRef<HTMLInputElement>(null);
   const isOwner = user?.userId === data.postDetails?.userId;
 
   const handleLike = async () => {
@@ -103,9 +107,9 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
 
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newComment.trim()) return;
-
+    if (!newComment.trim() || submittingComment) return;
     if (data && data.postDetails && user) {
+      setSubmittingComment(true);
       try {
         const { data: commentData, errors } =
           await client.models.Comment.create(
@@ -126,6 +130,7 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
               id: commentData.id,
               content: commentData.content,
               createdAt: commentData.createdAt,
+              userId: user.userId,
               user: {
                 username: user?.username || "Anonymous",
                 profilePicture: user?.profilePicture || defaultImage.src,
@@ -142,6 +147,8 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
         revalidateAfterLike(`/p/${data.postDetails.id}`);
       } catch (error) {
         console.error("Error submitting comment:", error);
+      } finally {
+        setSubmittingComment(false);
       }
     } else {
       toast({
@@ -163,10 +170,9 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
         },
         { authMode: "userPool" }
       );
-      
+
       if (errors) throw new Error(errors[0].message);
-      
-      
+
       toast({
         title: "Success",
         description: "Post updated successfully",
@@ -197,7 +203,6 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
 
       if (errors) throw new Error(errors[0].message);
 
-      
       toast({
         title: "Success",
         description: "Post deleted successfully",
@@ -209,6 +214,63 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
       toast({
         title: "Error",
         description: "Failed to delete post",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleEditComment = async (commentId: string, newContent: string) => {
+    try {
+      const { errors } = await client.models.Comment.update(
+        {
+          id: commentId,
+          content: newContent,
+        },
+        { authMode: "userPool" }
+      );
+
+      if (errors) throw new Error(errors[0].message);
+
+      setComments(
+        comments.map((comment) =>
+          comment.id === commentId
+            ? { ...comment, content: newContent }
+            : comment
+        )
+      );
+      setEditingCommentId(null);
+      setEditedCommentContent("");
+      toast({
+        title: "Success",
+        description: "Comment updated successfully",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to update comment",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleDeleteComment = async (commentId: string) => {
+    try {
+      const { errors } = await client.models.Comment.delete(
+        { id: commentId },
+        { authMode: "userPool" }
+      );
+
+      if (errors) throw new Error(errors[0].message);
+
+      setComments(comments.filter((comment) => comment.id !== commentId));
+      toast({
+        title: "Success",
+        description: "Comment deleted successfully",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to delete comment",
         variant: "destructive",
       });
     }
@@ -251,6 +313,7 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
                   id: comment.id,
                   content: comment.content,
                   createdAt: comment.createdAt,
+                  userId: comment.userId,
                   user: {
                     username: comment.user?.username || "Anonymous",
                     profilePicture:
@@ -385,7 +448,11 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
             {likes} <span className="hidden sm:inline">Likes</span>
           </span>
         </Button>
-        <Button variant="ghost" className="flex items-center space-x-2">
+        <Button
+          onClick={() => commentInputRef.current?.focus()}
+          variant="ghost"
+          className="flex items-center space-x-2"
+        >
           <MessageCircle className="w-5 h-5" />
           <span>
             {comments.length} <span className="hidden sm:inline">Comments</span>
@@ -398,7 +465,7 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
       </CardFooter>
       <CardContent>
         <h3 className="font-semibold mb-4">Comments</h3>
-        <div className="space-y-4">
+        <div className="space-y-4 max-h-72 overflow-y-auto">
           {loadingComments ? (
             <>
               <CommentSkeleton />
@@ -422,30 +489,105 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
                     {fallbackNameGenerator(comment.user.username)}
                   </AvatarFallback>
                 </Avatar>
-                <div>
+                <div className="flex-1">
                   <Link
                     className="cursor-pointer"
                     href={`/${comment.user.username}`}
                   >
                     <p className="font-semibold">{comment.user.username}</p>
                   </Link>
-                  <p className="text-sm">{comment.content}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {new Date(comment.createdAt).toLocaleString()}
-                  </p>
+                  {editingCommentId === comment.id ? (
+                    <div className="mt-2">
+                      <Textarea
+                        value={editedCommentContent}
+                        onChange={(e) =>
+                          setEditedCommentContent(e.target.value)
+                        }
+                        className="w-full mb-2"
+                      />
+                      <div className="flex justify-end space-x-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            setEditingCommentId(null);
+                            setEditedCommentContent("");
+                          }}
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          size="sm"
+                          onClick={() =>
+                            handleEditComment(comment.id, editedCommentContent)
+                          }
+                        >
+                          Save
+                        </Button>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <p className="text-sm">{comment.content}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {new Date(comment.createdAt).toLocaleString()}
+                      </p>
+                    </>
+                  )}
+                  {user?.userId === comment.userId && !editingCommentId && (
+                    <div className="mt-2 space-x-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => {
+                          setEditingCommentId(comment.id);
+                          setEditedCommentContent(comment.content);
+                        }}
+                      >
+                        <Edit className="h-4 w-4 mr-1" />
+                        Edit
+                      </Button>
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button variant="ghost" size="sm">
+                            <Trash2 className="h-4 w-4 mr-1" />
+                            Delete
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>Delete Comment</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              Are you sure you want to delete this comment? This
+                              action cannot be undone.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction
+                              onClick={() => handleDeleteComment(comment.id)}
+                            >
+                              Delete
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                    </div>
+                  )}
                 </div>
               </div>
             ))
           )}
         </div>
-        <form onSubmit={handleCommentSubmit} className="mt-4 flex  space-x-2">
+        <form onSubmit={handleCommentSubmit} className="mt-4 flex space-x-2">
           <Input
+            ref={commentInputRef}
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             placeholder="Add a comment..."
             className="flex-grow"
           />
-          <Button type="submit" size="icon">
+          <Button disabled={submittingComment} type="submit" size="icon">
             <Send className="w-4 h-4" />
           </Button>
         </form>
