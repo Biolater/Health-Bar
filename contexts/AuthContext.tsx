@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { getCurrentUser } from "aws-amplify/auth";
+import { fetchUserAttributes, getCurrentUser } from "aws-amplify/auth";
+import "aws-amplify/auth/enable-oauth-listener";
 import outputs from "@/amplify_outputs.json";
 import { Amplify } from "aws-amplify";
 import { generateClient } from "aws-amplify/api";
@@ -47,15 +48,63 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     return user;
   };
 
+  const handleSignInWithRedirect = async (
+    userId: string,
+    username: string,
+    email: string,
+    profilePicture?: string
+  ) => {
+    try {
+      // check if a user with that userId exists
+      const { data } = await client.models.User.get(
+        { userId },
+        { authMode: "apiKey", selectionSet: ["userId"] }
+      );
+      // if user doesn't exist create a new user
+      if (!data) {
+        await client.models.User.create(
+          { userId, userOwner: userId, username, email, profilePicture },
+          { authMode: "apiKey" }
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const initializeAuth = async () => {
       try {
         const currentUser = await getCurrentUser();
+        const currentUserAttributes = await fetchUserAttributes();
         if (currentUser) {
           const fetchedUser = await fetchUser(currentUser.userId);
           if (fetchedUser) {
             setUser(fetchedUser);
             setIsLoggedIn(true);
+          } else if (
+            currentUser &&
+            currentUserAttributes.identities &&
+            currentUserAttributes.email &&
+            !user
+          ) {
+            const providerName = JSON.parse(currentUserAttributes.identities)[0]
+              .providerName;
+            const userId = currentUser.userId;
+            const username =
+              `${currentUserAttributes.nickname}_${userId}` ||
+              currentUser.username;
+            const email = currentUserAttributes.email;
+            const profilePicture = currentUserAttributes.picture;
+            if (providerName === "Google") {
+              await handleSignInWithRedirect(
+                userId,
+                username,
+                email,
+                profilePicture
+              );
+              window.location.reload();
+            }
           }
         }
       } catch (error) {
@@ -72,6 +121,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const handleAuthEvents = Hub.listen("auth", ({ payload }) => {
       switch (payload.event) {
+        case "signInWithRedirect":
+          // localStorage.setItem("aa", "31")
+          // const onSignInWithRedirect = async () => {
+          //   const user = await getCurrentUser();
+          //   const { email } = await fetchUserAttributes();
+          //   console.log(user, email);
+          //   if (user && email) {
+          //     await handleSignInWithRedirect(user.userId, user.username, email);
+          //   }
+          // };
+          // onSignInWithRedirect();
+          break;
+        case "signInWithRedirect_failure":
+          break;
         case "signedIn":
           setIsLoggedIn(true);
           const { userId } = payload.data;

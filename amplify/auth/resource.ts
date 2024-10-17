@@ -12,14 +12,20 @@ export const auth = defineAuth({
         clientId: secret("LOGINWITHGOOGLE_CLIENT_ID"),
         clientSecret: secret("LOGINWITHGOOGLE_CLIENT_SECRET"),
         scopes: ["profile", "email", "openid"],
+        attributeMapping: {
+          email: "email",
+          profilePicture: "picture",
+          fullname: "name",
+          nickname: "given_name",       
+        },
       },
       callbackUrls: [
         "http://localhost:3000",
         "https://main.dt7psbukvsr7k.amplifyapp.com",
       ],
       logoutUrls: [
-        "http://localhost:3000",
-        "https://main.dt7psbukvsr7k.amplifyapp.com",
+        "http://localhost:3000/sign-in",
+        "https://main.dt7psbukvsr7k.amplifyapp.com/sign-in",
       ],
     },
   },

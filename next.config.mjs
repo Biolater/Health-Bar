@@ -21,6 +21,11 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'ucarecdn.com',
                 pathname: '/**'
+            },
+            {
+                protocol: 'https',
+                hostname: 'lh3.googleusercontent.com',
+                pathname: '/a/**'
             }
         ]
     }

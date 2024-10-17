@@ -7,67 +7,10 @@ import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import SignUpForm from "./SignupForm";
 import { useRouter } from "next/navigation";
-import { validateUsername } from "@/lib/utils";
+import GoogleSignInButton from "../sign-in/GoogleSignInButton";
 const RightSignUp = () => {
-  const { toast } = useToast();
-  const router = useRouter();
-
-  const handleGoogleSignIn = async () => {
-    try {
-      // const { user } = await signInWithPopup(auth, googleProvider);
-
-      // Check if user already exists in Firestore
-      // const userRef = doc(db, "users", user.uid);
-      // const userDoc = await getDoc(userRef);
-
-      // if (!userDoc.exists()) {
-      //   // New user - create a document in Firestore
-      //   let username = validateUsername(user?.displayName || "");
-      //   const email = user.email;
-      //   const uid = user.uid;
-      //   const bio = "No bio"
-      //   await setDoc(userRef, {
-      //     email,
-      //     username,
-      //     uid,
-      //     bio,
-      //   });
-      // }
-
-      toast({
-        title: "Success",
-        description: "You signed in successfully",
-      });
-      router.push("/");
-    } catch (error: any) {
-      console.error("Error during Google sign-in:", error);
-
-      // Centralized error handling with a switch statement
-      switch (error.code) {
-        case "auth/account-exists-with-different-credential":
-          toast({
-            title: "Error",
-            description:
-              "You already have an account with this email. Please sign in with that provider.",
-            variant: "destructive",
-          });
-          break;
-        case "auth/popup-closed-by-user":
-        case "auth/cancelled-popup-request":
-          toast({
-            title: "Sign-in Cancelled",
-            description: "You cancelled the Google sign-in process.",
-          });
-          break;
-        default:
-          toast({
-            title: "Error",
-            description: error.code,
-            variant: "destructive",
-          });
-      }
-    }
-  };
+  // const { toast } = useToast();
+  // const router = useRouter();
   const [continueWithEmail, setContinueWithEmail] = useState(false);
   const handleContinueWithEmail = () => {
     setContinueWithEmail(true);
@@ -82,14 +25,7 @@ const RightSignUp = () => {
       </h1>
       {!continueWithEmail ? (
         <div className="flex flex-col">
-          <Button
-            onClick={handleGoogleSignIn}
-            variant={"outline"}
-            className="flex items-center gap-2 w-full h-10"
-          >
-            <GoogleIcon />
-            Sign up with Google
-          </Button>
+          <GoogleSignInButton>Sign up with Google</GoogleSignInButton>
           <div className="my-5 text-sm text-muted-foreground h-[1px] w-full  bg-border signup-line relative">
             <div className="divider bg-background">or</div>
           </div>

@@ -26,10 +26,12 @@ function validateUsername(username: string): string {
 
 function formatTimestamp(time: string): string {
   const date = new Date(time);
-  const formattedDate = date.toLocaleString().slice(0, 9);
-  return formattedDate;
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
 }
-
 function fallbackNameGenerator(username: string) {
   return `${username.slice(0, 2)}`.toUpperCase();
 }

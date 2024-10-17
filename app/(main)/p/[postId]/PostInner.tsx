@@ -35,6 +35,8 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useRouter } from "next/navigation";
+import PostHeader from "./PostHeader";
+import PostBody from "./PostBody";
 
 type Comment = {
   id: string;
@@ -190,34 +192,34 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
     }
   };
 
-  const handleDelete = async () => {
-    if (!isOwner || !data.postDetails) return;
+  // const handleDelete = async () => {
+  //   if (!isOwner || !data.postDetails) return;
 
-    try {
-      const { errors } = await client.models.Post.delete(
-        {
-          id: data.postDetails.id,
-        },
-        { authMode: "userPool" }
-      );
+  //   try {
+  //     const { errors } = await client.models.Post.delete(
+  //       {
+  //         id: data.postDetails.id,
+  //       },
+  //       { authMode: "userPool" }
+  //     );
 
-      if (errors) throw new Error(errors[0].message);
+  //     if (errors) throw new Error(errors[0].message);
 
-      toast({
-        title: "Success",
-        description: "Post deleted successfully",
-      });
-      revalidateAfterLike(data.postDetails.id);
-      // Redirect to the user's profile or home page after deletion
-      router.push(`/${user?.username || ""}`);
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to delete post",
-        variant: "destructive",
-      });
-    }
-  };
+  //     toast({
+  //       title: "Success",
+  //       description: "Post deleted successfully",
+  //     });
+  //     revalidateAfterLike(data.postDetails.id);
+  //     // Redirect to the user's profile or home page after deletion
+  //     router.push(`/${user?.username || ""}`);
+  //   } catch (error) {
+  //     toast({
+  //       title: "Error",
+  //       description: "Failed to delete post",
+  //       variant: "destructive",
+  //     });
+  //   }
+  // };
 
   const handleEditComment = async (commentId: string, newContent: string) => {
     try {
@@ -339,7 +341,7 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
 
   return (
     <Card className="max-w-2xl mx-auto">
-      <CardHeader>
+      {/* <CardHeader>
         <div className="flex justify-between items-center">
           <div className="inline-flex flex-row items-center space-x-4">
             <Avatar>
@@ -402,8 +404,17 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
             </div>
           )}
         </div>
-      </CardHeader>
-      <CardContent className="space-y-4">
+      </CardHeader> */}
+      <PostHeader
+        username={data.user?.username || ""}
+        createdAt={data.postDetails?.createdAt || ""}
+        isOwner={isOwner}
+        profilePicture={data.user?.profilePicture || defaultImage.src}
+        postDetailsExist={data.postDetails ? true : false}
+        postId={data.postDetails?.id || ""}
+        onEdit={() => setIsEditing((prev) => !prev)}
+      />
+      {/* <CardContent className="space-y-4">
         {isEditing ? (
           <div className="space-y-2">
             <Textarea
@@ -432,7 +443,16 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
             />
           </div>
         )}
-      </CardContent>
+      </CardContent> */}
+      <PostBody
+        defaultContent={data.postDetails?.content || ""}
+        isEditing={isEditing}
+        isOwner={isOwner}
+        postDetailsExist={data.postDetails ? true : false}
+        postId={data.postDetails?.id || ""}
+        onEdit={(value) => setIsEditing(value)}
+        media={data.postDetails?.media}
+      />
       <CardFooter className="flex justify-between">
         <Button
           onClick={handleLike}
