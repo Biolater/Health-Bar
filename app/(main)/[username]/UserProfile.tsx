@@ -70,7 +70,7 @@ const UserProfile: React.FC<{
           </div>
           <Separator className="shrink-0 bg-border h-[1px] w-full" />
           <div className="w-full h-full pb-2 flex flex-col px-3 md:items-center md:justify-center">
-            <p className="text-sm text-muted">Pronouns</p>
+            <p className="text-sm text-white/80">Pronouns</p>
             <p className="text-white">
               {userDetails?.pronouns ?? "No pronouns yet"}
             </p>

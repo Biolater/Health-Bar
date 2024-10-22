@@ -121,6 +121,7 @@ const UserProfileMenu: React.FC<Props> = ({ handleEscClick }) => {
           <div className="p-1 text-sm">
             {MENU_ITEMS.map((item) => (
               <Link
+                onClick={() => handleEscClick()}
                 key={item.text}
                 href={item.link}
                 className="flex items-center gap-2 transition-colors px-2 py-1.5 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground"
@@ -134,7 +135,10 @@ const UserProfileMenu: React.FC<Props> = ({ handleEscClick }) => {
           <div className="p-1 text-sm">
             {BOTTOM_MENU_ITEMS.map((item) => (
               <div
-                onClick={item.action}
+                onClick={() => {
+                  item.action();
+                  handleEscClick();
+                }}
                 key={item.text}
                 className="flex items-center gap-2 cursor-pointer transition-colors px-2 py-1.5 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground"
               >

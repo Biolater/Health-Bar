@@ -75,7 +75,7 @@ const DeleteAccount = () => {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button disabled={accountDeleteLoading} onClick={handleDelete}>
+            <Button variant="destructive" disabled={accountDeleteLoading} onClick={handleDelete}>
               Confirm
             </Button>
           </DialogFooter>

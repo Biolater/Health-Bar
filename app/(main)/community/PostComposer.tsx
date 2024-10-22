@@ -160,7 +160,7 @@ export default function PostComposer({
   }, []);
 
   return (
-    <div className="bg-white hidden sm:block w-full dark:bg-gray-800 p-4 rounded-lg shadow mb-6">
+    <div className="bg-card hidden sm:block w-full max-h-96 overflow-auto  p-4 rounded-lg shadow mb-6">
       <div className="flex items-start space-x-4">
         <Avatar>
           <AvatarImage
@@ -178,11 +178,11 @@ export default function PostComposer({
             placeholder="What is happening?!"
             value={postContent}
             onChange={(e) => setPostContent(e.target.value)}
-            className="w-full mb-2 bg-transparent border-none text-lg placeholder-gray-500 focus:outline-none dark:text-white dark:placeholder-gray-400"
+            className="w-full shadow-md mb-2 bg-transparent border-none text-lg placeholder-gray-500 focus:outline-none dark:text-white dark:placeholder-gray-400"
             aria-label="Post content"
           />
           {previewUrl && (
-            <div className="relative mb-2 group">
+            <div className="relative overflow-auto mb-2 group">
               {selectedMedia?.type.startsWith("image/") ? (
                 <img
                   src={previewUrl}

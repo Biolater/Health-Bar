@@ -31,6 +31,8 @@ import { toast } from "@/components/ui/use-toast";
 import defaultImg from "@/assets/defaultProfileImg.png";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { getUserByUsername } from "@/lib/api";
+
 const USER_SETTING_INPUTS = [
   {
     label: "Username",
@@ -146,6 +148,12 @@ const ProfileSettings = () => {
     try {
       setUserUpdateLoading(true);
       if (user) {
+        if(username !== user.username){
+          const { user } = await getUserByUsername(username);
+          if(user){
+            throw new Error("Username already exists");
+          }
+        }
         const { errors, data: updatedUser } = await client.models.User.update(
           {
             userId: user.userId,

@@ -17,6 +17,7 @@ import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { signIn, confirmSignIn } from "aws-amplify/auth";
+import { Loader2 } from "lucide-react";
 
 const SignInForm = () => {
   const [loading, setLoading] = useState(false);
@@ -122,9 +123,10 @@ const SignInForm = () => {
       }
     } catch (error) {
       toast({
-        description: error instanceof Error ? error.message : "An unknown Error occured",
+        description:
+          error instanceof Error ? error.message : "An unknown Error occured",
         variant: "destructive",
-      })
+      });
     } finally {
       setLoading(false);
     }
@@ -172,7 +174,11 @@ const SignInForm = () => {
         />
 
         <Button disabled={loading} className="w-full" type="submit">
-          Sign in
+          {loading ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            "Sign in"
+          )}
         </Button>
       </form>
     </Form>

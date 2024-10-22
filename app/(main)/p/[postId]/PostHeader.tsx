@@ -1,7 +1,8 @@
+"use client";
+
 import type { Schema } from "@/amplify/data/resource";
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -20,7 +21,7 @@ import { Edit, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { generateClient } from "aws-amplify/api";
-
+import { useState } from "react";
 interface CommentHeaderProps {
   profilePicture: string;
   username: string;
@@ -42,10 +43,12 @@ const PostHeader: React.FC<CommentHeaderProps> = ({
 }) => {
   const router = useRouter();
   const client = generateClient<Schema>();
+  const [isDeleting, setIsDeleting] = useState(false);
   const handleDelete = async () => {
-    if (!isOwner || !postDetailsExist) return;
+    if (!isOwner || !postDetailsExist || isDeleting) return;
 
     try {
+      setIsDeleting(true);
       const { errors } = await client.models.Post.delete(
         {
           id: postId,
@@ -68,6 +71,8 @@ const PostHeader: React.FC<CommentHeaderProps> = ({
         description: "Failed to delete post",
         variant: "destructive",
       });
+    } finally {
+      setIsDeleting(false);
     }
   };
   return (
@@ -114,9 +119,13 @@ const PostHeader: React.FC<CommentHeaderProps> = ({
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={handleDelete}>
+                  <Button
+                    disabled={isDeleting}
+                    variant="destructive"
+                    onClick={handleDelete}
+                  >
                     Delete
-                  </AlertDialogAction>
+                  </Button>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>

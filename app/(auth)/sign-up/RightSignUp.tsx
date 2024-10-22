@@ -1,16 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { GoogleIcon } from "@/icons";
 import Link from "next/link";
-import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import SignUpForm from "./SignupForm";
-import { useRouter } from "next/navigation";
 import GoogleSignInButton from "../sign-in/GoogleSignInButton";
 const RightSignUp = () => {
-  // const { toast } = useToast();
-  // const router = useRouter();
   const [continueWithEmail, setContinueWithEmail] = useState(false);
   const handleContinueWithEmail = () => {
     setContinueWithEmail(true);

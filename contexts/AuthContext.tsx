@@ -8,6 +8,9 @@ import { generateClient } from "aws-amplify/api";
 import { type Schema } from "@/amplify/data/resource";
 import { Hub } from "aws-amplify/utils";
 import { type FetchUserAttributesOutput } from "aws-amplify/auth";
+import { toast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
+import { signOut } from "aws-amplify/auth";
 
 Amplify.configure(outputs);
 
@@ -29,7 +32,7 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const client = generateClient<Schema>();
-
+  const router = useRouter();
   const [user, setUser] = useState<Schema["User"]["type"] | null>(null);
   const [loading, setLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -55,18 +58,34 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     profilePicture?: string
   ) => {
     try {
-      // check if a user with that userId exists
-      const { data } = await client.models.User.get(
-        { userId },
-        { authMode: "apiKey", selectionSet: ["userId"] }
-      );
-      // if user doesn't exist create a new user
-      if (!data) {
-        await client.models.User.create(
-          { userId, userOwner: userId, username, email, profilePicture },
-          { authMode: "apiKey" }
-        );
+      // check if email already exists
+      const { data } = await client.models.User.list({
+        filter: { email: { eq: email } },
+        authMode: "apiKey",
+        selectionSet: ["email"],
+      });
+
+      // if user already exists, redirect to sign in
+      if (data.length > 0 && data[0].email === email) {
+        toast({
+          title: "Error",
+          description:
+            "This google account is already linked to an account. Please sign in with that account.",
+          variant: "destructive",
+        });
+        setTimeout(() => {
+          signOut();
+        }, 2000);
+        return;
       }
+
+      // if user doesn't exist create a new user
+      await client.models.User.create(
+        { userId, userOwner: userId, username, email, profilePicture },
+        { authMode: "apiKey" }
+      );
+
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -103,12 +122,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 email,
                 profilePicture
               );
-              window.location.reload();
             }
           }
         }
       } catch (error) {
-        console.error("Error fetching user:", error);
         setUser(null);
       } finally {
         setLoading(false);
@@ -121,20 +138,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const handleAuthEvents = Hub.listen("auth", ({ payload }) => {
       switch (payload.event) {
-        case "signInWithRedirect":
-          // localStorage.setItem("aa", "31")
-          // const onSignInWithRedirect = async () => {
-          //   const user = await getCurrentUser();
-          //   const { email } = await fetchUserAttributes();
-          //   console.log(user, email);
-          //   if (user && email) {
-          //     await handleSignInWithRedirect(user.userId, user.username, email);
-          //   }
-          // };
-          // onSignInWithRedirect();
-          break;
-        case "signInWithRedirect_failure":
-          break;
         case "signedIn":
           setIsLoggedIn(true);
           const { userId } = payload.data;

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 const Community = () => {
   return (
     <main id="community" className="px-4 py-8 sm:px-16 md:px-32 relative">
-      <div className="mx-auto max-w-7xl flex flex-col gap-6">
+      <div className="mx-auto max-w-[38rem] flex flex-col gap-6">
         <h1 className="text-center text-3xl text-primary font-semibold">
           Community
         </h1>

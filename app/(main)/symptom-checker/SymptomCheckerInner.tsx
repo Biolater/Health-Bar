@@ -2,12 +2,14 @@
 import { useState, useEffect, useRef } from "react";
 import { UserMessage, AiMessage, AiLoading } from "@/components/index";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+
 const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "";
 const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({
   model: "gemini-1.5-flash",
   systemInstruction: process.env.NEXT_PUBLIC_GEMINI_SYSTEM_INSTRUCTIONS || "",
 });
+
 import { Card, CardDescription } from "@/components/ui/card";
 import { toast } from "@/components/ui/use-toast";
 const SUGGESTIONS = [
@@ -22,7 +24,7 @@ type ChatMessage = {
   from: "User" | "Ai" | "AiLoading";
 };
 const SymptomCheckerInner = () => {
-    const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const chatMessagesRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [text, setText] = useState("");
@@ -88,18 +90,19 @@ const SymptomCheckerInner = () => {
         return [...prevMessages];
       });
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       toast({
-        description: error instanceof Error ? error.message : "An unknown Error occured",
+        description:
+          error instanceof Error ? error.message : "An unknown Error occured",
         variant: "destructive",
-      })
+      });
     } finally {
       setLoading(false);
     }
   }
   return (
     <>
-          <div ref={scrollRef} className="overflow-y-auto h-full">
+      <div ref={scrollRef} className="overflow-y-auto h-full">
         {chatMessages.length === 0 && !loading && (
           <h1 className="text-center pt-4 sm:pt-8 text-3xl text-primary font-semibold">
             Symptom Checker
@@ -175,8 +178,9 @@ const SymptomCheckerInner = () => {
             </svg>
           </button>
         </div>
-      </div></>
-  )
-}
+      </div>
+    </>
+  );
+};
 
-export default SymptomCheckerInner
+export default SymptomCheckerInner;

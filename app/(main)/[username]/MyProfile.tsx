@@ -86,7 +86,7 @@ const MyProfile: React.FC<{
           </div>
           <Separator />
           <div className="w-full h-full pb-2 flex flex-col px-3 md:items-center md:justify-center">
-            <p className="text-sm text-muted">Pronouns</p>
+            <p className="text-sm text-white/80">Pronouns</p>
             <p className="text-white">{pronouns ?? "No pronouns yet"}</p>
           </div>
         </div>

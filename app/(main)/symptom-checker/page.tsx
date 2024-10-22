@@ -1,10 +1,12 @@
 import SymptomCheckerInner from "./SymptomCheckerInner";
 import type { Metadata } from "next";
+import { openai } from "./ai";
 
 export const metadata: Metadata = {
   title: "Healthbar | Symptom Checker",
 };
 const SymptomChecker = () => {
+
   return (  
     <main
       id="symptom-checker"

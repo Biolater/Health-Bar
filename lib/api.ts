@@ -38,6 +38,30 @@ async function getUserByUsername(username: string) {
   }
 }
 
+async function getUserByEmail(userEmail: string) {
+  try {
+    const { data, errors } = await client.models.User.list({
+      authMode: "apiKey",
+      filter: { email: { eq: userEmail } },
+      selectionSet: ["email"],
+    });
+
+    if (errors) {
+      throw new Error(errors[0].message);
+    }
+
+    if (!data || data.length === 0) {
+      return { user: null };
+    }
+
+    return { user: data[0] };
+  } catch (error) {
+    throw new Error(
+      error instanceof Error ? error.message : "An unknown error occurred"
+    );
+  }
+}
+
 async function getLoggedInUser() {
   const currentUser = await getCurrentUser();
   if (currentUser) return currentUser;
@@ -201,7 +225,11 @@ async function getPostDetails(postId: string) {
       };
     }
     const { likes, comments, user, ...postwithoutLikesComments } = postDetails;
-    const { posts, comments: userComments, ...userWithoutPostsComments } = userDetails.data;
+    const {
+      posts,
+      comments: userComments,
+      ...userWithoutPostsComments
+    } = userDetails.data;
     return {
       data: {
         postDetails: postwithoutLikesComments,
@@ -233,5 +261,6 @@ export {
   updatePostContent,
   toggleLike,
   getPostDetails,
+  getUserByEmail,
   type dataTypeForPostId,
 };

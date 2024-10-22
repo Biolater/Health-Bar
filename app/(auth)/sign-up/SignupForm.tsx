@@ -20,6 +20,8 @@ import { useEffect, useState } from "react";
 import { generateClient } from "aws-amplify/data";
 import { type Schema } from "@/amplify/data/resource";
 import { signUp } from "aws-amplify/auth";
+import { Loader2 } from "lucide-react";
+import { getUserByUsername, getUserByEmail } from "@/lib/api";
 
 type FormItem = {
   name: "email" | "username" | "password" | "confirmPassword";
@@ -69,19 +71,19 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
     },
   });
 
-  const fetchUsers = async () => {
-    try {
-      const { errors, data: users } = await client.models.User.list({
-        selectionSet: ["username"],
-        authMode: "apiKey",
-      });
-      if (errors) {
-        throw new Error(errors[0].message);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchUsers = async () => {
+  //   try {
+  //     const { errors, data: users } = await client.models.User.list({
+  //       selectionSet: ["username"],
+  //       authMode: "apiKey",
+  //     });
+  //     if (errors) {
+  //       throw new Error(errors[0].message);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const handleSignUp = async (
     email: string,
@@ -89,15 +91,13 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
     username: string
   ) => {
     try {
-      setLoading(true);
-      const { userId, isSignUpComplete } = await signUp({
+      const { userId } = await signUp({
         username: email,
         password,
       });
 
-
       if (userId) {
-        const { errors, data } = await client.models.User.create(
+        const { errors } = await client.models.User.create(
           {
             userId,
             username,
@@ -125,30 +125,20 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
           error instanceof Error ? error.message : "An unknown error occurred",
         variant: "destructive",
       });
-    } finally {
-      setLoading(false);
     }
   };
 
   const onSubmit = async (values: z.infer<typeof signUpFormSchema>) => {
     try {
-      const { errors, data: users } = await client.models.User.list({
-        authMode: "apiKey",
-        selectionSet: ["username"],
-        filter: {
-          username: {
-            beginsWith: values.username,
-          },
-        },
-      });
+      setLoading(true);
+      const { user: usernameExists } = await getUserByUsername(values.username);
 
-      if (errors && errors[0].message) {
-        throw new Error(errors[0].message);
-      }
+      const { user: emailExists } = await getUserByEmail(values.email);
 
-      if (users.length > 0) {
+      if (emailExists) throw new Error("A user with this email already exists");
+
+      if (usernameExists)
         throw new Error("A user with this username already exists");
-      }
 
       await handleSignUp(values.email, values.password, values.username);
       setEmail(values.email);
@@ -158,12 +148,15 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
         description:
           error instanceof Error ? error.message : "An unknown error occurred",
         variant: "destructive",
+        duration: 3000,
       });
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchUsers();
+    // fetchUsers();
     if (userSignedUp) {
       localStorage.setItem("emailForConfirmation", email);
     }
@@ -206,7 +199,7 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
             Go Back
           </Button>
           <Button disabled={loading} className="flex-grow" type="submit">
-            Submit
+            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Sign Up"}
           </Button>
         </div>
       </motion.form>
