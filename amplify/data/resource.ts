@@ -12,6 +12,7 @@ const schema = a.schema({
       location: a.string(),
       pronouns: a.string(),
       profilePicture: a.string(),
+      authProvider: a.string().required(),
       posts: a.hasMany("Post", "userId"),
       comments: a.hasMany("Comment", "userId"),
     })
