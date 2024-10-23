@@ -95,6 +95,7 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
         username: email,
         password,
       });
+      const authProvider = "email-password"
 
       if (userId) {
         const { errors } = await client.models.User.create(
@@ -102,6 +103,7 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
             userId,
             username,
             email,
+            authProvider,
             userOwner: userId,
           },
           {

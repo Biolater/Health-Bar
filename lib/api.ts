@@ -43,7 +43,7 @@ async function getUserByEmail(userEmail: string) {
     const { data, errors } = await client.models.User.list({
       authMode: "apiKey",
       filter: { email: { eq: userEmail } },
-      selectionSet: ["email"],
+      selectionSet: ["email", "authProvider"],
     });
 
     if (errors) {

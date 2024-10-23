@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/dialog";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { useState } from "react";
+import { Loader2 } from "lucide-react";
 const DeleteAccount = () => {
   const { user } = useAuth();
   const client = generateClient<Schema>();
@@ -28,9 +29,67 @@ const DeleteAccount = () => {
       try {
         setAccountDeleteLoading(true);
         if (user) {
-          const { errors } = await client.models.User.delete({
-            userId: user.userId,
-          }, { authMode: "userPool" });
+          const { data: userPosts } = await user.posts({
+            authMode: "userPool",
+          });
+
+          for (const post of userPosts) {
+            await client.models.Post.delete(
+              {
+                id: post.id,
+              },
+              { authMode: "userPool" }
+            );
+            const { data: postComments } = await post.comments({
+              authMode: "userPool",
+            });
+            for (const comment of postComments) {
+              await client.models.Comment.delete(
+                {
+                  id: comment.id,
+                },
+                { authMode: "userPool" }
+              );
+            }
+          }
+
+          const { data: userLikes } = await client.models.Like.list({
+            authMode: "userPool",
+            filter: {
+              userId: {
+                eq: user.userId,
+              },
+            },
+          });
+
+          for (const like of userLikes) {
+            await client.models.Like.delete(
+              {
+                postId: like.postId,
+                userId: user.userId,
+              },
+              { authMode: "userPool" }
+            );
+          }
+
+          const { data: userComments } = await user.comments();
+
+          for (const comment of userComments) {
+            await client.models.Comment.delete(
+              {
+                id: comment.id,
+              },
+              { authMode: "userPool", selectionSet: ["id"] }
+            );
+          }
+
+          const { errors } = await client.models.User.delete(
+            {
+              userId: user.userId,
+            },
+            { authMode: "userPool" }
+          );
+
           if (errors && errors[0].message) {
             throw new Error(errors[0].message);
           }
@@ -43,11 +102,12 @@ const DeleteAccount = () => {
         }
       } catch (error) {
         toast({
-          description: error instanceof Error ? error.message : "An unknown Error occured",
+          description:
+            error instanceof Error ? error.message : "An unknown Error occured",
           variant: "destructive",
-        })
-      } finally{
-        setAccountDeleteLoading(false)
+        });
+      } finally {
+        setAccountDeleteLoading(false);
       }
     }
   };
@@ -75,8 +135,16 @@ const DeleteAccount = () => {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="destructive" disabled={accountDeleteLoading} onClick={handleDelete}>
-              Confirm
+            <Button
+              variant="destructive"
+              disabled={accountDeleteLoading}
+              onClick={handleDelete}
+            >
+              {accountDeleteLoading ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                "Confirm"
+              )}
             </Button>
           </DialogFooter>
         </DialogContent>

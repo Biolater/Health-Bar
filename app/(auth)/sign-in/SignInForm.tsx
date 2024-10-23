@@ -18,6 +18,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { signIn, confirmSignIn } from "aws-amplify/auth";
 import { Loader2 } from "lucide-react";
+import { getUserByEmail } from "@/lib/api";
 
 const SignInForm = () => {
   const [loading, setLoading] = useState(false);
@@ -33,6 +34,12 @@ const SignInForm = () => {
   const handleSignIn = async (email: string, password: string) => {
     try {
       setLoading(true);
+
+      const { user } = await getUserByEmail(email)
+
+      // if user auth provider is not email-password but google then sign in with google
+      if (user?.authProvider === "google") throw new Error("This email is already linked to a google account. Please sign in with that account.")
+
       const { nextStep } = await signIn({
         username: email,
         password: password,

@@ -80,8 +80,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }
 
       // if user doesn't exist create a new user
+      const authProvider = "google"
       await client.models.User.create(
-        { userId, userOwner: userId, username, email, profilePicture },
+        { userId, userOwner: userId, username, email, profilePicture, authProvider },
         { authMode: "apiKey" }
       );
 
