@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Sign Up",
 };
 
+
 const SignUp = () => {
   return (
     <main className="lg:flex">
