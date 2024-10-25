@@ -6,7 +6,6 @@ import { type Schema } from "@/amplify/data/resource";
 import { deleteUser } from "aws-amplify/auth";
 import { generateClient } from "aws-amplify/api";
 import { toast } from "@/components/ui/use-toast";
-import { useRouter } from "next/navigation";
 import {
   Dialog,
   DialogContent,
@@ -16,101 +15,119 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { DialogClose } from "@radix-ui/react-dialog";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
+
 const DeleteAccount = () => {
   const { user } = useAuth();
   const client = generateClient<Schema>();
-  const router = useRouter();
   const [accountDeleteLoading, setAccountDeleteLoading] = useState(false);
+
   const handleDelete = async () => {
-    if (!accountDeleteLoading) {
-      try {
-        setAccountDeleteLoading(true);
-        if (user) {
-          const { data: userPosts } = await user.posts({
-            authMode: "userPool",
-          });
+    if (accountDeleteLoading) return;
 
-          for (const post of userPosts) {
-            await client.models.Post.delete(
-              {
-                id: post.id,
-              },
-              { authMode: "userPool" }
-            );
-            const { data: postComments } = await post.comments({
-              authMode: "userPool",
-            });
-            for (const comment of postComments) {
-              await client.models.Comment.delete(
-                {
-                  id: comment.id,
-                },
-                { authMode: "userPool" }
-              );
-            }
-          }
+    try {
+      setAccountDeleteLoading(true);
 
-          const { data: userLikes } = await client.models.Like.list({
-            authMode: "userPool",
-            filter: {
-              userId: {
-                eq: user.userId,
-              },
-            },
-          });
+      if (user) {
+        const { data: userPosts } = await user.posts({ authMode: "userPool" });
+        const { data: userLikes } = await client.models.Like.list({
+          authMode: "userPool",
+          filter: { userId: { eq: user.userId } },
+        });
+        const { data: userComments } = await user.comments();
 
-          for (const like of userLikes) {
-            await client.models.Like.delete(
-              {
-                postId: like.postId,
-                userId: user.userId,
-              },
-              { authMode: "userPool" }
-            );
-          }
-
-          const { data: userComments } = await user.comments();
-
-          for (const comment of userComments) {
-            await client.models.Comment.delete(
-              {
-                id: comment.id,
-              },
-              { authMode: "userPool", selectionSet: ["id"] }
-            );
-          }
-
-          const { errors } = await client.models.User.delete(
-            {
-              userId: user.userId,
-            },
+        // Delete posts and their comments
+        const postDeletionPromises = userPosts.map(async (post) => {
+          await client.models.Post.delete(
+            { id: post.id },
             { authMode: "userPool" }
           );
-
-          if (errors && errors[0].message) {
-            throw new Error(errors[0].message);
-          }
-          await deleteUser();
-          router.push("/sign-in");
-          toast({
-            title: "Success",
-            description: "Your account has successfully deleted.",
+          const { data: postComments } = await post.comments({
+            authMode: "userPool",
           });
-        }
-      } catch (error) {
-        toast({
-          description:
-            error instanceof Error ? error.message : "An unknown Error occured",
-          variant: "destructive",
+          return Promise.all(
+            postComments.map((comment) =>
+              client.models.Comment.delete(
+                { id: comment.id },
+                { authMode: "userPool" }
+              )
+            )
+          );
         });
-      } finally {
-        setAccountDeleteLoading(false);
+
+        // Delete likes and update liked posts
+        const likeDeletionPromises = userLikes.map(async (like) => {
+          await client.models.Like.delete(
+            { postId: like.postId, userId: user.userId },
+            { authMode: "userPool" }
+          );
+          const { data: likedPost } = await like.post();
+          if (likedPost && likedPost.userId !== user.userId) {
+            await client.models.Post.update(
+              { id: likedPost.id, likesCount: (likedPost.likesCount || 1) - 1 },
+              { authMode: "userPool" }
+            );
+          }
+        });
+
+        // Delete comments and update commented posts
+        const commentDeletionPromises = userComments.map(async (comment) => {
+          await client.models.Comment.delete(
+            { id: comment.id },
+            { authMode: "userPool" }
+          );
+          const { data: commentedPost } = await comment.post();
+          if (commentedPost && commentedPost.userId !== user.userId) {
+            await client.models.Post.update(
+              {
+                id: commentedPost.id,
+                commentsCount: (commentedPost.commentsCount || 1) - 1,
+              },
+              { authMode: "userPool" }
+            );
+          }
+        });
+
+        // Execute deletion processes concurrently
+        await Promise.all([
+          Promise.all(postDeletionPromises),
+          Promise.allSettled(likeDeletionPromises),
+          Promise.allSettled(commentDeletionPromises),
+        ]);
+
+        // Delete user account
+        const { errors } = await client.models.User.delete(
+          { userId: user.userId },
+          { authMode: "userPool" }
+        );
+
+        if (errors?.length) throw new Error(errors[0].message);
+
+        await deleteUser();
+
+        toast({
+          title: "Success",
+          description: "Your account has been successfully deleted.",
+          duration: 2000,
+        });
+
+        // Optionally redirect after deletion
+        // router.push("/sign-in");
       }
+    } catch (error) {
+      toast({
+        description:
+          error instanceof Error ? error.message : "An unknown error occurred",
+        variant: "destructive",
+        duration: 2000,
+        
+      });
+    } finally {
+      setAccountDeleteLoading(false);
     }
   };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}

@@ -35,10 +35,13 @@ const SignInForm = () => {
     try {
       setLoading(true);
 
-      const { user } = await getUserByEmail(email)
+      const { user } = await getUserByEmail(email);
 
       // if user auth provider is not email-password but google then sign in with google
-      if (user?.authProvider === "google") throw new Error("This email is already linked to a google account. Please sign in with that account.")
+      if (user?.authProvider === "google")
+        throw new Error(
+          "This email is already linked to a google account. Please sign in with that account."
+        );
 
       const { nextStep } = await signIn({
         username: email,
@@ -52,6 +55,7 @@ const SignInForm = () => {
             title: "New Password Required",
             description: "Please set a new password.",
             variant: "destructive",
+            duration: 2000,
           });
           break;
 
@@ -60,6 +64,7 @@ const SignInForm = () => {
             title: "Custom Challenge",
             description: "Please complete the custom challenge.",
             variant: "destructive",
+            duration: 2000,
           });
           break;
 
@@ -68,6 +73,7 @@ const SignInForm = () => {
             title: "TOTP Code Required",
             description: "Please enter your TOTP code.",
             variant: "destructive",
+            duration: 2000,
           });
           break;
 
@@ -76,6 +82,7 @@ const SignInForm = () => {
             title: "TOTP Setup Required",
             description: "Please complete the TOTP setup process.",
             variant: "destructive",
+            duration: 2000,
           });
           break;
 
@@ -84,6 +91,8 @@ const SignInForm = () => {
             title: "SMS Code Required",
             description: "Please enter the SMS code sent to your phone.",
             variant: "destructive",
+          duration: 2000,
+            
           });
           break;
 
@@ -92,6 +101,8 @@ const SignInForm = () => {
             title: "MFA Required",
             description: "Please select your mode of MFA verification.",
             variant: "destructive",
+          duration: 2000,
+
           });
           break;
 
@@ -100,6 +111,8 @@ const SignInForm = () => {
             title: "Reset Password Required",
             description: "Please reset your password before logging in.",
             variant: "destructive",
+          duration: 2000,
+
           });
           break;
 
@@ -109,6 +122,8 @@ const SignInForm = () => {
             description:
               "Please confirm your account via the confirmation email.",
             variant: "destructive",
+          duration: 2000,
+
           });
           router.push("/confirm-account");
           break;
@@ -117,6 +132,8 @@ const SignInForm = () => {
           toast({
             title: "Success",
             description: "You signed in successfully",
+          duration: 2000,
+
           });
           router.push("/");
           break;
@@ -126,6 +143,8 @@ const SignInForm = () => {
             title: "Unexpected Error",
             description: "An unexpected error occurred during sign-in.",
             variant: "destructive",
+          duration: 2000,
+
           });
       }
     } catch (error) {
@@ -133,6 +152,8 @@ const SignInForm = () => {
         description:
           error instanceof Error ? error.message : "An unknown Error occured",
         variant: "destructive",
+        duration: 2000,
+
       });
     } finally {
       setLoading(false);
@@ -181,11 +202,7 @@ const SignInForm = () => {
         />
 
         <Button disabled={loading} className="w-full" type="submit">
-          {loading ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
-          ) : (
-            "Sign in"
-          )}
+          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Sign in"}
         </Button>
       </form>
     </Form>

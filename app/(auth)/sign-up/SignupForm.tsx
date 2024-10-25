@@ -120,12 +120,16 @@ const SignUpForm: React.FC<{ onGoBack: () => void }> = ({ onGoBack }) => {
         title: "Confirm Account",
         description:
           "Please confirm your account with the code we've sent your email.",
+          duration: 2000,
+
       });
     } catch (error) {
       toast({
         description:
           error instanceof Error ? error.message : "An unknown error occurred",
         variant: "destructive",
+          duration: 2000,
+
       });
     }
   };

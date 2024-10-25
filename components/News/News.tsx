@@ -378,6 +378,8 @@ const News = () => {
       toast({
         description: error instanceof Error ? error.message : "An unknown Error occured",
         variant: "destructive",
+        duration: 2000,
+
       })
     } finally {
       setNewsLoading(false);

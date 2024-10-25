@@ -61,6 +61,8 @@ const PostHeader: React.FC<CommentHeaderProps> = ({
       toast({
         title: "Success",
         description: "Post deleted successfully",
+        duration: 2000,
+
       });
       revalidateAfterLike(postId);
       // Redirect to the user's profile or home page after deletion
@@ -70,6 +72,8 @@ const PostHeader: React.FC<CommentHeaderProps> = ({
         title: "Error",
         description: "Failed to delete post",
         variant: "destructive",
+        duration: 2000,
+
       });
     } finally {
       setIsDeleting(false);

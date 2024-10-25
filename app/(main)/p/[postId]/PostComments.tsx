@@ -156,6 +156,8 @@ const PostComments: React.FC<PostCommentsProps> = ({
         title: "Error",
         description: "Please sign in to post a comment",
         variant: "destructive",
+        duration: 2000,
+
       });
     }
   };
@@ -189,7 +191,7 @@ const PostComments: React.FC<PostCommentsProps> = ({
               </Avatar>
               <div className="flex-1">
                 <Link
-                  className="cursor-pointer"
+                  className="cursor-pointer inline-block"
                   href={`/${comment.user.username}`}
                 >
                   <p className="font-semibold">{comment.user.username}</p>

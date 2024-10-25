@@ -43,6 +43,7 @@ const ConfirmUserAttribute = () => {
           description:
             error instanceof Error ? error.message : "An unknown Error occured",
           variant: "destructive",
+          duration: 2000,
         });
       }
     }
@@ -56,6 +57,7 @@ const ConfirmUserAttribute = () => {
         title: "Error",
         description: "User attribute not confirmed",
         variant: "destructive",
+        duration: 2000,
       });
     }
   };
@@ -77,11 +79,13 @@ const ConfirmUserAttribute = () => {
                 userAttributeKey[0].toUpperCase() + userAttributeKey.slice(1)
               } confirmed`
             : "",
+          duration: 2000,
         });
       } catch (err) {
         toast({
           description: err instanceof Error ? err.message : "An unknown Error occured",
           variant: "destructive",
+          duration: 2000,
         });
       }
     }

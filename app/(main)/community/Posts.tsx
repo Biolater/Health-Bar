@@ -51,6 +51,7 @@ const Posts = () => {
         );
         setUsernames(usernamesMap);
         setPosts(sortedPosts);
+        console.log(sortedPosts)
       } catch (error) {
         toast({
           title: "Error",

@@ -72,6 +72,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           description:
             "This google account is already linked to an account. Please sign in with that account.",
           variant: "destructive",
+          duration: 2000,
+
         });
         setTimeout(() => {
           signOut();

@@ -34,6 +34,7 @@ const ConfirmAccount = () => {
         title: "Error",
         description: "Confirmation code must be at least 6 characters long.",
         variant: "destructive",
+        duration: 2000,
       });
       setConfirmationLoading(false);
       return;
@@ -48,6 +49,7 @@ const ConfirmAccount = () => {
         toast({
           title: "Success",
           description: "Your account has been confirmed!",
+          duration: 2000,
         });
         router.push("/sign-in");
       }
@@ -56,6 +58,8 @@ const ConfirmAccount = () => {
         description:
           error instanceof Error ? error.message : "An unknown Error occurred",
         variant: "destructive",
+        duration: 2000,
+
       });
     } finally {
       setConfirmationLoading(false);
@@ -67,6 +71,7 @@ const ConfirmAccount = () => {
       toast({
         title: "Copied",
         description: "Email address copied to clipboard",
+        duration: 2000,
       });
     });
   };

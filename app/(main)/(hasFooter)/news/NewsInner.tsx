@@ -320,12 +320,16 @@ const NewsInner = () => {
             variant: "default",
             title: "News Loaded",
             description: "News has been loaded successfully",
+          duration: 2000,
+
           });
         }
       } catch (error) {
         toast({
           description: error instanceof Error ? error.message : "An unknown Error occured",
           variant: "destructive",
+          duration: 2000,
+
         })
         setDisplayLoadMoreButton(false)
       } finally {

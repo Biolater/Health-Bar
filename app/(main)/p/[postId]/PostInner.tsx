@@ -7,7 +7,6 @@ import { type dataTypeForPostId } from "@/lib/api";
 import type { Schema } from "@/amplify/data/resource";
 import { generateClient } from "aws-amplify/api";
 import { useAuth } from "@/contexts/AuthContext";
-import { Skeleton } from "@/components/ui/skeleton";
 import { PostHeader, PostBody, PostFooter, PostComments } from "./PostParts";
 
 export type Comment = {
@@ -92,6 +91,10 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
     };
     fetchLikeAndComments();
   }, [user]);
+
+  useEffect(() => {
+    console.log(data)
+  }, [])
 
   return (
     <Card className="max-w-2xl mx-auto">

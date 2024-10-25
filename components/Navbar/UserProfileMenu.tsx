@@ -61,12 +61,16 @@ const UserProfileMenu: React.FC<Props> = ({ handleEscClick }) => {
       toast({
         title: "Logged out",
         description: "You have successfully logged out.",
+        duration: 2000,
+
       });
       router.push("/sign-in");
     } catch (error) {
       toast({
         description: error instanceof Error ? error.message : "An unknown Error occured",
         variant: "destructive",
+        duration: 2000,
+
       })
     }
   };

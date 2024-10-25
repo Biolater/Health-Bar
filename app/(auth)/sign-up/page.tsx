@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import SignUpForm from "./SignupForm";
+// import SignUpForm from "./SignupForm";
 import Link from "next/link";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import { FlipWords } from "@/components/ui/flip-words";
