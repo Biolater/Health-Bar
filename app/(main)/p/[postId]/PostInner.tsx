@@ -34,7 +34,7 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
   useEffect(() => {
     const fetchLikeAndComments = async () => {
       if (data && data.postDetails && data.user) {
-        setLoadingComments(true);
+        // setLoadingComments(true);
         try {
           // Fetch like status
           const { data: likeData } = await client.models.Like.get(
