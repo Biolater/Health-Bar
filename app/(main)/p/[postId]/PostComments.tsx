@@ -157,7 +157,6 @@ const PostComments: React.FC<PostCommentsProps> = ({
         description: "Please sign in to post a comment",
         variant: "destructive",
         duration: 2000,
-
       });
     }
   };
@@ -190,13 +189,25 @@ const PostComments: React.FC<PostCommentsProps> = ({
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1">
-                <Link
-                  className="cursor-pointer inline-block"
-                  href={`/${comment.user.username}`}
-                >
-                  <p className="font-semibold">{comment.user.username}</p>
-                </Link>
-                {editingCommentId === comment.id ? (
+                <div className="flex justify-between flex-grow">
+                  <div>
+                    <Link
+                      className="cursor-pointer inline-block"
+                      href={`/${comment.user.username}`}
+                    >
+                      <p className="font-semibold">{comment.user.username}</p>
+                    </Link>
+                    {editingCommentId !== comment.id && (
+                      <p className="text-sm">{comment.content}</p>
+                    )}
+                  </div>
+                  {editingCommentId !== comment.id && (
+                    <p className="text-xs text-muted-foreground">
+                      {new Date(comment.createdAt).toLocaleString()}
+                    </p>
+                  )}
+                </div>
+                {editingCommentId === comment.id && (
                   <div className="mt-2">
                     <Textarea
                       value={editedCommentContent}
@@ -224,16 +235,20 @@ const PostComments: React.FC<PostCommentsProps> = ({
                       </Button>
                     </div>
                   </div>
-                ) : (
-                  <>
-                    <p className="text-sm">{comment.content}</p>
-                    <p className="text-xs text-muted-foreground">
-                      {new Date(comment.createdAt).toLocaleString()}
-                    </p>
-                  </>
+                )}
+                {userId !== comment.userId && !editingCommentId && (
+                  <div className="w-full">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="mt-1 block text-gray-400 hover:text-white"
+                    >
+                      Reply
+                    </Button>
+                  </div>
                 )}
                 {userId === comment.userId && !editingCommentId && (
-                  <div className="mt-2 space-x-2">
+                  <div className="mt-2 space-x-2 w-full">
                     <Button
                       variant="ghost"
                       size="sm"
