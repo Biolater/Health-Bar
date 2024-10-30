@@ -8,7 +8,7 @@ import { fallbackNameGenerator } from "@/lib/utils";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Edit, Send, Trash2 } from "lucide-react";
+import { Edit, Send, Trash2, X } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -57,6 +57,20 @@ const PostComments: React.FC<PostCommentsProps> = ({
   const [editedCommentContent, setEditedCommentContent] = useState("");
   const [submittingComment, setSubmittingComment] = useState(false);
   const [newComment, setNewComment] = useState("");
+  const [replyingTo, setReplyingTo] = useState<{
+    username: string;
+    commentId: string;
+  } | null>(null);
+
+  const handleReplyClick = (username: string, commentId: string) => {
+    setReplyingTo({ username, commentId });
+    commentInputRef.current?.focus();
+  };
+
+  const cancelReply = () => {
+    setReplyingTo(null);
+    setNewComment("");
+  };
 
   const handleEditComment = async (commentId: string, newContent: string) => {
     try {
@@ -122,6 +136,7 @@ const PostComments: React.FC<PostCommentsProps> = ({
               postId: data.postDetails.id,
               userId: user.userId,
               commentOwner: user.userId,
+              parentCommentId: replyingTo?.commentId,
             },
             { authMode: "userPool" }
           );
@@ -134,6 +149,7 @@ const PostComments: React.FC<PostCommentsProps> = ({
             content: commentData.content,
             createdAt: commentData.createdAt,
             userId: user.userId,
+            parentCommentId: replyingTo?.commentId,
             user: {
               username: user?.username || "Anonymous",
               profilePicture: user?.profilePicture || defaultImage.src,
@@ -141,6 +157,7 @@ const PostComments: React.FC<PostCommentsProps> = ({
           });
         }
         setNewComment("");
+        setReplyingTo(null);
         await client.models.Post.update(
           { id: data.postDetails.id, commentsCount: comments.length + 1 },
           { authMode: "userPool" }
@@ -148,6 +165,11 @@ const PostComments: React.FC<PostCommentsProps> = ({
         revalidateAfterLike(`/p/${data.postDetails.id}`);
       } catch (error) {
         console.error("Error submitting comment:", error);
+        toast({
+          description:
+            error instanceof Error ? error.message : "An unknown error occured",
+          variant: "destructive",
+        });
       } finally {
         setSubmittingComment(false);
       }
@@ -198,7 +220,19 @@ const PostComments: React.FC<PostCommentsProps> = ({
                       <p className="font-semibold">{comment.user.username}</p>
                     </Link>
                     {editingCommentId !== comment.id && (
-                      <p className="text-sm">{comment.content}</p>
+                      <p className="text-sm">
+                        {comment.parentCommentId && (
+                          <span className="text-blue-500">
+                            @
+                            {
+                              comments.find(
+                                (c) => c.id === comment.parentCommentId
+                              )?.user.username
+                            }{" "}
+                          </span>
+                        )}
+                        {comment.content}
+                      </p>
                     )}
                   </div>
                   {editingCommentId !== comment.id && (
@@ -241,7 +275,10 @@ const PostComments: React.FC<PostCommentsProps> = ({
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="mt-1 block text-gray-400 hover:text-white"
+                      className="mt-1 block text-muted-foreground hover:text-foreground"
+                      onClick={() =>
+                        handleReplyClick(comment.user.username, comment.id)
+                      }
                     >
                       Reply
                     </Button>
@@ -292,17 +329,40 @@ const PostComments: React.FC<PostCommentsProps> = ({
           ))
         )}
       </div>
-      <form onSubmit={handleCommentSubmit} className="mt-4 flex space-x-2">
-        <Input
-          ref={commentInputRef}
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-          placeholder="Add a comment..."
-          className="flex-grow"
-        />
-        <Button disabled={submittingComment} type="submit" size="icon">
-          <Send className="w-4 h-4" />
-        </Button>
+      <form onSubmit={handleCommentSubmit} className="mt-4 space-y-2">
+        {replyingTo && (
+          <div className="flex items-center justify-between rounded-md bg-muted px-3 py-1">
+            <p className="text-sm text-muted-foreground">
+              Replying to{" "}
+              <span className="font-medium">@{replyingTo.username}</span>
+            </p>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              className="h-auto p-1 hover:bg-transparent"
+              onClick={cancelReply}
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+        )}
+        <div className="flex space-x-2">
+          <Input
+            ref={commentInputRef}
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            placeholder={
+              replyingTo
+                ? `Reply to @${replyingTo.username}...`
+                : "Add a comment..."
+            }
+            className="flex-grow"
+          />
+          <Button disabled={submittingComment} type="submit" size="icon">
+            <Send className="w-4 h-4" />
+          </Button>
+        </div>
       </form>
     </CardContent>
   );

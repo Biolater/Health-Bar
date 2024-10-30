@@ -88,6 +88,42 @@ async function getAllPosts(): Promise<{ posts: Schema["Post"]["type"][] }> {
 
 async function deletePost(postId: string) {
   try {
+    // Fetch post details
+    const { data: postDetails } = await client.models.Post.get(
+      {
+        id: postId,
+      },
+      { authMode: "apiKey" }
+    );
+
+    // Delete all likes associated with the post
+    const likeDetails = await postDetails?.likes();
+    if (likeDetails && likeDetails.data) {
+      const likePromises = likeDetails.data.map(async (likeDetail) => {
+        const { userId } = likeDetail;
+        // Delete each like
+        return client.models.Like.delete({
+          postId,
+          userId,
+        }, { authMode: "userPool" });
+      });
+      await Promise.all(likePromises);
+    }
+
+    // Delete all comments associated with the post
+    const commentDetails = await postDetails?.comments();
+    if (commentDetails && commentDetails.data) {
+      const commentPromises = commentDetails.data.map(async (commentDetail) => {
+        const { id } = commentDetail;
+        // Delete each comment
+        return client.models.Comment.delete({
+          id,
+        }, { authMode: "userPool" });
+      });
+      await Promise.all(commentPromises);
+    }
+
+    // Delete the post itself
     const { errors } = await client.models.Post.delete(
       {
         id: postId,
@@ -99,10 +135,13 @@ async function deletePost(postId: string) {
     if (errors && errors.length > 0) {
       throw new Error(errors[0].message); // Throw the first error message
     }
-    revalidateAfterLike(postId);
+
+    // Revalidate after post deletion
+    revalidateAfterLike(postId); // Or consider revalidating post list context
   } catch (error) {
+    // Handle errors
     throw new Error(
-      error instanceof Error ? error.message : "An unknown error occured"
+      error instanceof Error ? error.message : "An unknown error occurred"
     );
   }
 }

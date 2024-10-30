@@ -26,6 +26,7 @@ import {
   Trash2,
   Image as ImageIcon,
   X,
+  LoaderCircle,
 } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 import { deletePost, updatePostContent, toggleLike } from "@/lib/api";
@@ -72,7 +73,7 @@ export default function MyPost({
   const [loadingLikeClick, setLoadingLikeClick] = useState(false);
   const router = useRouter();
   const handleEdit = () => {
-    onEdit(postId)
+    onEdit(postId);
   };
 
   const handleSave = async () => {
@@ -80,7 +81,7 @@ export default function MyPost({
       setSaving(true);
       await updatePostContent(postId, content);
       onUpdate(postId, content);
-      onEditFinish()
+      onEditFinish();
       toast({ description: "Post updated successfully" });
     } catch (error) {
       toast({
@@ -121,7 +122,7 @@ export default function MyPost({
 
   const handleCancel = () => {
     setContent(postContent);
-    onEditFinish()
+    onEditFinish();
   };
 
   const handleDelete = async () => {
@@ -203,7 +204,9 @@ export default function MyPost({
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col">
-            <Link href={`/${username}`} className="text-sm font-semibold">{username}</Link>
+            <Link href={`/${username}`} className="text-sm font-semibold">
+              {username}
+            </Link>
             <p className="text-xs text-muted-foreground">
               {formatPostDate(postDate)}
             </p>
@@ -249,6 +252,7 @@ export default function MyPost({
               </DialogHeader>
               <DialogFooter className="gap-2">
                 <Button
+                  disabled={deleting}
                   variant="outline"
                   onClick={() => setIsDeleteDialogOpen(false)}
                 >
@@ -259,7 +263,11 @@ export default function MyPost({
                   variant="destructive"
                   onClick={handleDelete}
                 >
-                  Delete
+                  {deleting ? (
+                    <LoaderCircle className="h-4 w-4 animate-spin" />
+                  ) : (
+                    "Delete"
+                  )}
                 </Button>
               </DialogFooter>
             </DialogContent>

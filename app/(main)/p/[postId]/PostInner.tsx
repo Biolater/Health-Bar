@@ -14,6 +14,7 @@ export type Comment = {
   content: string;
   createdAt: string;
   userId: string;
+  parentCommentId: string | undefined;
   user: {
     username: string;
     profilePicture?: string;
@@ -37,51 +38,49 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
         // setLoadingComments(true);
         try {
           // Fetch like status
-          const { data: likeData } = await client.models.Like.get(
-            { postId: data.postDetails.id, userId: user ? user.userId : "" },
-            { authMode: "apiKey" }
-          );
-          setIsLiked(!!likeData);
+          if (user) {
+            const { data: likeData } = await client.models.Like.get(
+              { postId: data.postDetails.id, userId: user ? user.userId : "" },
+              { authMode: "apiKey" }
+            );
+            setIsLiked(!!likeData);
+          }
 
           // Fetch comments
-          const { data: commentsData, errors } =
-            await client.models.Comment.list({
-              authMode: "apiKey",
-              filter: { postId: { eq: data.postDetails.id } },
-              selectionSet: [
-                "id",
-                "content",
-                "postId",
-                "userId",
-                "createdAt",
-                "user.username",
-                "user.profilePicture",
-              ],
-            });
-
-          if (errors) {
-            console.error("Error fetching comments:", errors);
-          } else {
-            setComments(
-              commentsData
-                .map((comment) => ({
-                  id: comment.id,
-                  content: comment.content,
-                  createdAt: comment.createdAt,
-                  userId: comment.userId,
-                  user: {
-                    username: comment.user?.username || "Anonymous",
-                    profilePicture:
-                      comment.user?.profilePicture || defaultImage.src,
-                  },
-                }))
-                .sort(
-                  (a, b) =>
-                    new Date(b.createdAt).getTime() -
-                    new Date(a.createdAt).getTime()
-                )
-            );
-          }
+          const { data: commentsData } = await client.models.Comment.list({
+            authMode: "apiKey",
+            filter: { postId: { eq: data.postDetails.id } },
+            selectionSet: [
+              "id",
+              "content",
+              "postId",
+              "userId",
+              "parentCommentId",
+              "createdAt",
+              "user.username",
+              "user.profilePicture",
+            ],
+          });
+          setComments(
+            commentsData
+              .map((comment) => ({
+                id: comment.id,
+                content: comment.content,
+                createdAt: comment.createdAt,
+                userId: comment.userId,
+                parentCommentId: comment.parentCommentId || undefined,
+                user: {
+                  username: comment.user?.username || "Anonymous",
+                  profilePicture:
+                    comment.user?.profilePicture || defaultImage.src,
+                },
+              }))
+              .sort(
+                (a, b) =>
+                  new Date(b.createdAt).getTime() -
+                  new Date(a.createdAt).getTime()
+              )
+          );
         } catch (error) {
           console.error("Error fetching data:", error);
         } finally {
@@ -91,10 +90,6 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
     };
     fetchLikeAndComments();
   }, [user]);
-
-  useEffect(() => {
-    console.log(data)
-  }, [])
 
   return (
     <Card className="max-w-2xl mx-auto">

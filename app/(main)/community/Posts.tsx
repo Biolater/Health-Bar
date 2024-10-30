@@ -36,13 +36,17 @@ const Posts = () => {
       try {
         const { posts } = await getAllPosts();
         const usernamesMap: Record<string, string> = {};
-        for (const post of posts) {
+        const userPromises = posts.map(async (post) => {
           const { data, errors } = await post.user();
           if (errors && errors[0].message) {
             throw new Error(errors[0].message);
           }
-          if (data) {
-            usernamesMap[post.id] = data.username;
+          return { id: post.id, username: data?.username };
+        });
+        const results = await Promise.all(userPromises);
+        for (const result of results) {
+          if (result.username) {
+            usernamesMap[result.id] = result.username;
           }
         }
         const sortedPosts = posts.sort(
@@ -51,7 +55,6 @@ const Posts = () => {
         );
         setUsernames(usernamesMap);
         setPosts(sortedPosts);
-        console.log(sortedPosts)
       } catch (error) {
         toast({
           title: "Error",
