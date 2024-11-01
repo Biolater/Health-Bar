@@ -19,9 +19,10 @@ export type Comment = {
     username: string;
     profilePicture?: string;
   };
+  replies: Comment[];
 };
 
-const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
+export default function Component({ data }: { data: dataTypeForPostId }) {
   const { user } = useAuth();
   const [isLiked, setIsLiked] = useState<boolean | undefined>(undefined);
   const [likes, setLikes] = useState(data?.postDetails?.likesCount || 0);
@@ -35,9 +36,7 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
   useEffect(() => {
     const fetchLikeAndComments = async () => {
       if (data && data.postDetails && data.user) {
-        // setLoadingComments(true);
         try {
-          // Fetch like status
           if (user) {
             const { data: likeData } = await client.models.Like.get(
               { postId: data.postDetails.id, userId: user ? user.userId : "" },
@@ -46,7 +45,6 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
             setIsLiked(!!likeData);
           }
 
-          // Fetch comments
           const { data: commentsData } = await client.models.Comment.list({
             authMode: "apiKey",
             filter: { postId: { eq: data.postDetails.id } },
@@ -59,6 +57,13 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
               "createdAt",
               "user.username",
               "user.profilePicture",
+              "replies.id",
+              "replies.content",
+              "replies.userId",
+              "replies.parentCommentId",
+              "replies.createdAt",
+              "replies.user.username",
+              "replies.user.profilePicture",
             ],
           });
           setComments(
@@ -74,6 +79,20 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
                   profilePicture:
                     comment.user?.profilePicture || defaultImage.src,
                 },
+                replies:
+                  comment.replies.map((reply) => ({
+                    id: reply.id,
+                    content: reply.content,
+                    createdAt: reply.createdAt,
+                    userId: reply.userId,
+                    parentCommentId: reply.parentCommentId || undefined,
+                    user: {
+                      username: reply.user?.username || "Anonymous",
+                      profilePicture:
+                        reply.user?.profilePicture || defaultImage.src,
+                    },
+                    replies: [],
+                  })) || [],
               }))
               .sort(
                 (a, b) =>
@@ -90,6 +109,41 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
     };
     fetchLikeAndComments();
   }, [user]);
+
+  const handleCommentEdit = (
+    commentId: string,
+    newContent: string,
+    isReply: boolean
+  ) => {
+    setComments((prevComments) => {
+      return prevComments.map((comment) => {
+        if (!isReply && comment.id === commentId) {
+          return { ...comment, content: newContent };
+        }
+        if (isReply) {
+          return {
+            ...comment,
+            replies: comment.replies.map((reply) =>
+              reply.id === commentId ? { ...reply, content: newContent } : reply
+            ),
+          };
+        }
+        return comment;
+      });
+    });
+  };
+
+  const handleCommentDelete = (commentId: string, isReply: boolean) => {
+    setComments((prevComments) => {
+      if (!isReply) {
+        return prevComments.filter((c) => c.id !== commentId);
+      }
+      return prevComments.map((comment) => ({
+        ...comment,
+        replies: comment.replies.filter((reply) => reply.id !== commentId),
+      }));
+    });
+  };
 
   return (
     <Card className="max-w-2xl mx-auto">
@@ -134,24 +188,12 @@ const PostInner: React.FC<{ data: dataTypeForPostId }> = ({ data }) => {
         data={data}
         user={user}
         commentInputRef={commentInputRef}
-        onCommentEdit={(commentId, newContent) =>
-          setComments(
-            comments.map((comment) =>
-              comment.id === commentId
-                ? { ...comment, content: newContent }
-                : comment
-            )
-          )
-        }
-        onCommentDelete={(commentId) =>
-          setComments(comments.filter((comment) => comment.id !== commentId))
-        }
+        onCommentEdit={handleCommentEdit}
+        onCommentDelete={handleCommentDelete}
         onCommentCreate={(newComment) =>
           setComments((prevComments) => [newComment, ...prevComments])
         }
       />
     </Card>
   );
-};
-
-export default PostInner;
+}
