@@ -23,7 +23,7 @@ type Props = {
 const UserProfileMenu: React.FC<Props> = ({ handleEscClick }) => {
   const [isMounted, setIsMounted] = useState(false);
   const profileMenuRef = useRef<HTMLDivElement>(null);
-  const { user, isLoggedIn } = useAuth()
+  const { user, isLoggedIn } = useAuth();
   const { toast } = useToast();
   const router = useRouter();
   const handleOutsideClick = (event: MouseEvent) => {
@@ -62,33 +62,22 @@ const UserProfileMenu: React.FC<Props> = ({ handleEscClick }) => {
         title: "Logged out",
         description: "You have successfully logged out.",
         duration: 2000,
-
       });
       router.push("/sign-in");
     } catch (error) {
       toast({
-        description: error instanceof Error ? error.message : "An unknown Error occured",
+        description:
+          error instanceof Error ? error.message : "An unknown Error occured",
         variant: "destructive",
         duration: 2000,
-
-      })
+      });
     }
   };
   const MENU_ITEMS = [
     {
       text: "Profile",
       icon: <CircleUserRound />,
-      link: isLoggedIn && user ? `/${validateUsername(user?.username)}` : '/',
-    },
-    {
-      text: "Notifications",
-      icon: <Bell />,
-      link: "/notifications",
-    },
-    {
-      text: "Messages",
-      icon: <MessageCircle />,
-      link: "/messages",
+      link: isLoggedIn && user ? `/${validateUsername(user?.username)}` : "/",
     },
     {
       text: "Settings",

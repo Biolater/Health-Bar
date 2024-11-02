@@ -145,6 +145,22 @@ export default function Component({ data }: { data: dataTypeForPostId }) {
     });
   };
 
+  const handleCommentCreate = (comment: Comment, isReply: boolean) => {
+    if (!isReply) {
+      return setComments((prevComments) => [comment, ...prevComments]);
+    }
+
+    // Update the replies correctly
+    return setComments((prevComments) =>
+      prevComments.map(
+        (c) =>
+          c.id === comment.parentCommentId
+            ? { ...c, replies: [comment, ...c.replies] } // Correctly spread and update replies
+            : c // Return the comment unchanged
+      )
+    );
+  };
+
   return (
     <Card className="max-w-2xl mx-auto">
       <PostHeader
@@ -190,9 +206,7 @@ export default function Component({ data }: { data: dataTypeForPostId }) {
         commentInputRef={commentInputRef}
         onCommentEdit={handleCommentEdit}
         onCommentDelete={handleCommentDelete}
-        onCommentCreate={(newComment) =>
-          setComments((prevComments) => [newComment, ...prevComments])
-        }
+        onCommentCreate={handleCommentCreate}
       />
     </Card>
   );

@@ -42,7 +42,7 @@ interface PostCommentsProps {
     isReply: boolean
   ) => void;
   onCommentDelete: (commentId: string, isReply: boolean) => void;
-  onCommentCreate: (newComment: Comment) => void;
+  onCommentCreate: (newComment: Comment, isReply: boolean) => void;
 }
 
 export default function Component(
@@ -176,7 +176,7 @@ export default function Component(
               profilePicture: user?.profilePicture || defaultImage.src,
             },
             replies: [],
-          });
+          }, replyingTo?.commentId ? true : false);
         }
         setNewComment("");
         setReplyingTo(null);
